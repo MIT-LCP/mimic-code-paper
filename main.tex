@@ -96,7 +96,7 @@ One of the challenges in developing the code within the repository is in underst
 
 Collaborative development provides a mechanism for researchers to work together, while still retaining a level of control over projects because code is developed in isolated chunks. An additional benefit of open, collaborative code development is that it facilitates reproducibility of studies. Where data is openly available, as with MIMIC, as well as the software, it is possible to create a fully reproducible analytical workflow. 
 
-A series of 'datathons' have been held alongside development of the MIMIC database and code repository. These events assemble caregivers, data scientists, and those with domain-specific knowledge with the aim of creating ideas and producing clinically relevant, reproducible research [REF datathon paper]. Working openly in this manner helps to introduce continuous review and development of the research process. 
+A series of 'datathons' have been held alongside development of the MIMIC database and code repository. These events assemble caregivers, data scientists, and those with domain-specific knowledge with the aim of creating ideas and producing clinically relevant, reproducible research [REF datathon paper]. In parallel the events introduce new researchers to MIMIC and provide a platform for continuous review and development of code and research.
 
 \subsection{Quality and sustainability}
 
@@ -116,21 +116,15 @@ Often use Jupyter Notebook to create database connection to carry out studies. C
 
 % Emphasise that the code will be reused widely in research studies. Also emphasise how much work has gone into creating the code. What are the challenges of creating the scores?
 
-Openly available code is a key step in improving the quality of research as it provides validity to analyses performed. There are many decisions which must be made in the data extraction process which can have a large impact on the resultant data. 
+Hundreds of research studies have been carried out on the MIMIC database in the past, but the code used in analysis has been developed independently and often not shared. This is typical of scientific software development [Ref: http://www.nature.com/news/2010/101013/full/467775a.html]. By creating the MIMIC Code Repository we have provided a central central hub for development of clinical concepts, which we believe will help to standardize and improve future analyses.
 
-For example, when extracting the Glasgow Coma Scale (GCS), severity of illness scores assign a value of 15 when a patient is sedated, but the clinical staff record values of 3. This results in a systematic bias for sedated patients unless appropriate measures are taken to correct the recorded values. However, explanation of these steps would likely be omitted from publications. 
+There are many decisions which must be made in the data extraction process which can have a large impact on the resultant data. For example, when extracting the Glasgow Coma Scale (GCS), severity of illness scores assign a value of 15 when a patient is sedated, but the clinical staff record values of 3. This results in a systematic bias for sedated patients unless appropriate measures are taken to correct the recorded values. However, explanation of these steps would likely be omitted from publications. 
 
-The MIMIC Code Repository serves as a central hub for development of clinical concepts, and the use of code contained here-in has the potential to standardize future analyses.
+Openly available code is a key step in improving the quality of research as it provides validity to analyses performed. While rare in clinical research, the combination of open data and code is powerful. Studies can be made reproducible and can be reviewed and developed. Importantly, open resources such as MIMIC become powerful learning resources, and there now multiple university courses around the world which base learning exercises around the database. 
 
-Discuss MIMIC datathons. Allow data to be developed at the events and reused easily. Discuss the concept of continuous peer review...code is available for everyone to see and improve. Code should be fixed before it reaches stage of publication.
+The MIMIC Code Repository is intended to be a continuously developed resource. We anticipate its importance to grow over time, as the content increases. Much of the code is generalisable, so it may support and feed into other sources of clinical code. In the near future, we will providing additional code for use in XXX.
 
-Perhaps also cite: http://www.nature.com/news/2010/101013/full/467775a.html
-
-Discuss benefits of creating a community. Promotes sustainable code, which is a known issue in research. Often PhD or Postdoc writes code, then leaves, and then code is not maintained. Highlight benefits of having an issue tracker. Allows research code to be managed over time. 
-
-Discuss collaboration and reproducibility.
-
-Discuss opportunities. Unique codebase. What additional code could be added to the repository? What code is still under development?
+By creating a community around code used for analysis, we help to promote sustainable code, which is a common issue in research. It is typical for PhD or Postdoctoral researchers to write code for a project without thought of long term usage, often leading to unmaintained and unusable code. 
 
 \section{Conclusion}
 
