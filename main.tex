@@ -33,15 +33,9 @@
 
 \subsection{Intensive care data}
 
-% Here talk more about the issues in intensive care. Unproven therapies etc. Then lead on to why further research is needed. 
-
-% Discuss creating a reproducible workflow for research.
-
 There is substantial heterogeneity in intensive care populations - for example in aspects of patient physiology, presence of disease, and intervention types - which presents a significant challenge in terms of understanding the relationships between provision of care and patient outcomes. As a result, the benefit of many widely-practiced treatments and interventions remains unproven [REFS: VINCENT etc].
 
 Vast quantities of data are routinely collected by modern hospital monitoring systems, particularly in intensive care units where patients frequently suffer organ failure and require close observation. There is optimism that increasing availability of large scale clinical databases will offer opportunities to overcome many of the challenges associated with heterogeneity and offer new insights into critical care medicine [REF: BIG DATA etc]. 
-
-% Background to MIMIC. From original version to now. Talk about how code sharing has changed.
 
 One such database is the Medical Information Mart for Intensive Care (MIMIC-III), a large database collected from patients admitted to intensive care units in the Beth Israel Deaconess Medical Center, Boston, MA, USA \cite{mimiciii}. The latest version of MIMIC-III, v1.3, houses data spanning 11 years between 2001 and 2012, and is made freely available to researchers upon signing of a data use agreement and proof of a human studies training course. 
 
@@ -49,21 +43,11 @@ MIMIC-III is an unmatched research resource in the area of critical care informa
 
 % Analysis of the data collected by these systems has the potential to increase medical knowledge, taking us towards improved care and patient outcomes.
 
-% help to provide a solution to... Analysis often requires matching patients based on severity, selecting cohorts based on presence of comorbidities, etc. There is therefore benefit in developing reusable code for... 
+% help to provide a solution to... Analysis often requires matching patients based on severity, selecting cohorts based on presence of comorbidities, etc. There is therefore benefit in developing reusable code for... Quantifying the severity of illness for a patient is an integral part of retrospective analysis as it allows for investigation of concepts of interest in comparable patient populations. 
 
 % Set out some of the problems and our knowledge gaps. Emphasise importance of research. For example, preventable mortality, reducing length of stay, preserving resources etc. Introduce some studies that have used MIMIC. Explain that code has been written independently on each occasion. 
 
 % To address these gaps in our knowledge, key steps are needed. Available data. Studies that can be reviewed and improved and repeated over new datasets. Facilitated by code sharing etc..
-
-% Lead on to say how data and code shared together a collaborative research workflow. Explain benefits of creating a repository of shared data. Supports reproducibility.  Also allows researchers to work closely with us - the database developers - while making this task manageable given the size of the community. 
-
-% To combine the efforts of the community, to promote collaborative development, stepwise improvement etc, we have created a shared repository for code. Leads on to...
-
-% Cite and address the points in: http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745
-
-% This section can go into more detail about MIMIC-III. Give outline of the data. Explain how data can be used. etc.
-
-% Discuss what kind of code should be shared and why, leading on to reproducibility
 
 \subsection{MIMIC Code Repository}
 
@@ -71,14 +55,12 @@ Analysis of critical care data often requires definition of clinical concepts, s
 
 The MIMIC Code Repository helps to address these issues by providing a centralised and collaborative codebase for the research community. By allowing researchers to collaboratively develop, share, and review code, the repository helps to standardize the definition of key clinical concepts, promotes continuous review and improvement, and facilitates future studies on the MIMIC-III database. 
 
-% The package also provides code for importing the MIMIC-III database locally in a variety of software packages.  
-
 \begin{methods}
 \section{Methods}
 
-\subsection{Code for deriving clinical concepts}
+\subsection{Deriving clinical concepts}
 
-The MIMIC Code Repository is seeded with code for generating clinical concepts are widely used in research studies. A large proportion of the code is written in structured query language (SQL), primarily for the PostgreSQL database system. For example, code has been provided for deriving:
+The MIMIC Code Repository is seeded with code for generating clinical concepts that are widely used in research studies. A large proportion of the code is written in structured query language (SQL), primarily tailored to the PostgreSQL database system. For example, code has been provided for deriving:
 
 \begin{itemize}
 \item the Angus criteria for sepsis [REF TO ANGUS]. Sepsis is a serious illness caused by infection and is a major focus of clinical research [REF TO PAPERS USING ANGUS].
@@ -87,29 +69,15 @@ The MIMIC Code Repository is seeded with code for generating clinical concepts a
 \item detail relating to patient treatment, such as length of vasopressor use and start and stop times for mechanical ventilation [REFS].
 \end{itemize}
 
-% \subsubsection{Interpreting treatment}
+Add more detail here. Perhaps switch bullet point list above into separate paragraphs. The performance of two different implementations of the SOFA score in discriminating hospital mortality is shown in Figure \ref{fig:SevScoresOverTime}.
 
-% more detail about specific issue being addressed by the code. more detail about performance of the code.
+A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build local copies of the MIMIC database in a variety of database systems, including PostgreSQL, MySQL, Oracle, and MonetDB. The scripts create table structure, load data, and provide views for ease of interpretation. 
+
+Additionally, we seek to provide introduction to the data. Tutorials are provided to give new users and introduction to the MIMIC database. A 'cookbook' of sample code is provided to introduce new users to the database in a friendly way. Ipython notebooks.
+
+% Explain importance of the code. Why is it necessary. Who will use it? More detail about specific issue being addressed by the code. more detail about performance of the code.
 
 % Studying the impact of treatment on patient health or adjusting for the use of treatment during a patient's care is a common task in secondary analysis of electronic health records. The MIMIC Code Repository provides start and stop times for mechanical ventilation, dialysis, and various vasopressors. An example of these durations is provided in Figure \ref{fig:treatment}.
-
-% could also mention here that code is provided for views that ease interpretation of data.
-
-% \subsubsection{Comorbidities}
-
-% Detail about comorbidities.
-
-% \subsubsection{Sepsis}
-
-% Detail about sepsis criteria.
-
-% \subsubsection{Severity of illness}
-
-% more detail about specific issue being addressed by the code. more detail about performance of the code.
-
-% what are the challenges of creating the scores?
-
-% Quantifying the severity of illness for a patient is an integral part of retrospective analysis as it allows for investigation of concepts of interest in comparable patient populations. 
 
 % There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III \cite{aps}, SAPS \cite{saps}, SAPS-II \cite{sapsii}, SOFA \cite{sofa} and OASIS \ref{oasis}. The performance of these scores in discriminating hospital mortality is shown in Figure \ref{fig:SevScoresOverTime}. More detailed comparison of the severity scores is provided in the supplementary material.
 
@@ -120,68 +88,33 @@ The MIMIC Code Repository is seeded with code for generating clinical concepts a
 
 % In addition, scores used to measure the failure of a specific organ are also available for the hepatic (MELD \cite{meld}) and renal (KDIGO \cite{kdigo}, RIFLE \cite{rifle}) systems.
 
-%\begin{table}[!t]
-%\processtable{This is table caption\label{Tab:01}} {\begin{tabular}{@{}llll@{}}\toprule head1 &
-%head2 & head3 & head4\\\midrule
-%row1 & row1 & row1 & row1\\
-%row2 & row2 & row2 & row2\\
-%row3 & row3 & row3 & row3\\
-%row4 & row4 & row4 & row4\\\botrule
-%\end{tabular}}{This is a footnote}
-%\end{table}
+\subsection{Collaboration}
 
-\subsection{Code quality and sustainability}
+Conducting effective clinical research calls for a broad range of knowledge, covering areas such as clinical practice, data collection processes, and analytical methods. For this reason, we believe that it is important to nurture collaboration between disciplines including caregivers, computer scientists, and data analysts.
 
-In developing the repository we have attempted to follow and promote good practice in scientific programming [Ref: G Wilson paper]. For example, code is developed incrementally with a distributed version control system. Versioning of the code means that older studies can be reproduced.
+One of the challenges in developing the code within the repository is in understanding the nuances of the underlying MIMIC data, so the development process has involved regular discussion between hospital staff and data scientists. This cross disciplinary partnership is facilitated when code is shared openly and developed as a community.
 
-A unit testing package is used to check the operation of software upon addition of new code to the Repository, with tests being triggered when updates are integrated into the database.
+Collaborative development provides a mechanism for researchers to work together, while still retaining a level of control over projects because code is developed in isolated chunks. An additional benefit of open, collaborative code development is that it facilitates reproducibility of studies. Where data is openly available, as with MIMIC, as well as the software, it is possible to create a fully reproducible analytical workflow. 
 
-Issues are raised and tracked publicly, encouraging community development and helping to ensure that the code is sustainable. Means researchers leaving etc becomes less of an issue. Link to open data supports reproducbility. Often use Jupyter Notebook to create database connection to carry out studies.
+Mention datathons and cite the forthcoming paper. Mention how StackExchange is being used for discussion. Has this happened for other research projects? I guess so, but would be interesting to check.
 
-\subsection{Collaborative development}
+\subsection{Quality and sustainability}
 
-% Explain importance of the code. Why is it necessary. Who will use it?
+We have followed and promoted good practice in scientific programming as appropriate [Ref: G Wilson paper]. For example, code is developed incrementally with a distributed version control system. Versioning of the code means that older studies can be reproduced.
 
-% Discuss how multidiscplinary team needed to build the data and code. Frequent trips to the hospital etc.
+Unit testing is used to automate a series of processes that check the operation of software upon addition of new code to the repository, with tests being triggered when updates are integrated into the database.
 
-Basically explain why our approach is important. Need to work together to identify  and address issues. Explain how public issue tracker allows research related questions to be raised. For example, community demand to develop severity of illness scores. Already seen multiple requests to merge code.
+A public issue tracker allows research related questions to be raised, encouraging community development and helping to ensure that the code is sustainable. For example, community demand to develop severity of illness scores. Already seen multiple requests to merge code. Means researchers leaving etc becomes less of an issue. 
 
-Interesting - provides a mechanism for researchers to work together, while still retaining a level of control over projects because code is developed in isolated chunks.
-
-Could also mention how Stackoverflow is being used for discussion. Has this happened for other research projects? I guess so, but would be interesting to check.
-
-\subsubsection{Guidance and tutorials}
-
-A prerequisite for using the SQL code in the MIMIC Code Repository is access to MIMIC-III in a database management system (DBMS). The repository provides access to scripts which facilitate building the database in PostgreSQL, MySQL, and Oracle. These scripts create the tables, load the data, and provide indices for improved performance. A tutorial for creating a local PostgreSQL instance of MIMIC-III is also available in the repository.
-
-New datasets can be intimidating and take time to learn. Seek to provide introduction to the data. Could also highlight how cookbook code is being used in tutorials to introduce new users to the database in a friendly way.
-
-\subsubsection{Community building}
-
-Could reference the NEJM research parasite controversial paper, and say that while language not well chosen, feel that encouraging community to work with database developers has benefits.
-
-Mention datathons and cite the forthcoming paper.  Continuous review. Services like Github provide incentives for researchers to contribute.
-
-\subsection{Identifying and addressing issues}
-
-% The introduce the following subsections. i.e. what are the core chunks of code in the repo?
-
-% Need to emphasise how much work has gone into creating the code
-
-% One of challenges of developing code is understanding the underlying data. Involves regular discussion with the clinical teams.
-
-% Need to emphasise that the code will be reused widely in research studies.
+Often use Jupyter Notebook to create database connection to carry out studies. Continuous review. Services like Github provide incentives for researchers to contribute.
 
 \end{methods}
 
-%\begin{figure}[!tpb]%figure2
-%%\centerline{\includegraphics{fig02.eps}}
-%\caption{Caption, caption.}\label{fig:02}
-%\end{figure}
-
 \section{Discussion}
 
-The performance of these scores in discriminating hospital mortality is shown in Figure \ref{fig:SevScoresOverTime}.
+% Discuss creating a reproducible workflow for research.
+
+% Emphasise that the code will be reused widely in research studies. Also emphasise how much work has gone into creating the code. What are the challenges of creating the scores?
 
 Openly available code is a key step in improving the quality of research as it provides validity to analyses performed. There are many decisions which must be made in the data extraction process which can have a large impact on the resultant data. 
 
@@ -193,19 +126,15 @@ Discuss MIMIC datathons. Allow data to be developed at the events and reused eas
 
 Perhaps also cite: http://www.nature.com/news/2010/101013/full/467775a.html
 
-Discuss benefits of creating a community.
+Discuss benefits of creating a community. Promotes sustainable code, which is a known issue in research. Often PhD or Postdoc writes code, then leaves, and then code is not maintained. Highlight benefits of having an issue tracker. Allows research code to be managed over time. 
 
 Discuss collaboration and reproducibility.
 
-Highlight benefits of having an issue tracker. Allows research code to be managed over time. 
-
-Promotes sustainable code, which is a known issue in research. Often PhD or Postdoc writes code, then leaves, and then code is not maintained.
-
-Discuss opportunities. Unique codebase. 
+Discuss opportunities. Unique codebase. What additional code could be added to the repository? What code is still under development?
 
 \section{Conclusion}
 
-The MIMIC Code Repository contains code which derives a variety of useful clinical concepts which simplify analyses performed on the MIMIC database. The package is openly available and will continue to incorporate new concepts as they are calculated, allowing for rapid prototyping of clinical questions in a large retrospective database. The code is written with a modular design, and could be adapted for use with other ICU databases in a straightforward manner.  \\
+The MIMIC Code Repository is an important resource for researchers who working with the MIMIC critical care database. The repository provides code for deriving a variety of clinical concepts and will continue to incorporate new concepts as they are calculated, allowing for rapid prototyping of clinical questions in a large retrospective database. The code is open source, written with a modular design, and could be adapted for use with other ICU databases in a straightforward manner.  \\
 
 \section*{Acknowledgements}
 
@@ -281,7 +210,6 @@ J.-L. Vincent, R.~Moreno, J.~Takala, S.~Willats, A.~{De Mendoca}, H.~Bruining,
 
 %TODO:
 % mimic database, MELD, KDIGO
-
 
 % ARTICLE
 %\bibitem[Bag {\it et~al}., 2001]{Bag01}
