@@ -78,7 +78,7 @@ The MIMIC Code Repository helps to address these issues by providing a centralis
 
 \subsection{Code for deriving clinical concepts}
 
-The MIMIC Code Repository is seeded with code for generating clinical concepts that have been widely used in earlier studies. For example, code has been provided for deriving:
+The MIMIC Code Repository is seeded with code for generating clinical concepts are widely used in research studies. A large proportion of the code is written in structured query language (SQL), primarily for the PostgreSQL database system. For example, code has been provided for deriving:
 
 \begin{itemize}
 \item the Angus criteria for sepsis [REF TO ANGUS]. Sepsis is a serious illness caused by infection and is a major focus of clinical research [REF TO PAPERS USING ANGUS].
@@ -130,6 +130,14 @@ The MIMIC Code Repository is seeded with code for generating clinical concepts t
 %\end{tabular}}{This is a footnote}
 %\end{table}
 
+\subsection{Code quality and sustainability}
+
+In developing the repository we have attempted to follow and promote good practice in scientific programming [Ref: G Wilson paper]. For example, code is developed incrementally with a distributed version control system. Versioning of the code means that older studies can be reproduced.
+
+A unit testing package is used to check the operation of software upon addition of new code to the Repository, with tests being triggered when updates are integrated into the database.
+
+Issues are raised and tracked publicly, encouraging community development and helping to ensure that the code is sustainable. Means researchers leaving etc becomes less of an issue. Link to open data supports reproducbility. Often use Jupyter Notebook to create database connection to carry out studies.
+
 \subsection{Collaborative development}
 
 % Explain importance of the code. Why is it necessary. Who will use it?
@@ -144,6 +152,8 @@ Could also mention how Stackoverflow is being used for discussion. Has this happ
 
 \subsubsection{Guidance and tutorials}
 
+A prerequisite for using the SQL code in the MIMIC Code Repository is access to MIMIC-III in a database management system (DBMS). The repository provides access to scripts which facilitate building the database in PostgreSQL, MySQL, and Oracle. These scripts create the tables, load the data, and provide indices for improved performance. A tutorial for creating a local PostgreSQL instance of MIMIC-III is also available in the repository.
+
 New datasets can be intimidating and take time to learn. Seek to provide introduction to the data. Could also highlight how cookbook code is being used in tutorials to introduce new users to the database in a friendly way.
 
 \subsubsection{Community building}
@@ -155,33 +165,12 @@ Mention datathons and cite the forthcoming paper.  Continuous review. Services l
 \subsection{Identifying and addressing issues}
 
 % The introduce the following subsections. i.e. what are the core chunks of code in the repo?
-The MIMIC Code Repository utilizes structured query language (SQL) to define the concepts as MIMIC-III  is a relative database. The code is written primarily using PostgreSQL 9.5.0, and has been tested to be compliant with Oracle.
 
 % Need to emphasise how much work has gone into creating the code
 
 % One of challenges of developing code is understanding the underlying data. Involves regular discussion with the clinical teams.
 
 % Need to emphasise that the code will be reused widely in research studies.
-
-A prerequisite for using the SQL code in the MIMIC Code Repository is access to MIMIC-III in a database management system (DBMS). The repository provides access to scripts which facilitate building the database in PostgreSQL, MySQL, and Oracle. These scripts create the tables, load the data, and provide indices for improved performance. A tutorial for creating a local PostgreSQL instance of MIMIC-III is also available in the repository.
-
-Aside from importing MIMIC-III into a DBMS, the \emph{mimic-code} package facilitates:
-
-\begin{itemize}
-\item inferring treatment using surrogate information
-\item deriving severity scores
-\item deriving organ failure scores
-\end{itemize}
-
-\subsection{Code quality and sustainability}
-
-Unit testing. To promote code quality etc, unit tests are triggered when code updates are integrated into the database. Facilitates detection of bad code, etc.
-
-Also sustainable approach, because code is shared and maintained with the community. Means researchers leaving etc becomes less of an issue.
-
-Link to open data supports reproducbility. Often use Jupyter Notebook to create database connection to carry out studies.
-
-Discuss versioning? Enables older studies to be reproduced...
 
 \end{methods}
 
