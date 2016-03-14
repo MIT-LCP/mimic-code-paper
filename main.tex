@@ -60,7 +60,9 @@ The MIMIC Code Repository helps to address these issues by providing a centralis
 
 \subsection{Deriving clinical concepts}
 
-The MIMIC Code Repository is seeded with code for generating clinical concepts that are widely used in research studies. A large proportion of the code is written in structured query language (SQL), primarily tailored to the PostgreSQL database system. For example, code has been provided for deriving:
+A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build local copies of the MIMIC database in a variety of database systems, including PostgreSQL, MySQL, Oracle, and MonetDB. The scripts create table structure, load data, and provide views for ease of interpretation. 
+
+The repository is seeded with code for generating clinical concepts that are widely used in research studies. A large proportion of the code is written in structured query language (SQL), primarily tailored to the PostgreSQL database system. For example, code has been provided for deriving:
 
 \begin{itemize}
 \item the Angus criteria for sepsis [REF TO ANGUS]. Sepsis is a serious illness caused by infection and is a major focus of clinical research [REF TO PAPERS USING ANGUS].
@@ -70,8 +72,6 @@ The MIMIC Code Repository is seeded with code for generating clinical concepts t
 \end{itemize}
 
 Add more detail here. Perhaps switch bullet point list above into separate paragraphs. The performance of two different implementations of the SOFA score in discriminating hospital mortality is shown in Figure \ref{fig:SevScoresOverTime}.
-
-A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build local copies of the MIMIC database in a variety of database systems, including PostgreSQL, MySQL, Oracle, and MonetDB. The scripts create table structure, load data, and provide views for ease of interpretation. 
 
 Additionally, we seek to provide introduction to the data. Tutorials are provided to give new users and introduction to the MIMIC database. A 'cookbook' of sample code is provided to introduce new users to the database in a friendly way. Ipython notebooks.
 
@@ -90,17 +90,15 @@ Additionally, we seek to provide introduction to the data. Tutorials are provide
 
 \subsection{Collaboration}
 
-Conducting effective clinical research calls for a broad range of knowledge, covering areas such as clinical practice, data collection processes, and analytical methods. For this reason, we believe that it is important to nurture collaboration between disciplines including caregivers, computer scientists, and data analysts.
+% Conducting effective clinical research calls for a broad range of knowledge, covering areas such as clinical practice, data collection processes, and analytical methods. For this reason, we believe that it is important to nurture collaboration between disciplines including caregivers, computer scientists, and data analysts.
 
-One of the challenges in developing the code within the repository is in understanding the nuances of the underlying MIMIC data, so the development process has involved regular discussion between hospital staff and data scientists. This cross disciplinary partnership is facilitated when code is shared openly and developed as a community. Mention how StackExchange is being used for discussion. Has this happened for other research projects? I guess so, but would be interesting to check.
-
-Collaborative development provides a mechanism for researchers to work together, while still retaining a level of control over projects because code is developed in isolated chunks. An additional benefit of open, collaborative code development is that it facilitates reproducibility of studies. Where data is openly available, as with MIMIC, as well as the software, it is possible to create a fully reproducible analytical workflow. 
+A key challenge in developing the code within the repository is in understanding the nuances of the underlying hospital data, so the development process has involved close collaboration between hospital staff and data scientists. This cross disciplinary partnership is facilitated when code is shared openly and developed as a community. Mention how StackExchange is being used for discussion. Has this happened for other research projects? I guess so, but would be interesting to check.
 
 A series of 'datathons' have been held alongside development of the MIMIC database and code repository. These events assemble caregivers, data scientists, and those with domain-specific knowledge with the aim of creating ideas and producing clinically relevant, reproducible research [REF datathon paper]. In parallel the events introduce new researchers to MIMIC and provide a platform for continuous review and development of code and research.
 
 \subsection{Quality and sustainability}
 
-We have followed and promoted good practice in scientific programming as appropriate [Ref: G Wilson paper]. For example, code is developed incrementally with a distributed version control system. Versioning of the code means that older studies can be reproduced.
+Good practice in scientific programming has been followed as appropriate [Ref: G Wilson paper]. For example, code is developed incrementally with a distributed version control system. Where data is openly available and version controlled, as with MIMIC, as well as the software, it is possible to create a fully reproducible analytical workflow.
 
 Unit testing is used to automate a series of processes that check the operation of software upon addition of new code to the repository, with tests being triggered when updates are integrated into the database.
 
@@ -116,7 +114,7 @@ Often use Jupyter Notebook to create database connection to carry out studies. C
 
 % Emphasise that the code will be reused widely in research studies. Also emphasise how much work has gone into creating the code. What are the challenges of creating the scores?
 
-Numerous research studies have been carried out on the MIMIC database in the past, but the code used in analysis has largely been developed independently and often not shared. Lack of code sharing is typical of scientific software development [Ref: http://www.nature.com/news/2010/101013/full/467775a.html] and is a widely recognised issue. By creating the MIMIC Code Repository we have provided a central central hub for development of clinical concepts, which we believe will help to standardize and improve future analyses.
+Numerous research studies have been carried out on the MIMIC database in the past, but the code used in analysis has largely been developed independently and often not shared. Lack of code sharing is typical of scientific software development [Ref: http://www.nature.com/news/2010/101013/full/467775a.html] and is a widely recognized issue. By creating the MIMIC Code Repository we have provided a central central hub for development of clinical concepts, which we believe will help to standardize and improve future analyses.
 
 Many decisions are made when extracting clinical concepts which can have a large impact on the resultant data. One example is code written to extract the Glasgow Coma Scale. Severity of illness scores assign a value of 15 when a patient is sedated, but the clinical staff record values of 3. This results in a systematic bias for sedated patients unless appropriate measures are taken to correct the recorded values, but the explanation would likely be omitted from publications. 
 
