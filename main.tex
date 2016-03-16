@@ -81,12 +81,12 @@ Additionally, we seek to provide introduction to the data. Tutorials are provide
 
 % There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III \cite{aps}, SAPS \cite{saps}, SAPS-II \cite{sapsii}, SOFA \cite{sofa} and OASIS \ref{oasis}. The performance of these scores in discriminating hospital mortality is shown in Figure \ref{fig:SevScoresOverTime}. More detailed comparison of the severity scores is provided in the supplementary material.
 
+% In addition, scores used to measure the failure of a specific organ are also available for the hepatic (MELD \cite{meld}) and renal (KDIGO \cite{kdigo}, RIFLE \cite{rifle}) systems.
+
 \begin{figure}[!tpb]%figure1
 \centerline{\includegraphics[width=0.5\textwidth]{SOFA.eps}}
 \caption{Discrimination of two implementations of SOFA across fiscal years as measured by the area under the receiver operator characteristic curve (AUROC).}\label{fig:SevScoresOverTime}
 \end{figure}
-
-% In addition, scores used to measure the failure of a specific organ are also available for the hepatic (MELD \cite{meld}) and renal (KDIGO \cite{kdigo}, RIFLE \cite{rifle}) systems.
 
 \subsection{Collaboration}
 
@@ -98,13 +98,7 @@ A series of 'datathons' have been held alongside development of the MIMIC databa
 
 \subsection{Quality and sustainability}
 
-Good practice in scientific programming has been followed as appropriate [Ref: G Wilson paper]. For example, code is developed incrementally with a distributed version control system. Where data is openly available and version controlled, as with MIMIC, as well as the software, it is possible to create a fully reproducible analytical workflow.
-
-Unit testing is used to automate a series of processes that check the operation of software upon addition of new code to the repository, with tests being triggered when updates are integrated into the database.
-
-A public issue tracker allows research related questions to be raised, encouraging community development and helping to ensure that the code is sustainable. For example, community demand to develop severity of illness scores. Already seen multiple requests to merge code. Means researchers leaving etc becomes less of an issue. 
-
-Often use Jupyter Notebook to create database connection to carry out studies. Continuous review. Services like Github provide incentives for researchers to contribute.
+Following good practice in scientific programming, code is developed incrementally with a distributed version control system, unit tests check the operation of software upon addition of new code to the repository, and a public issue tracker allows research related questions to be raised, encouraging community development and helping to ensure that the code is sustainable [Ref: G Wilson paper]. Often use Jupyter Notebook to create database connection to carry out studies. Continuous review. Services like Github provide incentives for researchers to contribute.
 
 \end{methods}
 
@@ -124,7 +118,7 @@ By creating a community around code used for analysis, we help to promote sustai
 
 \section{Conclusion}
 
-The MIMIC Code Repository is an important resource for researchers who working with the MIMIC critical care database. The repository provides code for deriving a variety of clinical concepts and will continue to incorporate new concepts as they are calculated, allowing for rapid prototyping of clinical questions in a large retrospective database. The code is open source, written with a modular design, and could be adapted for use with other ICU databases in a straightforward manner. 
+The MIMIC Code Repository is an important resource for researchers working with the MIMIC critical care database. The repository provides code for deriving a variety of clinical concepts and will continue to incorporate new concepts as they are calculated, allowing for rapid prototyping of clinical questions in a large retrospective database. The code is open source and should be straightforward to apply to other ICU databases. Where data and code are openly available and version controlled, as with MIMIC, it is possible to create a fully reproducible analytical workflow.
 
 \section*{Acknowledgements}
 
