@@ -18,9 +18,9 @@ critical care; open data; data mining; secondary use of electronic health record
 
 
 \begin{abstract}
-\textbf{Motivation:} Secondary analysis of electronic health records is an important method for gaining insight into clinical care. Retrospective studies frequently require similar clinical concepts, so there is benefit in providing open, standardized tools for deriving these concepts to ensure the consistency and efficiency of future studies.\\
-\textbf{Results:} We present the MIMIC Code Repository, a collection of open source code for deriving clinical concepts using the MIMIC Critical Care Database. Concepts include severity of illness scores, organ failure indices, and duration of treatments such as ventilation and dialysis. \\
-\textbf{Availability:} The MIMIC Code Repository is in active development on GitHub. All code is made available under a permissive MIT license unless otherwise indicated.\\
+Secondary analysis of electronic health records is an important method for gaining insight into clinical care. Retrospective studies frequently require similar clinical concepts, so there is benefit in providing open, standardized tools for deriving these concepts to ensure the consistency and efficiency of future studies.
+We present the MIMIC Code Repository, a collection of open source code for deriving clinical concepts using the MIMIC Critical Care Database. Concepts include severity of illness scores, organ failure indices, and duration of treatments such as ventilation and dialysis.
+The MIMIC Code Repository is in active development on GitHub. All code is made available under a permissive MIT license unless otherwise indicated.\\
 \end{abstract}
 
 \end{frontmatter}
@@ -28,6 +28,13 @@ critical care; open data; data mining; secondary use of electronic health record
 % Introduction; Results; Discussion; Materials and methods; Acknowledgements; References; Figures with the corresponding legend below each one; and Tables.
 
 \section{Introduction}
+
+% TOPICS TO COVER IN INTRODUCTION:
+% - What is the ICU?
+% - Why is data in the ICU an important commodity?
+% - What is MIMIC
+% - Benefits of creating a centralizing code repository
+% - What this paper will discuss: results = concepts currently covered, discussion = collaborative goal of the project
 
 There is substantial heterogeneity in intensive care populations, particularly in aspects such as patient physiology, presence of disease, and intervention types. This heterogeneity presents a significant challenge to understanding the relationships between provision of care and patient outcomes, and as a result the benefit of many widely-practiced treatments and interventions remains inconclusive [REFS: Ioannadis].
 
@@ -59,8 +66,13 @@ There is a great opportunity for unifying studies on MIMIC with the creation of 
 
 \section{Results}
 
+% OVERVIEW
+% - Each concept covered and some stats about them
+% ... specifically:
+%  - a demographics table using angus, severity of illness scores, organ failure scores, treatment durations
+% - TSNE on comorbidities
+% - Jupyter Notebooks for analyses
 
-The code described herein follows guidelines for good practice in scientific programming, including incremental development with a distributed version control system, unit tests, and a public issue tracker [Ref: G Wilson paper].
 A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build local copies of the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB.
 The set of core clinical concepts which have been extracted using structured query language (SQL)\footnote{All queries have been developed and tested using PostgreSQL 9.5.1.} are as follows: 
 
@@ -92,10 +104,14 @@ An example of the importance of the variance caused by a non-centralized code ba
 \caption{Discrimination of two implementations of SOFA across fiscal years as measured by the area under the receiver operator characteristic curve (AUROC).}\label{fig:SevScoresOverTime}
 \end{figure}
 
-
-
 \section{Discussion}
 
+% OVERVIEW
+% - We have presented a suite of code simplifying data extraction and facilitating clinical studies
+% - We hope the repository becomes a high-quality resource for researchers in the field
+% - Open source nature improves validity/allows for community cross-checking
+% - We follow good software practices etc
+% - Tell 'em about your dream Martin!
 
 % Discuss creating a reproducible workflow for research.
 
@@ -103,6 +119,9 @@ An example of the importance of the variance caused by a non-centralized code ba
 
 Numerous research studies have been carried out on the MIMIC database in the past, but the code used in analysis has largely been developed independently and often not shared. Lack of code sharing is typical of scientific software development and is a widely recognized issue [Ref: http://www.nature.com/news/2010/101013/full/467775a.html]. By creating the MIMIC Code Repository we have provided a central hub for development of clinical concepts, which we believe will help to standardize and improve future analyses.
 The repository is intended to be a continuously developed resource enhancing the sustainability of the code and creating a community around data analysis in MIMIC.
+
+The code described herein follows guidelines for good practice in scientific programming, including incremental development with a distributed version control system, unit tests, and a public issue tracker [Ref: G Wilson paper].
+
 %It is typical for PhD or Postdoctoral researchers to write code for a project without thought of long term usage, often leading to unmaintained and unusable code. The MIMIC Code Repository is intended to be a continuously developed resource. We anticipate its importance to grow over time, as the content increases. 
 
 % Alistair: I think it's redundant to promote open code in a journal section dedicated to publishing open code.. kind of summarized the below statement above
@@ -127,6 +146,14 @@ Finally, the code written is modular and generalisable, and may support research
 
 
 \section{Materials and methods}
+
+% - Modular approach to generating stuff
+% - Describe the structure of the repository
+% - Issue tracking
+
+% Detail on the creation of the severity of illness scores
+% Angus criteria
+% DRG codes
 
 
 \begin{ack}
