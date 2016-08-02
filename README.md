@@ -14,3 +14,8 @@ For more information on MIMIC-III, see: http://mimic.physionet.org/
 
 The paper can be submitted in the Tools and Resources category:
 http://submit.elifesciences.org/html/elife_author_instructions.html?_ga=1.60352365.1903990470.1470079150#Tools_and_resources
+
+Sample Tools and Resources papers:
+https://elifesciences.org/content/5/e14334
+https://elifesciences.org/content/5/e11384
+https://elifesciences.org/content/4/e07661
