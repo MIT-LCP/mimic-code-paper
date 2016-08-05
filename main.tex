@@ -84,17 +84,15 @@ We have implemented an open source library. Novel because... Able to work direct
 \subsection{Severity of illness scores}
 
 % Explain importance.
-Several scoring systems have been developed in order to quantify extent of illness in hospital patients [REF]. These scoring systems are used widely in secondary analysis of health data for a variety of purposes, including selection of study populations and as a covariate to adjust for disease severity in physiological models.
-
-
-
-
-A number of scoring systems have been developed to quantify the severity of illness in hospital patients. These scores include APACHE, etc. Severity 
 % Explain challenges in calculating scores.
-
 % Explain code.
-
 % Include figure showing...
+
+Several scoring systems have been developed in order to quantify extent of illness in hospital patients [REF]. These scoring systems are used widely in secondary analysis of health data for a variety of purposes, including selection of study populations and as covariates for severity adjustment in physiological models. While severity scores are an integral part of many research studies, their definition can present several challenges. Firstly, for example, most severity scores are developed with well curated datasets, usually acquired either through prospective data collection by trained personnel or through manual data abstraction by qualified professionals. As a result, the data tends to be cleaner and, perhaps more importantly, the distribution of the data can be markedly different from routinely collected data such as that present in an electronic health record. 
+
+Secondly, often the structured data does not contain a subset of the required data elements in the score. For example, the comorbidity biopsy proven cirrhosis is not trivial to determine as there is no routine documentation of biopsy proven cirrhosis in the clinical workflow. Finally, the data definitions for the same concept can vary between the original dataset used to define the severity score and the electronic health records being analyzed. For example, the Glasgow Coma Scale (GCS), a common marker of neurological dysfunction which ranges from 3 (worst) to 15 (best), is usually assumed to be 15 for patients who are unable to be assessed due to sedation or ventilation. In an electronic health record however, this definition is not strictly adhered to as there is no defined protocol, and as a result sedated patients may be assigned a score of 15 by some care providers, and a score of 3 by others.
+
+Working directly with caregivers has helped us to address these issues in the code, helping to ensure the derived severity scores accurately reflect the true severity of illness in patients. There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III \cite{aps}, SAPS \cite{saps}, SAPS-II \cite{sapsii}, SOFA \cite{sofa} and OASIS \ref{oasis}. The performance of these scores in discriminating hospital mortality is shown in Figure \ref{fig:SevScoresOverTime}. A more detailed comparison of the severity scores is provided in the supplementary material, along with discussion of the assumptions that have been made when defining severity scores.
 
 \subsection{Duration of interventions}
 
@@ -124,7 +122,6 @@ A number of scoring systems have been developed to quantify the severity of illn
 
 % \emph{The Angus criteria for defining sepsis}: Sepsis is a serious illness caused by infection and is a major focus of clinical research. Angus criteria utilize billing codes to classify a hospital admission as being related to sepsis [REF TO ANGUS], and the criteria have been recently validated [RECENT ANGUS VALIDATION].
 
-% \emph{Severity of illness scores}: measures of illness are a useful tool for adjusting for patient severity when comparing patient populations. Scores implemented include the Simplified Acute Physiology Score (SAPS), Simplified Acute Physiology Score II (SAPS II), the Acute Physiology Score III (APS III), and the Oxford Acute Severity of Illness Score (OASIS) [REFS].
 
 % \emph{Organ failure scores}: Multi-organ failure is a hallmark of acute illness and quantify the morbidity for a given patient. The Sequential Organ Failure Assessment (SOFA) score [REF] and Logistic Organ Dysfunction System (LODS) [REF] both assess six organ systems for failure. Single organ failure scores implemented include MELD [REF], commonly used to determine suitability for a liver transplant, RIFLE [REF], which quantifies acute kidney injury, and KDIGO [REF], also used for acute kidney injury.
 
@@ -140,8 +137,6 @@ A number of scoring systems have been developed to quantify the severity of illn
 % Explain importance of the code. Why is it necessary. Who will use it? More detail about specific issue being addressed by the code. more detail about performance of the code.
 
 % Studying the impact of treatment on patient health or adjusting for the use of treatment during a patient's care is a common task in secondary analysis of electronic health records. The MIMIC Code Repository provides start and stop times for mechanical ventilation, dialysis, and various vasopressors. An example of these durations is provided in Figure \ref{fig:treatment}.
-
-% There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III \cite{aps}, SAPS \cite{saps}, SAPS-II \cite{sapsii}, SOFA \cite{sofa} and OASIS \ref{oasis}. The performance of these scores in discriminating hospital mortality is shown in Figure \ref{fig:SevScoresOverTime}. More detailed comparison of the severity scores is provided in the supplementary material.
 
 % In addition, scores used to measure the failure of a specific organ are also available for the hepatic (MELD \cite{meld}) and renal (KDIGO \cite{kdigo}, RIFLE \cite{rifle}) systems.
 
@@ -170,7 +165,6 @@ A number of scoring systems have been developed to quantify the severity of illn
 
 %It is typical for PhD or Postdoctoral researchers to write code for a project without thought of long term usage, often leading to unmaintained and unusable code. The MIMIC Code Repository is intended to be a continuously developed resource. We anticipate its importance to grow over time, as the content increases. 
 
-% Alistair: I think it's redundant to promote open code in a journal section dedicated to publishing open code.. kind of summarized the below statement above
 %Openly available code is a key step in improving the quality of research as it provides validity to analyses performed and allows progressive improvement of code. While rare in clinical research, the combination of open data and code is powerful. Studies can be made reproducible and code is available to be reviewed and developed. Importantly, open resources such as MIMIC become important learning resources too: there are now multiple university courses around the world in which MIMIC forms a core learning tool. 
 
 
