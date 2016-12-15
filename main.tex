@@ -5,13 +5,14 @@
 
 \begin{frontmatter}
 %\runtitle{Insert a suggested running title}
-\title{MIMIC code: a repository for deriving\\ clinical concepts}
+\title{The MIMIC code repository}
+\subtitle{Reproducibility in medicine}
 
 \author[Cambridge]{Alistair E. W. Johnson}\ead{aewj@mit.edu},
 \author[Cambridge]{Tom J. Pollard}\ead{tpollard@mit.edu}
-\address[Cambridge]{Massachusetts institute of Technology, Cambridge}
+\address[Cambridge]{Massachusetts Institute of Technology, Cambridge}
 
-          
+
 \begin{keyword}
 critical care; open data; data mining; secondary use of electronic health records.
 \end{keyword}
@@ -36,31 +37,81 @@ Secondary analysis of routinely collected data - contrasted with the primary ana
 % - Benefits of creating a centralizing code repository
 % - What this paper will discuss: results = concepts currently covered, discussion = collaborative goal of the project
 
-Intensive care units care for the sickest patients in a hospital. Often require support for multiple organs. High mortality rate. High rate of sepsis. Potential for improving outcomes...
+Recently a number of concerns have been raised around the reproducibility of results in science, particularly in the medical field [?]. The reasons for this so called ``crisis'' are multifactorial, and include the pressure for obtaining positive results for academic success, the large expense of robust studies such as double blind randomized controlled clinical trials, and the historic lack of openness surrounding medical science [?].
+In medicine, the heterogeneity of patient populations presents an additional significant challenge in understanding the relationships between the provision of care and patient outcomes, so much so that the impact of many widely-practiced treatments and interventions remains unknown [REFS: Ioannadis]. It has been estimated that [X in X treatments are not supported by evidence].
 
-There is substantial heterogeneity in intensive care populations, particularly in aspects such as patient physiology, presence of disease, and intervention types. This heterogeneity presents a significant challenge to understanding the relationships between provision of care and patient outcomes, and as a result the impact of many widely-practiced treatments and interventions remains unknown [REFS: Ioannadis]. It has been estimated that [X in X treatments are not supported by evidence]. 
+% ?? Factoid about lack of openness in medicine??.
+%We posit that this lack of openness has stymmied progress in the medical field, and fully believe that embracing transparent practices will accellerate research in medicine.
 
-Vast quantities of data are routinely collected by modern hospital monitoring systems and even more so in intensive care units where patients frequently suffer organ failure and require close observation. There is optimism that increasing availability of large scale clinical databases will offer opportunities to overcome many of the challenges associated with heterogeneity and offer new insights into critical care medicine [REF: BIG DATA etc]. 
+An entirely separate revolution has been occurring in parallel to the reproducibility crisis: the digital revolution. In America, the Affordable Care Act has resulted in a remarkable number of hospitals and care institutions transitioning from paper based systems to electronic ones [?]. A similar change in practice at institutions worldwide has also been occurring [?]. Vast quantities of data are now routinely collected by modern hospital monitoring systems and even more so in intensive care units (ICUs) where patients require close observation. There is optimism that increasing availability of large scale clinical databases will offer opportunities to overcome many of the challenges associated with lack of evidence in medical practice [REF: BIG DATA etc].
 
-But in addition to quality data, robust code must be developed to enable analysis. Challenges in interpreting data include deriving severity of illness scores (often used in adjustment), deriving duration of treatments based on [ambiguous?] data, and selecting cohorts based on clinical guidelines. The code used to conduct analysis is critically important in the results.
+%Intensive care units care for the sickest patients in a hospital. Often require support for multiple organs. High mortality rate. High rate of sepsis. Potential for improving outcomes...
 
-Typically concepts are coded during analysis, often independently by research groups, often without complete understanding of the data and unable to interact with hospital staff. As a result, the quality of code varies widely. [For example, of X papers using MIMIC in 2013, X different approaches to identifying sepsis were taken.] While controversial, this point was highlighted by NEJM. Numerous examples where errors in code have resulted in retracted papers...
+%There is substantial heterogeneity in intensive care populations, particularly in aspects such as patient physiology, presence of disease, and intervention types.
 
-We have implemented an open source library. Novel because... Able to work directly with clinicians to develop the code. Bridge gap between data scientists and clinical environment. Support interpretation of data. Ref NEJM paper highlighting importance of working with clinicians. Also bridging the gap paper. Novel because entire workflow can be reproduced, from data to publication. 
+The Medical Information Mart for Intensive Care (MIMIC) database is an example of such a data repository [?]. The MIMIC database contains detailed clinical information regarding over 60,000 stays in ICUs located at the Beth Israel Deaconness Medical Center in Boston, MA, USA. MIMIC is publicly accessible, and has been used for a number of clinical studies which provide insight into unanswered medical questions including the association of selective serotonin reuptake inhibitors and mortality [?], the use of indwelling arterial catheters in haemodynamically stable patients [?], and risk factors associated with septic shock [?]. All of the data available in MIMIC is collected passively during routine clinical practice [?? strength because it's collected ``for free''].
 
-While the case for open data is well publicised, we believe open code is equally important.
+However, a key aspect of MIMIC is that its use as a research database is secondary to the primary aim of the medical record: facilitating clinical care. As a result, many clinical concepts are not documented directly in the database, and must be cleverly extracted using surrogate measures. For example, exact intubation and extubation times are not documented in the ICU clinical information system, but these times can be inferred by the presence or absence of ventilator settings. While the ability to extract key clinical concepts like ventilation durations is valuable for research, a new problem emerges in that distinct researchers may define these clinical concepts differently.
+% Researchers can make unverified assumptions about the data, perhaps due to various pressures (publish or perish).
+As a result, while two distinct research papers may claim to utilize ``length of ventilation'' from the same database, the actual values they derive may be substantially different. This variance in the exact calculation of underlying concepts further complicates issues around reproducibility of clinical studies.
+Furthermore, even if two researchers are extremely diligent and extract the concept in an identical fashion, the duplication of their effort hinders the overall progress of research in the field.
+%While controversial, this point was highlighted by NEJM. Numerous examples where errors in code have resulted in retracted papers...
 
-% TP: the code that is used in the interpretation and analysis of the data is arguably as important as the data itself. different approaches in coding X can lead to different interpretation of the data. it is important that code is developed by people who are familiar with the environment where the data was collected etc.
 
-% One such database is the Medical Information Mart for Intensive Care (MIMIC-III), collected from patients admitted to intensive care units in the Beth Israel Deaconess Medical Center, Boston, MA, USA \cite{mimiciii}. The latest version of MIMIC-III, v1.3, houses data spanning 11 years between 2001 and 2012, and is made freely available to researchers upon signing of a data use agreement and proof of a human studies training course. 
+%We work closely with clinicians to extract and validate concepts - and can share their expertise to the community of researchers through the code [Ref NEJM paper highlighting importance of working with clinicians].
 
-% MIMIC-III is an unmatched research resource in the area of critical care informatics that promotes crowdsourcing of knowledge generation and sharing of fully reproducible studies.
+This paper aims to rectify the issues raised above. Namely, we describe the MIMIC code repository, a large body of work which derives a number of clinical concepts in the MIMIC database.
+% Some concepts can be difficult or laborious to define but are ubiquitously useful, e.g. severity of illness scores.
+Detailed descriptions on how the concepts are extracted are provided including what assumptions were made and under what conditions the code is valid for use. The code is open source, follows good coding practices, and can be extended by contributions from the community.
+While the case for open data is well publicised, we believe open code is equally important, and we argue that the use of an openly available repository will accelerate research by improving the efficiency of data extraction and the consistency of future studies.
 
-\section{Results}
+\section{Materials & Methods}
 
-A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB. The set of core clinical concepts which have been extracted using structured query language (SQL)\footnote{All queries have been developed and tested using PostgreSQL 9.5.1.} are as follows. Additionally, we seek to provide introduction to the data. Tutorials are provided to give new users and introduction to the MIMIC database. A cookbook of sample code is provided to introduce new users to the database in a friendly way. 
+% - We follow good software practices etc
+% - Github. cite github paper.
+% - Modular approach to generating stuff
+% - Describe the structure of the repository
+% - Issue tracking
 
-\subsection{Severity of illness scores}
+% Detail on the creation of the severity of illness scores
+% Angus criteria
+% DRG codes
+
+
+The MIMIC code repository is available online [?] and is open source. Code is primarily available as structured query language (SQL) or Python v2.7.12 scripts. Scripts are rewritten to allow an individual who has been granted access to the MIMIC database to generate a number of ``views'' of the data, with each view being an extraction from the raw database. Each script is associated with an automatically generated unique hash which acts as an identifier for the code. Publications which utilize the code repository and report this hash allow for other researchers to download an exact copy of the code regardless of any changes made since then. All code follows the principles of good software engineering outlined by ??? et al. [?]. Briefly restated here, the principles include: source code control to ensure all versions of the software are easily accessible, a modular approach to concept definition, and issue tracking. %TODO: complete this
+
+Another aspect of the repository which facilitates future reuse are Jupyter notebooks []. Jupyter notebooks are an amalgamation of text and code, and allow for executable documents which both describe the logic and principles behind the code while simultaneously allowing the user to run the code within the same document. Jupyter notebooks have found widespread use, particularly for tutorials, and their use in this repository follow suite. Notebooks available include how to derive durations from the database (with continuous renal replacement therapy as an example), assessing the distributions of laboratory measurements, and a beginner's tutorial providing a number of cookbook scripts.
+
+\subsection{Data import}
+
+A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB. The set of core clinical concepts which have been extracted using structured query language (SQL)\footnote{All queries have been developed and tested using PostgreSQL 9.5.1.} are as follows. Additionally, we seek to provide introduction to the data. Tutorials are provided to give new users and introduction to the MIMIC database. A cookbook of sample code is provided to introduce new users to the database in a friendly way.
+
+\subsection{Concepts extracted}
+
+Clinical concepts which are very commonly required for research studies which have been extracted to date include:
+
+* Demographics such as height, weight, and mortality
+* Severity of illness scores and their dependent concepts
+* Durations of treatments, including mechanical ventilation, vasopressors, and continuous renal replacement therapy (CRRT)
+* Estimated time of first suspicion of infection
+* Sepsis as defined by retrospective administrative data [?]
+* Comorbidities as defined by administrative data
+
+The repository as of publication was developed on MIMIC-III v1.4 using Python v2.7.
+
+\subsubsection{Demographics}
+
+Demographics were extracted from the administrative data stored in the `PATIENTS`, `ADMISSIONS`, and `ICUSTAYS` table. This data was joined with the primary diagnosis as coded by the by International Classification of Diseases 9th version (ICD-9) codes as available in the `DIAGNOSES_ICD` table.
+Demographics extracted included height, weight, age, length of ICU stay, length of hospital stay, ICU mortality, in-hospital mortality, 30-day mortality, first care unit, last care unit, whether the ICU admission is an in-hospital readmission, and principle diagnosis.
+
+\subsubsection{Severity of illness scores}
+
+Severity of illness scores have been developed over the past two decades to provide an assessment of the patient's acuity on admission the ICU. The principle aim of these scores is for benchmarking insitutions, risk-adjusting patient populations, and comparison of cohorts in clinical trials. In the context of MIMIC, the use of severity of illness scores for risk-adjustment is of highest utility. A number of severity of illness scores are derived, including: the Acute Physiology Score III (APS III) [?], the Simplified Acute Physiology Score II (SAPS II) [?], the Sequential Organ Failure Assessment (SOFA) score [?], the Systemic Inflammation Response Syndrome (SIRS) criteria [?], the quick SOFA (qSOFA) score [?], the Logistic Organ Dysfunction Score (LODS) and a modification of such [?], and the Oxford Acute Severity of Illness Score (OASIS) [?]. Each score comprises of at least ten independent components. The APS III, SAPS II, SOFA, LODS, and OASIS were calculated using data from the first 24 hours of the patient's stay. SIRS and qSOFA were calculated on admission to the ICU, concretely defined as up to 2 hours after the admission time. Details of score derivation are available in the supplemental material (Appendix A).
+
+To highlight the potential discrepency among supposedly identical concepts, we aimed to contrast two versions of the SOFA score: one derived by prior researchers[footnote: As our aim is to highlight the potential danger of independent researchers deriving concepts rather than shame others, we have elected not to identify the researchers.], and one available in the MIMIC code repository. The area under the receiver operator characteristic curve (AUROC), a measure of the ability for a score to discriminate a dichotomous outcome, was calculated for all patients admitted in the MIMIC database between 2001-2008.
+
+% ** This was the original content on SOI scores ** %
+\subsubsubsection{Severity of illness scores}
 
 % Explain importance.
 % Explain challenges in calculating scores.
@@ -69,13 +120,21 @@ A prerequisite for using much of the code in the MIMIC Code Repository is access
 
 % \emph{Organ failure scores}: Multi-organ failure is a hallmark of acute illness and quantify the morbidity for a given patient. The Sequential Organ Failure Assessment (SOFA) score [REF] and Logistic Organ Dysfunction System (LODS) [REF] both assess six organ systems for failure. Single organ failure scores implemented include MELD [REF], commonly used to determine suitability for a liver transplant, RIFLE [REF], which quantifies acute kidney injury, and KDIGO [REF], also used for acute kidney injury.
 
-Several scoring systems have been developed in order to quantify extent of illness in hospital patients [REF]. These scoring systems are used widely in secondary analysis of health data for a variety of purposes, including selection of study populations and as covariates for severity adjustment in physiological models. While severity scores are integral to many research studies, their definition can present several challenges and it is crucial to recognise the limitations of how scores are generated. Firstly, for example, most severity scores are developed with well curated datasets, usually acquired either through prospective data collection by trained personnel or through manual data abstraction by qualified professionals. As a result, the data tends to be cleaner and often has, perhaps more importantly, a distribution that is markedly different from routinely collected data such as that present in an electronic health record. 
+Several scoring systems have been developed in order to quantify extent of illness in hospital patients [REF]. These scoring systems are used widely in secondary analysis of health data for a variety of purposes, including selection of study populations and as covariates for severity adjustment in physiological models. While severity scores are integral to many research studies, their definition can present several challenges and it is crucial to recognise the limitations of how scores are generated. Firstly, for example, most severity scores are developed with well curated datasets, usually acquired either through prospective data collection by trained personnel or through manual data abstraction by qualified professionals. As a result, the data tends to be cleaner and often has, perhaps more importantly, a distribution that is markedly different from routinely collected data such as that present in an electronic health record.
 
 Secondly, routinely collected data often lacks some of data elements required to compute the score. For example, the comorbidity ``''biopsy proven cirrhosis``'' is not simple to determine as there is no routine documentation of this concept in the clinical workflow. Finally, the data definitions for the same concept can vary between the original dataset used to define the severity score and the electronic health records being analyzed. For example, the Glasgow Coma Scale (GCS), a common marker of neurological dysfunction which ranges from 3 (worst) to 15 (best), is usually assumed to be 15 for patients who are unable to be assessed due to sedation or ventilation. In an electronic health record however, this definition is not strictly adhered to as there is no defined protocol, and as a result sedated patients may be assigned a score of 15 by some care providers, and a score of 3 by others.
 
 Working directly with caregivers has helped us to address these issues in the code, helping to ensure the derived severity scores accurately reflect the true severity of illness in patients. There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III \cite{aps}, SAPS \cite{saps}, SAPS-II \cite{sapsii}, SOFA \cite{sofa} and OASIS \ref{oasis}. A more detailed comparison of the severity scores is provided in the supplementary material, along with discussion of the assumptions that have been made when defining severity scores. An example of the importance of the variance caused by a non-centralized code base is shown in \ref{fig:SevScoresOverTime}, where the performances of two different implementations of the SOFA score in discriminating hospital mortality are shown. Both of these implementations have been used in previous publications.
 
-\subsection{Duration of interventions}
+
+
+\subsubsection{Timing of treatment}
+
+The duration of treatment is a useful concept as it quantifies both the intensity of treatment for a patient and provides useful context for other pieces of information: e.g. the use of vasopressors informs the researcher that the blood pressure is being increased by medical intervention. Due to the method of data archival, many medications and treatments are not implicitly stored as durations, and as such they must be derived using sensible rule based approaches. These approaches usually involve identification of surrogate measures which are documented in the data by clinical staff with high compliance. Figure [?] shows a schematic for the derivation of the start and stop times of mechanical ventilation [?]. Similar rules were used to define the timing of vasopressor administration and continuous renal replacement therapy.
+
+% ** This was the original content on treatment ** %
+
+\subsubsubsection{Duration of interventions}
 
 % Explain importance.
 % Explain code.
@@ -83,9 +142,18 @@ Working directly with caregivers has helped us to address these issues in the co
 
 % \emph{Treatment durations}: Studying the effect of treatments on patient health is of great interest, though deriving the timing of these treatments from a database can be non-trivial. We provide views with (i) vasopressor use start and stop times for all vasopressors and individual medications and (ii) mechanical ventilation start and stop times. The duration of these interventions is also a useful measure of treatment intensity.
 
-When carrying out a study it may be necessary or desirable to know the durations of interventions and physiologic states such as mechanical ventilation, vasopressor administration, and hypotension. Deriving these durations from routinely collected data is often non-trivial, requiring a strong understanding of the underlying data as well as the environment in which it was collected. Cao et al highlight this issue in a 2010 paper on heuristics to determine ventilation times of ICU patients, noting that while ``''On the surface, it appears trivial to determine ventilation times``'', ``''when facing the reality of retrospective data, it is not straightforward``'' [REF Cao et al 2010]. In collaboration with staff at the Beth Israel Deaconess Medical Center - the primary source of data in the MIMIC-III database - we have provided code to derive start and stop times for continuous events such as mechanical ventilation, dialysis, and various vasopressors. 
+When carrying out a study it may be necessary or desirable to know the durations of interventions and physiologic states such as mechanical ventilation, vasopressor administration, and hypotension. Deriving these durations from routinely collected data is often non-trivial, requiring a strong understanding of the underlying data as well as the environment in which it was collected. Cao et al highlight this issue in a 2010 paper on heuristics to determine ventilation times of ICU patients, noting that while ``''On the surface, it appears trivial to determine ventilation times``'', ``''when facing the reality of retrospective data, it is not straightforward``'' [REF Cao et al 2010]. In collaboration with staff at the Beth Israel Deaconess Medical Center - the primary source of data in the MIMIC-III database - we have provided code to derive start and stop times for continuous events such as mechanical ventilation, dialysis, and various vasopressors.
 
 Taking invasive mechanical ventilation as an example, intubation and extubation times are not well documented, so they are determined through the use of surrogate settings which are synchronized with the patient's chart via the ventilator. These settings include flow rates, tidal volumes, and so on. The key assumptions made when defining ventilation are: start time of ventilation is the first occurrence of a ventilator setting, and end time of ventilation is the time of a ventilator setting, followed by at least 8 hours of no ventilator settings. Consequently, short extubations (<8 hours) are not captured by the ventilation query, and the end time of ventilation only approximates the actual extubation time. An example of these durations is provided in Figure \ref{fig:treatment}.
+
+\subsubsection{Sepsis}
+
+Sepsis is a majory source of mortality in the ICU, accounting for as much as 30\% of deaths [?]. Research into the effective management of septic patients continues, and the MIMIC code repository provides multiple queries which may accelerate research in this area. The time of suspected infection as defined by the sepsis-3 guidelines is provided [?]. This time is an estimate of when the attending clinician first suspected a patient of infection, and is defined as a blood culture with associated antibiotics. A script for this concept was calculated and a notebook detailing the derivation is also available. In addition, sepsis as defined by ICD-9 codes using retrospective administrative data and validated by Angus et al. [?] was calculated. The ICD-9 codes are assigned retrospectively by hospital staff which involves a review of all relevant patient notes. The definition of sepsis made available aggregated ICD-9 codes which either directly indicated sepsis or at least one organ failure with associated infection.
+
+\subsubsection{Comorbidities}
+
+Many critically ill patients present with a number of comorbidities which exascerbate their condition. Elixhauser et al. [?] codified these comorbidities into 29 categories, and a definition of these categories using ICD-9 codes was later published by ??? et al. [?]. The American Health and Research Quality group (AHRQ) continued to maintain these ICD-9 codes, ensuring to adapt them as changes were made to the ICD-9 coding scheme. Quan et al. [?] suggested an alternative definition of these comorbidities which they proposed provided better quantification of comorbid status. Finally, all of these definitions utilized diagnosis related groups (DRGs) to filter out conditions which were not comorbid but rather the primary reason for ICU admission. These four definitions of comorbidities have been provided in the repository, both with and without DRG filtering.
+
 
 \subsection{Clinical guidelines and definitions of disease}
 
@@ -108,9 +176,58 @@ In addition to implementing code for the Angus criteria for severe sepsis and Gl
 % \caption{Discrimination of two implementations of SOFA across fiscal years as measured by the area under the receiver operator characteristic curve (AUROC).}\label{fig:SevScoresOverTime}
 % \end{figure}
 
+
+\subsubsection{Other concepts}
+
+While not specifically detailed here, many other concepts exist either as intermediary steps for the above or as useful entities in their own. These concepts include extreme physiology (e.g. maximum heart rate, minimum heart rate), fluid balance, service type, surgical status,
+
+
+\section{Results}
+
+
+Figure [?] shows an example of a Jupyter notebook where demographics have been extracted and are displayed for the user to view. The full notebook is available in the `tutorials` folder of the repository.
+
+% TODO: jupyter notebook of demographics tutorial -->
+
+The distribution of the final scores is shown in Figure [?].
+
+% TODO: figure B: severity of illness score distributions -->
+
+An example of the discrepency in the derivation of these concepts is highlighted by comparing SOFA as calculated in the MIMIC code repository versus a version previously calculated for research on an earlier version of the database. Figure [?] shows the area under the receiver operator characteristic curve (AUROC) for the two versions of the score over time, with the previously coded version having substantially lower AUROC.
+
+% TODO: figure: SOFA old vs. SOFA new -->
+
+, and an example of a patient undergoing mechanical ventilation with vasopressor support is provided in Figure [?].
+
+% TODO: figure - schematic of ventilation duration logic -->
+
+% TODO: figure - duration of mechvent + vasopressor for 1 patient -->
+
+Table [?] shows the percent of patients who were suspected of infection, and the number of patients who had sepsis according to administrative criteria.
+
+% TODO: table
+% who were suspected of sepsis
+% with a positive blood culture
+% who had Angus
+% overlap
+%
+
+
 \section{Discussion}
 
+
+
+This paper has presented a code repository using the MIMIC database which derives a variety of useful clinical concepts. These concepts can, and have been, used for retrospective cohort studies on the MIMIC database. For example, a recent study quantified the recent sepsis-3 guidelines [?]. The study demonstrates how the reuse of code accelerates research: already present concepts which were used by the study include three severity of illness scores, use of mechanical ventilation, and an administrative definition of sepsis validated by Angus et al. [?]. The repository demonstrates how the MIMIC code base can be used to save a great deal of effort in research study and further shows how a snapshot of the MIMIC code repository can be incorporated to ensure future executions of the code return the same result.
+
+The MIMIC database is exceptional due in no small part to its publicly accessible nature: all researchers who undergo human subjects research training and who sign a data use agreement can access the data. Combining this powerful attribute with openly available code results in ``executable studies'' which can be reproduced by any researcher around the world. Furthermore, the use of jupyter notebooks allows the diligent researcher to document both the thought process and the code of any interim analysis they may have performed before reaching their final conclusions. The inclusion of this type of documentation provides other researchers with more confidence in the analysis process and somewhat alleviates the ``garden of forking paths'' issue recently raised [?].
+
+Contributions to the MIMIC code repository by other researchers who have benefitted from the freely available nature of MIMIC are welcomed, as the ultimate goal of the repository is to build a community of researchers around the database and accelerate research in this field. The use of source code control allows for transparency both in the authorship of the code and in the contributions made by external users.
+
+
 % Discuss use of code repository and data in university courses.
+
+
+%Because MIMIC is openly available, the entire workflow can be reproduced, from data to publication. Increasing becoming more important to release not only the data but the entire process of idea conception to publication [REF Garden of Forking paths].
 
 
 
@@ -132,19 +249,19 @@ In addition to implementing code for the Angus criteria for severe sepsis and Gl
 
 % Furthermore, many decisions are made when extracting clinical concepts, and these decisions may have a large impact on the resultant analysis. One example is code written to extract the Glasgow Coma Scale (GCS). Severity of illness scores stipulate a value of 15 (``normal'') should be assigned when the GCS cannot be obtained (e.g. due to patient sedation). However, it is common for clinical staff to record values of 3 for the GCS of sedated patients. This results in a systematic bias for sedated patients unless appropriate measures are taken to correct the recorded values. Even if correctly performed, these details would likely be omitted from publications, making study methods difficult to reproduce.
 
-%Typically the code used to generate these concepts is generated by the researcher and often not widely shared for reuse or validation. The result is that work is not easily reviewed and reused, leading to inconsistent approaches between projects, repeated work, and increased probability of errors in the extraction process. 
+%Typically the code used to generate these concepts is generated by the researcher and often not widely shared for reuse or validation. The result is that work is not easily reviewed and reused, leading to inconsistent approaches between projects, repeated work, and increased probability of errors in the extraction process.
 
 % There is a great opportunity for unifying studies on MIMIC with the creation of a centralized repository for data extraction code. Here we describe such a centralized repository, with the hope that is fulfills this need and enhances the reproducibility of research on the MIMIC-III database.
 
 % Alistair: this is nice to say but feels a little redundant
-%The MIMIC Code Repository helps to address these issues by providing a centralised and collaborative codebase for the research community. By allowing researchers to collaboratively develop, share, and review code, the repository helps to standardize the definition of key clinical concepts, promotes continuous review and improvement, and facilitates future studies on the MIMIC-III database. 
+%The MIMIC Code Repository helps to address these issues by providing a centralised and collaborative codebase for the research community. By allowing researchers to collaboratively develop, share, and review code, the repository helps to standardize the definition of key clinical concepts, promotes continuous review and improvement, and facilitates future studies on the MIMIC-III database.
 
 
 % Analysis of the data collected by these systems has the potential to increase medical knowledge, taking us towards improved care and patient outcomes.
 
-% help to provide a solution to... Analysis often requires matching patients based on severity, selecting cohorts based on presence of comorbidities, etc. There is therefore benefit in developing reusable code for... Quantifying the severity of illness for a patient is an integral part of retrospective analysis as it allows for investigation of concepts of interest in comparable patient populations. 
+% help to provide a solution to... Analysis often requires matching patients based on severity, selecting cohorts based on presence of comorbidities, etc. There is therefore benefit in developing reusable code for... Quantifying the severity of illness for a patient is an integral part of retrospective analysis as it allows for investigation of concepts of interest in comparable patient populations.
 
-% Set out some of the problems and our knowledge gaps. Emphasise importance of research. For example, preventable mortality, reducing length of stay, preserving resources etc. Introduce some studies that have used MIMIC. Explain that code has been written independently on each occasion. 
+% Set out some of the problems and our knowledge gaps. Emphasise importance of research. For example, preventable mortality, reducing length of stay, preserving resources etc. Introduce some studies that have used MIMIC. Explain that code has been written independently on each occasion.
 
 % To address these gaps in our knowledge, key steps are needed. Available data. Studies that can be reviewed and improved and repeated over new datasets. Facilitated by code sharing etc..
 
@@ -157,9 +274,9 @@ In addition to implementing code for the Angus criteria for severe sepsis and Gl
 
 % The code described herein follows guidelines for good practice in scientific programming, including incremental development with a distributed version control system, unit tests, and a public issue tracker [Ref: G Wilson paper].
 
-%It is typical for PhD or Postdoctoral researchers to write code for a project without thought of long term usage, often leading to unmaintained and unusable code. The MIMIC Code Repository is intended to be a continuously developed resource. We anticipate its importance to grow over time, as the content increases. 
+%It is typical for PhD or Postdoctoral researchers to write code for a project without thought of long term usage, often leading to unmaintained and unusable code. The MIMIC Code Repository is intended to be a continuously developed resource. We anticipate its importance to grow over time, as the content increases.
 
-%Openly available code is a key step in improving the quality of research as it provides validity to analyses performed and allows progressive improvement of code. While rare in clinical research, the combination of open data and code is powerful. Studies can be made reproducible and code is available to be reviewed and developed. Importantly, open resources such as MIMIC become important learning resources too: there are now multiple university courses around the world in which MIMIC forms a core learning tool. 
+%Openly available code is a key step in improving the quality of research as it provides validity to analyses performed and allows progressive improvement of code. While rare in clinical research, the combination of open data and code is powerful. Studies can be made reproducible and code is available to be reviewed and developed. Importantly, open resources such as MIMIC become important learning resources too: there are now multiple university courses around the world in which MIMIC forms a core learning tool.
 
 
 
@@ -173,24 +290,15 @@ In addition to implementing code for the Angus criteria for severe sepsis and Gl
 
 %unit tests check the operation of software upon addition of new code to the repository, and a public issue tracker allows research related questions to be raised, encouraging community development and helping to ensure that the code is sustainable [Ref: G Wilson paper]. Often use Jupyter Notebook to create database connection to carry out studies. Continuous review. Services like Github provide incentives for researchers to contribute.
 
-% The MIMIC Code Repository is an important resource for researchers working with the MIMIC critical care database. The repository provides code for deriving a variety of clinical concepts and will continue to incorporate new concepts as they are calculated, allowing for rapid prototyping of clinical questions in a large retrospective database. 
+% The MIMIC Code Repository is an important resource for researchers working with the MIMIC critical care database. The repository provides code for deriving a variety of clinical concepts and will continue to incorporate new concepts as they are calculated, allowing for rapid prototyping of clinical questions in a large retrospective database.
 % Fully reproducible analytical workflow are encouraged by the openly available nature of both the data and code.
 % Finally, the code written is modular and generalisable, and may support research in other similarly structured clinical databases.
 
 
 
-\section{Materials and methods}
+\section{Conclusion}
 
-% - We follow good software practices etc
-% - Github. cite github paper.
-% - Modular approach to generating stuff
-% - Describe the structure of the repository
-% - Issue tracking
-
-% Detail on the creation of the severity of illness scores
-% Angus criteria
-% DRG codes
-
+We have described the MIMIC code repository, an openly available set of code which aims to facilitate studies carried out on the MIMIC database. The unique combination of open code with publicly accessible data allows for the creation of fully executable studies with diligent audit trails. The MIMIC code repository contains key clinical concepts necessary for conducting studies and greatly aids in analysis of the data both by providing code for most needed concepts and by fostering a community around the data. Finally, we assert that publishing the code associated with research provides complete reproducibility and will contribute greatly to addressing the issue of replicability frequently discussed in the literature today. Our hope is that both the MIMIC database and the code repository encourage future researchers to follow suite and publish both their code and their data.
 
 \begin{ack}
 The authors would like to thank Professor Roger G. Mark, the MIT Laboratory for Computational Physiology, Philips Healthcare and the Beth Israel Deaconess Medical Center for the creation of the MIMIC-III database.%\vspace*{-12pt}
@@ -212,9 +320,9 @@ This work has been supported by grants NIH-R01-EB017205, NIH-R01-EB001659, and N
 
 \begin{figure}
 \begin{center}
-%\includegraphics[height=4cm]{jcaesar.eps}    % The printed column  
+%\includegraphics[height=4cm]{jcaesar.eps}    % The printed column
 %\caption{Gaius Julius Caesar, 100--44 B.C.}  % width is 8.4 cm.
-\label{fig1}                                 % Size the figures 
+\label{fig1}                                 % Size the figures
 \end{center}                                 % accordingly.
 \end{figure}
 
