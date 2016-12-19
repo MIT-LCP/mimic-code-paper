@@ -4,9 +4,15 @@
 **Authors:** Alistair E. W. Johnson<sup>1</sup>*, Tom J. Pollard<sup>1</sup>
 
 **Affiliations:**
+
 <sup>1</sup> Massachusetts Institute of Technology, Cambridge
 
 \* aewj [at] mit [dot] edu
+
+Institute of Medical Engineering & Science
+77 Massachusetts Avenue
+Cambridge, MA
+02139
 
 **One Sentence Summary:** We have released an open source library of medical concepts derived from a publicly available database to accelerate research in critical care.
 
@@ -59,6 +65,7 @@ While the case for open data is well publicised, we believe open code is equally
 # Results
 
 ## Jupyter Notebooks
+<!-- This section covers the "demographics" and "tutorials" part of the code repo -->
 
 Figure [?] shows an example of a Jupyter Notebook<sup>[1](#footnote1)</sup> where demographics have been extracted and are displayed for the user to view.
 
@@ -80,12 +87,13 @@ To highlight the potential discrepency among supposedly identical concepts, we a
 
 <!-- The primary reason for this change is due to the collection of an important variable: the Glasgow Coma Scale (GCS). In MIMIC, a GCS value of 3 is assigned for patients who cannot be scored, whereas severity of illness scores assume a value of 15 for patients who cannot be scored. -->
 
-## Organ failure scores
+## Organ dysfunction scores
 
-Multi-organ failure is a hallmark of acute illness and quantify the morbidity for a given patient. The Sequential Organ Failure Assessment (SOFA) score [REF] and Logistic Organ Dysfunction System (LODS) [REF] both assess six organ systems for failure. Single organ failure scores implemented include MELD [REF], commonly used to determine suitability for a liver transplant, RIFLE [REF], which quantifies acute kidney injury, and KDIGO [REF], also used for acute kidney injury.
+Organ failure is a hallmark of acute illness and many scores aim to quantify the morbidity for a given patient.
+Some scores assess all organ systems: the Sequential Organ Failure Assessment (SOFA) score [REF] and Logistic Organ Dysfunction System (LODS) [REF] both assess six organ systems for failure.
+Other single organ failure scores implemented include MELD [REF], commonly used to determine suitability for a liver transplant, RIFLE [REF], which quantifies acute kidney injury, and KDIGO [REF], also used for acute kidney injury.
 
-
-### Timing of treatment
+## Timing of treatment
 
 The duration of treatment is a useful concept as it quantifies both the intensity of treatment for a patient and provides useful context for other pieces of information: e.g. the use of vasopressors informs the researcher that the blood pressure is being increased by medical intervention. Due to the method of data archival, many medications and treatments are not implicitly stored as durations, and as such they must be derived using sensible rule based approaches. These approaches usually involve identification of surrogate measures which are documented in the data by clinical staff with high compliance. Figure [?] shows a schematic for the derivation of the start and stop times of mechanical ventilation [?]. Similar rules were used to define the timing of vasopressor administration and continuous renal replacement therapy.
 
@@ -95,8 +103,7 @@ An example of a patient undergoing mechanical ventilation with vasopressor suppo
 
 <!--  TODO: figure - duration of mechvent + vasopressor for 1 patient -- -->
 
-### Sepsis
-
+## Sepsis
 
 <!--  \emph {The Angus criteria for defining sepsis}: Sepsis is a serious illness caused by infection and is a major focus of clinical research. Angus criteria utilize billing codes to classify a hospital admission as being related to sepsis [REF TO ANGUS], and the criteria have been recently validated [RECENT ANGUS VALIDATION]. -->
 
@@ -108,8 +115,7 @@ Sepsis is a majory source of mortality in the ICU, accounting for as much as 30\
 <!--  who had Angus -->
 <!--  overlap -->
 
-
-### Comorbidities
+## Comorbidities
 
 Many critically ill patients present with a number of comorbidities which exascerbate their condition. Elixhauser et al. [?] codified these comorbidities into 29 categories, and a definition of these categories using ICD-9 codes was later published by ??? et al. [?]. The American Health and Research Quality group (AHRQ) continued to maintain these ICD-9 codes, ensuring to adapt them as changes were made to the ICD-9 coding scheme. Quan et al. [?] suggested an alternative definition of these comorbidities which they proposed provided better quantification of comorbid status. Finally, all of these definitions utilized diagnosis related groups (DRGs) to filter out conditions which were not comorbid but rather the primary reason for ICU admission. These four definitions of comorbidities have been provided in the repository, both with and without DRG filtering.
 
@@ -118,6 +124,10 @@ Many critically ill patients present with a number of comorbidities which exasce
 
 While not specifically detailed here, many other concepts exist either as intermediary steps for the above or as useful entities in their own. These concepts include extreme physiology (e.g. maximum heart rate, minimum heart rate), fluid balance, service type, surgical status,
 -->
+
+## Utilizing the MIMIC code repository
+
+
 
 # Discussion
 
@@ -313,3 +323,4 @@ In addition to implementing code for the Angus criteria for severe sepsis and Gl
 **Data and materials availability:** <!-- TODO: github hash? "If data are in an archive, include the accession number or a placeholder for it." -->
 
 # Figures
+<!-- Note: maximum of 8 figures -->
