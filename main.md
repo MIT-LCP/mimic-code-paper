@@ -89,6 +89,7 @@ To highlight the potential discrepency among supposedly identical concepts, we a
 
 ## Organ dysfunction scores
 
+<!-- SOFA, LODS, MELD, RIFLE, KDIGO -->
 Organ failure is a hallmark of acute illness and many scores aim to quantify the morbidity for a given patient.
 Some scores assess all organ systems: the Sequential Organ Failure Assessment (SOFA) score [REF] and Logistic Organ Dysfunction System (LODS) [REF] both assess six organ systems for failure.
 Other single organ failure scores implemented include MELD [REF], commonly used to determine suitability for a liver transplant, RIFLE [REF], which quantifies acute kidney injury, and KDIGO [REF], also used for acute kidney injury.
@@ -107,8 +108,11 @@ An example of a patient undergoing mechanical ventilation with vasopressor suppo
 
 <!--  \emph {The Angus criteria for defining sepsis}: Sepsis is a serious illness caused by infection and is a major focus of clinical research. Angus criteria utilize billing codes to classify a hospital admission as being related to sepsis [REF TO ANGUS], and the criteria have been recently validated [RECENT ANGUS VALIDATION]. -->
 
+<!-- angus, martin, sepsis-3 -->
+
 Sepsis is a majory source of mortality in the ICU, accounting for as much as 30\% of deaths [?]. Research into the effective management of septic patients continues, and the MIMIC code repository provides multiple queries which may accelerate research in this area. The time of suspected infection as defined by the sepsis-3 guidelines is provided [?]. This time is an estimate of when the attending clinician first suspected a patient of infection, and is defined as a blood culture with associated antibiotics. A script for this concept was calculated and a notebook detailing the derivation is also available. In addition, sepsis as defined by ICD-9 codes using retrospective administrative data and validated by Angus et al. [?] was calculated. The ICD-9 codes are assigned retrospectively by hospital staff which involves a review of all relevant patient notes. The definition of sepsis made available aggregated ICD-9 codes which either directly indicated sepsis or at least one organ failure with associated infection. Table [?] shows the percent of patients who were suspected of infection, and the number of patients who had sepsis according to administrative criteria.
 
+<!-- TODO: Figure - Venn diagram of sepsis definitions -->
 <!--  TODO: table -->
 <!--  who were suspected of sepsis -->
 <!--  with a positive blood culture -->
