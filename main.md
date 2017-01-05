@@ -64,8 +64,9 @@ While the case for open data is well publicised, we believe open code is equally
 
 # Results
 
-## Jupyter Notebooks
-<!-- This section covers the "demographics" and "tutorials" part of the code repo -->
+## Literate Programming
+
+<!-- Jupyter Notebooks - This section covers the "notebooks" and "tutorials" part of the code repo -->
 
 Figure [?] shows an example of a Jupyter Notebook<sup>[1](#footnote1)</sup> where demographics have been extracted and are displayed for the user to view.
 
@@ -81,7 +82,9 @@ Severity of illness scores have been developed over the past two decades to prov
 
 <!--  TODO: figure B: severity of illness score distributions -- -->
 
-To highlight the potential discrepency among supposedly identical concepts, we aimed to contrast two versions of the SOFA score: one derived by prior researchers[footnote: As our aim is to highlight the potential danger of independent researchers deriving concepts rather than shame others, we have elected not to identify the researchers.], and one available in the MIMIC code repository. Figure [?] shows the area under the receiver operator characteristic curve (AUROC), a measure of the ability for a score to discriminate a dichotomous outcome, for all patients admitted in the MIMIC database between 2001-2008 using the two versions of SOFA.
+To highlight the potential discrepency among supposedly identical concepts, we aimed to contrast two versions of the SOFA score: one derived by prior researchers, and one available in the MIMIC code repository.
+<!-- [footnote: As our aim is to highlight the potential danger of independent researchers deriving concepts rather than shame others, we have elected not to identify the researchers.] -->
+Figure [?] shows the area under the receiver operator characteristic curve (AUROC), a measure of the ability for a score to discriminate a dichotomous outcome, for all patients admitted in the MIMIC database between 2001-2008 using the two versions of SOFA.
 
 <!--  TODO: figure C: SOFA old vs. SOFA new -->
 
