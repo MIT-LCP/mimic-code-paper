@@ -251,7 +251,7 @@ We have described the MIMIC code repository, an openly available set of code whi
 # Materials \& Methods
 
 
-The MIMIC code repository is available online [?] and is open source. Code is available as structured query language (SQL) compatible with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
+The MIMIC code repository is available online [?] and is open source. Code is available as ISO standard structured query language (SQL) tested with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
 Scripts are rewritten to allow an individual who has been granted access to the MIMIC database to generate a number of "views" of the data, with each view being an extraction from the raw data.
 Each script is associated with an automatically generated unique hash which acts as an identifier for the code. Publications which utilize the code repository and report this hash allow for other researchers to download an exact copy of the code regardless of any changes made since then. All code follows the principles of good scientific programming as outlined by Wilson et al [Ref: G Wilson paper], including incremental development with a distributed version control system, unit tests, and a public issue tracker.
 
@@ -264,9 +264,7 @@ Each script is associated with an automatically generated unique hash which acts
 
 ## Data import
 
-A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB. The set of core clinical concepts which have been extracted use ISO standard syntax to enhance portability[^1].
-
-[^1]: All scripts were tested with PostgreSQL v9.5.1.
+A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB.
 
 ## Concepts extracted
 
