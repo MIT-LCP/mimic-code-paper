@@ -254,6 +254,7 @@ We have described the MIMIC code repository, an openly available set of code whi
 The MIMIC code repository is available online [?] and is open source. Code is available as ISO standard structured query language (SQL) tested with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
 Scripts are rewritten to allow an individual who has been granted access to the MIMIC database to generate a number of "views" of the data, with each view being an extraction from the raw data.
 Each script is associated with an automatically generated unique hash which acts as an identifier for the code. Publications which utilize the code repository and report this hash allow for other researchers to download an exact copy of the code regardless of any changes made since then. All code follows the principles of good scientific programming as outlined by Wilson et al [Ref: G Wilson paper], including incremental development with a distributed version control system, unit tests, and a public issue tracker.
+The repository as of publication was tested on MIMIC-III v1.4.
 
 <!--  - Github. cite github paper. -->
 <!--  - Modular approach to generating stuff -->
@@ -276,8 +277,6 @@ Clinical concepts which are very commonly required for research studies which ha
 * Estimated time of first suspicion of infection
 * Sepsis as defined by retrospective administrative data [?]
 * Comorbidities as defined by administrative data
-
-The repository as of publication was developed on MIMIC-III v1.4 using Python v2.7.
 
 ### Demographics
 
