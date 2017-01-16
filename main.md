@@ -104,7 +104,7 @@ The tutorial is an excellent starting point for all researchers who work on the 
 
 ## Concepts
 
-The concepts currently available in the repository focus on those which are most broadly applicable to research questions in critical care. For example, severity of illness scores are frequently required to adjust for potential confounding. Concepts are coded in a modular fashion to reduce redundancy in code and allow for extension. An example of the modular nature of the code is shown in Figure [?].
+The concepts currently available in the repository focus on those which are most broadly applicable to research questions in critical care. For example, severity of illness scores are frequently required to adjust for potential confounding. Concepts are coded in a modular fashion to reduce redundancy in code and allow for extension. An example of the modular nature of the code is shown in Figure [?]. Here, a set of severity of illness scores are shown with their dependency on various clinical concepts. Each clinical concept is modular, and can easily be isolated and utilized on its own, which could occur if for example the researcher is only interested in mechanical ventilation.
 
 <!-- TODO: Figure of blocks showing dependency of various code on other code
 
@@ -128,18 +128,19 @@ Figure [?] shows the area under the receiver operator characteristic curve (AURO
 
 <!--  TODO: figure C: SOFA old vs. SOFA new -->
 
-<!-- The primary reason for this change is due to the collection of an important variable: the Glasgow Coma Scale (GCS). In MIMIC, a GCS value of 3 is assigned for patients who cannot be scored, whereas severity of illness scores assume a value of 15 for patients who cannot be scored. -->
+The discrepency is likely explained by the data collection of an important variable: the Glasgow Coma Scale (GCS). In the development of the severity of illness scores, scorers were instructed to set GCS to its maximum value (15) if they were unable to assess it for the patient (e.g. due to mechanical ventilation). In the MIMIC-III database the opposite policy is taken: a GCS value of 3 is assigned for patients who cannot be scored with a note indicating if it was due to ventilation.
+Accounting for this distinction dramatically impacts the validity of the scores and highlights the need to intimately understand methods of data collection in the domain of interest.
 
 ### Organ dysfunction scores
 
 <!-- SOFA, LODS, MELD, RIFLE, KDIGO -->
 Organ failure is a hallmark of acute illness and many scores aim to quantify the morbidity for a given patient.
 Some scores assess all organ systems: the Sequential Organ Failure Assessment (SOFA) score [REF] and Logistic Organ Dysfunction System (LODS) [REF] both assess six organ systems for failure.
-Other single organ failure scores implemented include MELD [REF], commonly used to determine suitability for a liver transplant, RIFLE [REF], which quantifies acute kidney injury, and KDIGO [REF], also used for acute kidney injury.
+Other single organ failure scores implemented include the Model for End-stage Liver Disease (MELD) [REF], the Risk/Injury/Failure/Loss/End stage renal disease (RIFLE) criteria [REF], the Acute Kidney Injury Network (AKIN) classification [REF], and the Kidney Disease Improving Global Outcomes (KDIGO) criteria [REF]. The latter three scores are all used to assess the level of acute kidney injury in a patient.
 
 ### Timing of treatment
 
-The duration of treatment is a useful concept as it quantifies both the intensity of treatment for a patient and provides useful context for other pieces of information: e.g. the use of vasopressors informs the researcher that the blood pressure is being increased by medical intervention. Due to the method of data archival, many medications and treatments are not implicitly stored as durations, and as such they must be derived using sensible rule based approaches. These approaches usually involve identification of surrogate measures which are documented in the data by clinical staff with high compliance. Figure [?] shows a schematic for the derivation of the start and stop times of mechanical ventilation [?]. Similar rules were used to define the timing of vasopressor administration and continuous renal replacement therapy.
+The duration of treatment is a useful concept as it quantifies both the intensity of treatment for a patient and provides useful context for other pieces of information: e.g. the use of vasopressors informs the researcher that the blood pressure is being increased by medical intervention. Due to the method of data archival, many medications and treatments are not implicitly stored as durations, and as such they must be derived using sensible rule based approaches. These approaches usually involve identification of surrogate measures which are documented in the data by clinical staff with high compliance. Figure [?] shows a schematic for the derivation of the start and stop times of mechanical ventilation. Similar rules were used to define the timing of vasopressor administration and continuous renal replacement therapy.
 
 <!--  TODO: figure - schematic of ventilation duration logic -- -->
 
@@ -164,7 +165,7 @@ Sepsis is a majory source of mortality in the ICU, accounting for as much as 30\
 
 ### Comorbidities
 
-Many critically ill patients present with a number of comorbidities which exascerbate their condition. Elixhauser et al. [?] codified these comorbidities into 29 categories, and a definition of these categories using ICD-9 codes was later published by ??? et al. [?]. The American Health and Research Quality group (AHRQ) continued to maintain these ICD-9 codes, ensuring to adapt them as changes were made to the ICD-9 coding scheme. Quan et al. [?] suggested an alternative definition of these comorbidities which they proposed provided better quantification of comorbid status. Finally, all of these definitions utilized diagnosis related groups (DRGs) to filter out conditions which were not comorbid but rather the primary reason for ICU admission. These four definitions of comorbidities have been provided in the repository, both with and without DRG filtering.
+Many critically ill patients present with a number of comorbidities which exascerbate their condition. Elixhauser et al. [?] codified these comorbidities into 29 categories, and a definition of these categories using ICD-9 codes was later published by ??? et al. [?]. The American Health and Research Quality group (AHRQ) continued to maintain these ICD-9 codes, ensuring to adapt them as changes were made to the ICD-9 coding scheme [?]. Quan et al. [?] suggested an alternative definition of these comorbidities which they proposed provided better quantification of comorbid status. Finally, all of these definitions utilized diagnosis related groups (DRGs) to filter out conditions which were not comorbid but rather the primary reason for ICU admission. These four definitions of comorbidities have been provided in the repository, both with and without DRG filtering.
 
 <!--
 ### Other concepts
