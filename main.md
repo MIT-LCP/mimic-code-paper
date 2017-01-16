@@ -1,11 +1,11 @@
 # The MIMIC Code Repository: Towards Reproducibility in Medicine
 <!-- Title is max 135 characters incl spaces -->
 
-**Authors:** Alistair E. W. Johnson<sup>1</sup>*, Tom J. Pollard<sup>1</sup>
+**Authors:** Alistair E. W. Johnson^1^*, Tom J. Pollard^1^
 
 **Affiliations:**
 
-<sup>1</sup> Massachusetts Institute of Technology, Cambridge
+^1^ Massachusetts Institute of Technology, Cambridge
 
 \* aewj [at] mit [dot] edu
 
@@ -140,7 +140,7 @@ Severity of illness scores have been developed over the past two decades to prov
 <!--  TODO: figure B: severity of illness score distributions -- -->
 
 To highlight the potential discrepency among supposedly identical concepts, we aimed to contrast two versions of the SOFA score: one derived by prior researchers, and one available in the MIMIC code repository.
-<!-- [footnote: As our aim is to highlight the potential danger of independent researchers deriving concepts rather than shame others, we have elected not to identify the researchers.] -->
+<!-- [^2]: As our aim is to highlight the potential danger of independent researchers deriving concepts rather than shame others, we have elected not to identify the researchers. -->
 Figure [?] shows the area under the receiver operator characteristic curve (AUROC), a measure of the ability for a score to discriminate a dichotomous outcome, for all patients admitted in the MIMIC database between 2001-2008 using the two versions of SOFA.
 
 <!--  TODO: figure C: SOFA old vs. SOFA new -->
@@ -264,9 +264,9 @@ Each script is associated with an automatically generated unique hash which acts
 
 ## Data import
 
-A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB. The set of core clinical concepts which have been extracted use ISO standard syntax to enhance portability<sup>[1](#footnote1)</sup>.
+A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB. The set of core clinical concepts which have been extracted use ISO standard syntax to enhance portability[^1].
 
--<a name="footnote1">1</a>: All scripts were tested with PostgreSQL v9.5.1.
+[^1]: All scripts were tested with PostgreSQL v9.5.1.
 
 ## Concepts extracted
 
