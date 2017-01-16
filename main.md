@@ -87,19 +87,20 @@ There are three components to the repository which maximize the ability of other
 2. Concepts - coded concepts which are widely required for research studies stored in a modular format
 3. Community - encouragement and facilitation of contribution from other members of the community
 
-## Literate Programming
+## Notebooks and tutorials
 
 <!-- Jupyter Notebooks - This section covers the "notebooks" and "tutorials" part of the code repo -->
 
-Figure [?] shows an example of a Jupyter Notebook<sup>[1](#footnote1)</sup> where demographics have been extracted and are displayed for the user to view.
+Notebooks are an amalgamation of text and code, and allow for executable documents which both describe the logic and principles behind the code while simultaneously allowing the user to run the code within the same document. Figure [?] shows an example of a Jupyter Notebook where demographics have been extracted and are displayed for the user to view. Jupyter Notebooks in particular are capable of running code written in many languages including Python, R, MATLAB, SAS, and so on [?]. Other notebook software exists; for example R Notebooks have recently been made available [?].
 
-<a name="footnote1">1</a>: Jupyter notebooks are an amalgamation of text and code, and allow for executable documents which both describe the logic and principles behind the code while simultaneously allowing the user to run the code within the same document.
+<!--  TODO: FIGURE jupyter notebook of demographics tutorial -- -->
 
-<!--  TODO: jupyter notebook of demographics tutorial -- -->
+Notebooks are extremely valuable in cross-disciplinary fields such as healthcare as they facilitate collaboration between data analysts and clinicians.
+Notebooks primarily serve three purposes: (i) they allow documentation of the logic behind the code in an organized and easy to read manner, (ii) they aid rapid prototyping of the code particularly during group discussions, and (iii) they provide a means of sharing the final study in a detailed and fully comprehensive manner.
 
-The notebook serves three purposes: (i) it allows documentation of the logic behind the code, (ii) it facilitates execution of the code or modified versions thereof, and (iii) it provides a good introduction into using the database for research. The full notebook is available in the `tutorials` folder of the repository.
-
-<!-- Another aspect of the repository which facilitates future reuse are Jupyter notebooks []. Jupyter notebooks have found widespread use, particularly for tutorials, and their use in this repository follow suite. Notebooks available include how to derive durations from the database (with continuous renal replacement therapy as an example), assessing the distributions of laboratory measurements, and a beginner's tutorial providing a number of cookbook scripts. -->
+Notebooks are also an excellent environment for publishing tutorials. The alternation between description and code allows for thorough explanation of the subject matter, while the interactive nature of the document allows for experimentation and facilitates learning. A number of tutorials have been made available which elucidate key concepts in working with electronic health data.
+The transformation of recorded clinical parameters, such as haemofiltration settings, into desired clinical concepts, such as length of continuous renal replacement therapy (CRRT), is non-trivial and requires both domain and technical expertise. The *CRRT* tutorial overviews the process of examining the database, assessing the data stored within, and producing a robust measure of the clinical concept of interest which in this case was the duration of CRRT.
+The tutorial is an excellent starting point for all researchers who work on the secondary analysis of electronic health records, and particularly those who work with the MIMIC-III database. Other tutorials provided include an introduction to Structured Query Language (SQL), how to select a cohort for a clinical study, and an example exploration of common recorded parameters in the database.
 
 ## Concepts
 
