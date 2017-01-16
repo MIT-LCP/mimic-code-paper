@@ -26,6 +26,21 @@ Secondary analysis of routinely collected data - contrasted with the primary ana
 
 <!-- Keywords: critical care; open data; data mining; secondary use of electronic health records. -->
 
+<!-- TODO: FIGURE LIST
+
+Figure 1: Jupyter Notebook of demographics tutorial
+Figure 2: Block diagram of severity of illness scores and dependencies
+Figure 3: Severity of illness score distributions
+Figure 4: SOFA old vs. SOFA new
+Figure 5: Ventilation duration logic
+Figure 6: Duration of mechanical ventilation and vasopressors for one patient
+Figure 7: Venn diagram of sepsis
+
+Table 1: Comorbidity frequency
+Table 2: Sepsis frequencies
+
+-->
+
 # Introduction
 
 <!--  This should include introductory information that lays out the clinical problem addressed by the research and that explains other background necessary for understanding the study. -->
@@ -247,7 +262,9 @@ Each script is associated with an automatically generated unique hash which acts
 
 ## Data import
 
-A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB. The set of core clinical concepts which have been extracted using structured query language (SQL)\footnote{All queries have been developed and tested using PostgreSQL 9.5.1.} are as follows. Additionally, we seek to provide introduction to the data. Tutorials are provided to give new users and introduction to the MIMIC database. A cookbook of sample code is provided to introduce new users to the database in a friendly way.
+A prerequisite for using much of the code in the MIMIC Code Repository is access to the MIMIC-III Database, so we provide scripts to enable researchers to build the MIMIC database in a variety of database systems including PostgreSQL, MySQL, Oracle, and MonetDB. The set of core clinical concepts which have been extracted use ISO standard syntax to enhance portability<sup>[1](#footnote1)</sup>.
+
+-<a name="footnote1">1</a>: All scripts were tested with PostgreSQL v9.5.1.
 
 ## Concepts extracted
 
@@ -282,7 +299,7 @@ Several scoring systems have been developed in order to quantify extent of illne
 
 Secondly, routinely collected data often lacks some of data elements required to compute the score. For example, the comorbidity ``''biopsy proven cirrhosis``'' is not simple to determine as there is no routine documentation of this concept in the clinical workflow. Finally, the data definitions for the same concept can vary between the original dataset used to define the severity score and the electronic health records being analyzed. For example, the Glasgow Coma Scale (GCS), a common marker of neurological dysfunction which ranges from 3 (worst) to 15 (best), is usually assumed to be 15 for patients who are unable to be assessed due to sedation or ventilation. In an electronic health record however, this definition is not strictly adhered to as there is no defined protocol, and as a result sedated patients may be assigned a score of 15 by some care providers, and a score of 3 by others.
 
-Working directly with caregivers has helped us to address these issues in the code, helping to ensure the derived severity scores accurately reflect the true severity of illness in patients. There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III \cite{aps}, SAPS \cite{saps}, SAPS-II \cite{sapsii}, SOFA \cite{sofa} and OASIS \ref{oasis}. A more detailed comparison of the severity scores is provided in the supplementary material, along with discussion of the assumptions that have been made when defining severity scores. An example of the importance of the variance caused by a non-centralized code base is shown in \ref{fig:SevScoresOverTime}, where the performances of two different implementations of the SOFA score in discriminating hospital mortality are shown. Both of these implementations have been used in previous publications.
+Working directly with caregivers has helped us to address these issues in the code, helping to ensure the derived severity scores accurately reflect the true severity of illness in patients. There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III [REF aps], SAPS [REF saps], SAPS-II [REF sapsii], SOFA [REF sofa] and OASIS [REF oasis]. A more detailed comparison of the severity scores is provided in the supplementary material, along with discussion of the assumptions that have been made when defining severity scores. An example of the importance of the variance caused by a non-centralized code base is shown in \ref{fig:SevScoresOverTime}, where the performances of two different implementations of the SOFA score in discriminating hospital mortality are shown. Both of these implementations have been used in previous publications.
 
 
 <!--
