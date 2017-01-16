@@ -108,6 +108,8 @@ There are three components to the repository which maximize the ability of other
 
 Notebooks are an amalgamation of text and code, and allow for executable documents which both describe the logic and principles behind the code while simultaneously allowing the user to run the code within the same document. Figure [?] shows an example of a Jupyter Notebook where demographics have been extracted and are displayed for the user to view. Jupyter Notebooks in particular are capable of running code written in many languages including Python, R, MATLAB, SAS, and so on [?]. Other notebook software exists; for example R Notebooks have recently been made available [?].
 
+![Example of a notebook providing a tutorial with MIMIC-III data.](figures/tutorial_screenshot.png)
+
 <!--  TODO: FIGURE jupyter notebook of demographics tutorial -- -->
 
 Notebooks are extremely valuable in cross-disciplinary fields such as healthcare as they facilitate collaboration between data analysts and clinicians.
