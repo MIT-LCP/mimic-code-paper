@@ -143,7 +143,8 @@ To highlight the potential discrepency among supposedly identical concepts, we a
 <!-- [^2]: As our aim is to highlight the potential danger of independent researchers deriving concepts rather than shame others, we have elected not to identify the researchers. -->
 Figure [?] shows the area under the receiver operator characteristic curve (AUROC), a measure of the ability for a score to discriminate a dichotomous outcome, for all patients admitted in the MIMIC database between 2001-2008 using the two versions of SOFA.
 
-<!--  TODO: figure C: SOFA old vs. SOFA new -->
+![Comparison of two derivations of the Sequential Organ Failure Assessment (SOFA) score: one used in previous research (blue) and the one present in this repository which has higher discrimination (red)](figures/sofa-old-vs-new.png)
+<!--  TODO: fix figure to only be 2001-2008 -->
 
 The discrepency is likely explained by the data collection of an important variable: the Glasgow Coma Scale (GCS). In the development of the severity of illness scores, scorers were instructed to set GCS to its maximum value (15) if they were unable to assess it for the patient (e.g. due to mechanical ventilation). In the MIMIC-III database the opposite policy is taken: a GCS value of 3 is assigned for patients who cannot be scored with a note indicating if it was due to ventilation.
 Accounting for this distinction dramatically impacts the validity of the scores and highlights the need to intimately understand methods of data collection in the domain of interest.
