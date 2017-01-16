@@ -233,17 +233,17 @@ We have described the MIMIC code repository, an openly available set of code whi
 
 # Materials \& Methods
 
-<!--  - We follow good software practices etc -->
+
+The MIMIC code repository is available online [?] and is open source. Code is available as structured query language (SQL) compatible with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
+Scripts are rewritten to allow an individual who has been granted access to the MIMIC database to generate a number of "views" of the data, with each view being an extraction from the raw data.
+Each script is associated with an automatically generated unique hash which acts as an identifier for the code. Publications which utilize the code repository and report this hash allow for other researchers to download an exact copy of the code regardless of any changes made since then. All code follows the principles of good scientific programming as outlined by Wilson et al [Ref: G Wilson paper], including incremental development with a distributed version control system, unit tests, and a public issue tracker.
+
 <!--  - Github. cite github paper. -->
 <!--  - Modular approach to generating stuff -->
-<!--  - Describe the structure of the repository -->
 <!--  - Issue tracking -->
 
-The MIMIC code repository is available online [?] and is open source. Code is primarily available as structured query language (SQL) or Python v2.7.12 scripts. Scripts are rewritten to allow an individual who has been granted access to the MIMIC database to generate a number of "views" of the data, with each view being an extraction from the raw data.
-Each script is associated with an automatically generated unique hash which acts as an identifier for the code. Publications which utilize the code repository and report this hash allow for other researchers to download an exact copy of the code regardless of any changes made since then. All code follows the principles of good software engineering outlined by ??? et al.
-<!--  The code described herein follows guidelines for good practice in scientific programming, including incremental development with a distributed version control system, unit tests, and a public issue tracker [Ref: G Wilson paper]. -->
- [?]. Briefly restated here, the principles include: source code control to ensure all versions of the software are easily accessible, a modular approach to concept definition, and issue tracking.
-<!-- TODO: complete the above -->
+
+<!--  - Describe the structure of the repository -->
 
 ## Data import
 
