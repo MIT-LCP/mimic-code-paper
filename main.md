@@ -1,11 +1,12 @@
 # The MIMIC Code Repository: Towards Reproducibility in Medicine
 <!-- Title is max 135 characters incl spaces -->
 
-**Authors:** Alistair E. W. Johnson^1^*, Tom J. Pollard^1^
+**Authors:** Alistair E. W. Johnson^1^*, Leo A. Celi^1,2^, Tom J. Pollard^1^
 
 **Affiliations:**
 
 ^1^ Massachusetts Institute of Technology, Cambridge
+^2^ Beth Israel Deaconess Medical Center, Boston
 
 \* aewj [at] mit [dot] edu
 
