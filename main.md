@@ -376,29 +376,6 @@ those conditions that are not present prior to hospitalization. These
 representations of comorbidities are provided in the repository, both
 with and without DRG filtering.
 
-### How to Access the MIMIC Code Repository
-
-The MIMIC code repository is available online \[?\] and is open source.
-Code is available as ISO standard structured query language (SQL) tested
-with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
-Scripts are modified to allow an individual who has been granted access
-to the MIMIC database to generate a number of "views" of the data, with
-each view being an extraction from the raw data. Each script is
-associated with an automatically generated unique hash that acts as an
-identifier for the code. Publications that use the code repository and
-cite the hash allow for other researchers to download a copy of the code
-even if the code has undergone modification since implementation. All
-code follows the principles of good scientific programming as outlined
-by Wilson et al \[Ref: G Wilson paper\], including incremental
-development with a distributed version control system, unit tests, and a
-public issue tracker. The repository was tested on MIMIC-III v1.4 at the
-time of this publication
-
-A prerequisite for using much of the code in the MIMIC Code Repository
-is access to the MIMIC-III Database, so we provide scripts to enable
-researchers to build the MIMIC database in a variety of database systems
-including PostgreSQL, MySQL, Oracle, and MonetDB.
-
 Conclusion
 ==========
 
@@ -431,6 +408,28 @@ issue of research reliability.
 
 Material and Methods
 ====================
+
+The MIMIC code repository is available online \[?\] and is open source.
+Code is available as ISO standard structured query language (SQL) scripts tested
+with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
+Scripts are modified to allow an individual who has been granted access
+to the MIMIC database to generate a number of "views" of the data, with
+each view being an extraction from the raw data. Each script is
+associated with an automatically generated unique commit hash that acts as an
+identifier for the code. Publications that use the code repository can
+further cite the commit hash, allowing other researchers to download a copy of
+the code used regardless of any modifications since. All
+code follows the principles of good scientific programming as outlined
+by Wilson et al \[Ref: G Wilson paper\], including incremental
+development with a distributed version control system, unit tests, and a
+public issue tracker. The repository was tested on MIMIC-III v1.4 at the
+time of this publication.
+
+A prerequisite for using much of the code in the MIMIC code repository
+is access to the MIMIC-III data in a relational database. The MIMIC code
+repository further provides scripts for building said database using a
+variety of database management systems including PostgreSQL, MySQL, Oracle,
+and MonetDB.
 
 <!--
 Within the Materials and Methods and/or figure legends, we encourage authors to provide complete information about their experiments, analyses, or data collection to ensure that readers can easily understand what was measured and analysed, and can accurately perform the relevant protocols.
