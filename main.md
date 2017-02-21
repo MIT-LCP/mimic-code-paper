@@ -195,12 +195,18 @@ are broadly applicable to research questions in critical care. For
 example, severity of illness scores are frequently required to adjust
 for confounding. Concepts are coded in a modular fashion to reduce
 redundancy in code and allow for extension. An example of the modular
-nature of the code is shown in Figure \[?\]. In the figure, a set of
-severity of illness scores is shown with their components that
+nature of the code is shown in Figure \[?\].
+
+
+![](figures/SeverityScoreBlockDiagram.png)
+
+*Block diagram demonstrating modular components of severity scores. These components can be used individually by researchers to quickly extract data of interest.*
+
+In the figure, a set of severity of illness scores is shown with their components that
 themselves represent different concepts. Each score is documented within
 a module, and can easily be isolated and employed on its own, which
-could occur if for example the researcher is only interested in
-mechanical ventilation.
+could occur if, for example, the researcher is only interested in
+patients who are mechanically ventilated on the first day (`ventfirstday`).
 
 The following sections describe various concepts currently available in
 the repository.
