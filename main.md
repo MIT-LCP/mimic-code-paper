@@ -155,8 +155,7 @@ many languages including Python, R, MATLAB, SAS, and others \[?\]. Other
 notebook software exists- for example, R Notebooks have recently been
 made available \[?\].
 
-![](figures/tutorial_screenshot.png){width="5.833333333333333in"
-height="2.717587489063867in"}
+![](figures/tutorial_screenshot.png)
 
 *Example of a notebook providing a tutorial with MIMIC-III data.*
 
@@ -273,8 +272,7 @@ operator characteristic curve (AUROC) for hospital mortality for
 patients admitted in the MIMIC database between 2001-2008 using two
 versions of SOFA.
 
-![](figures/sofa-old-vs-new.png){width="5.833333333333333in"
-height="2.9166666666666665in"}
+![](figures/sofa-old-vs-new.png)
 
 Figure Legend- Comparison of AUROCs for SOFA scores calculated from
 mimic-code and a prior research report.
