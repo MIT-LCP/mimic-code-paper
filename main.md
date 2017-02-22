@@ -334,7 +334,10 @@ the medical chart that determine them.
 An example of a patient undergoing mechanical ventilation and receiving
 vasopressor agents is provided in Figure \[?\].
 
-<!--  TODO: figure - duration of mechvent + vasopressor for 1 patient -- -->
+
+![](figures/example-patient.png)
+
+*Example of a patient who was both mechanically ventilated and administered vasopressors for cardiovascular support.*
 
 ### Sepsis
 
