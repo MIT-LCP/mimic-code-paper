@@ -270,27 +270,25 @@ shown in Figure \[?\].
 
 To highlight the discrepancies that can arise from the way a concept is
 defined, we contrast two versions of the SOFA score: one derived by
-prior researchers, and one available in the MIMIC code repository. The
-AUROC curve (area under receiver operating characteristic) is a
-graphical plot that illustrates a score’s ability to discriminate a
-dichotomous outcome, Figure \[?\] shows the area under the receiver
+prior researchers, and one available in the MIMIC code repository.
+Figure \[?\] shows the area under the receiver
 operator characteristic curve (AUROC) for hospital mortality for
 patients admitted in the MIMIC database between 2001-2008 using two
-versions of SOFA.
+versions of SOFA, grouped by the year of admission.
 
 ![](figures/sofa-old-vs-new.png)
 
-Figure Legend- Comparison of AUROCs for SOFA scores calculated from
-mimic-code and a prior research report.
+*Comparison of AUROCs for SOFA scores calculated from mimic-code and a prior research report.*
 
-The discrepancy between the two modalities is likely explained by the
-nature of the data capture of an important variable: the Glasgow Coma
+The discrepancy between the two modalities is multifactorial, but one
+large discrepency is the capture of an important variable: the Glasgow Coma
 Scale (GCS). In the original paper describing the SOFA score, clinicians
 were instructed to set GCS to its maximum value (15) if they were unable
 to assess the patient fully (for example, as a result of sedation to
 facilitate mechanical ventilation). In contrast, the documentation of
 GCS for these patients in the MIMIC-III database is usually a value of
-3; the minimum value. Naive use of the data results in a dramatic
+3, the minimum value, with a note that they are unable to assess the
+patient. Naive use of the GCS values results in a dramatic
 difference in the capability of the score to discriminate severely ill
 patients and highlights the need to understand variables and how they
 are captured or derived. In the MIMIC Code Repository, special
