@@ -327,7 +327,9 @@ timing of vasopressor administration and CRRT. Clinical expertise is
 invaluable in developing these rules and interpreting the fine points of
 the medical chart that determine them.
 
-<!--  TODO: figure - schematic of ventilation duration logic -- -->
+![](figures/VentDurationLogic.png)
+
+*Logic behind the query for converting aperiodically recorded ventilator settings into durations of mechanical ventilation.*
 
 An example of a patient undergoing mechanical ventilation and receiving
 vasopressor agents is provided in Figure \[?\].
