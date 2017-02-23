@@ -268,6 +268,20 @@ shown in Figure \[?\].
 
 <!--  TODO: figure B: severity of illness score distributions -- -->
 
+### Organ dysfunction scores
+
+Organ failure is a hallmark of acute illness and is quantified in
+numerous scores. Some scores assess multiple organ systems: the
+Sequential Organ Failure Assessment (SOFA) score \[REF\] and Logistic
+Organ Dysfunction System (LODS) \[REF\] both assess six organ systems
+for failure. Others are organ specific. Examples include the Model for
+End-stage Liver Disease (MELD) \[REF\], the Risk/Injury/Failure/Loss/End
+stage renal disease (RIFLE) criteria \[REF\], the Acute Kidney Injury
+Network (AKIN) classification \[REF\], and the Kidney Disease Improving
+Global Outcomes (KDIGO) criteria \[REF\]. The latter three scores assess
+the degree of acute kidney injury in a patient. A variety of lab,
+diagnostic, and therapeutic data are needed to calculate these scores.
+
 To highlight the discrepancies that can arise from the way a concept is
 defined, we contrast two versions of the SOFA score: one derived by
 prior researchers, and one available in the MIMIC code repository.
@@ -294,20 +308,6 @@ patients and highlights the need to understand variables and how they
 are captured or derived. In the MIMIC Code Repository, special
 extraction steps are used to detect a GCS value of 3 due to sedation,
 and these values are corrected to 15 in the calculation of scores.
-
-### Organ dysfunction scores
-
-Organ failure is a hallmark of acute illness and is quantified in
-numerous scores. Some scores assess multiple organ systems: the
-Sequential Organ Failure Assessment (SOFA) score \[REF\] and Logistic
-Organ Dysfunction System (LODS) \[REF\] both assess six organ systems
-for failure. Others are organ specific. Examples include the Model for
-End-stage Liver Disease (MELD) \[REF\], the Risk/Injury/Failure/Loss/End
-stage renal disease (RIFLE) criteria \[REF\], the Acute Kidney Injury
-Network (AKIN) classification \[REF\], and the Kidney Disease Improving
-Global Outcomes (KDIGO) criteria \[REF\]. The latter three scores assess
-the degree of acute kidney injury in a patient. A variety of lab,
-diagnostic, and therapeutic data are needed to calculate these scores.
 
 ### Timing of treatment
 
