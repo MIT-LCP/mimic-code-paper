@@ -358,7 +358,19 @@ provided and a notebook describing the derivation is also available.
 <!-- TODO: add the suspected sepsis script/notebook -->
 In addition, the repository includes the query for retrospective
 identification of patients with sepsis using ICD-9 codes as validated by
-Angus et al. \[?\]. Table \[?\] shows the percent of patients who were
+Angus et al. \[?\].
+
+Figure \[?\] shows a Venn diagram for three groups of patients: those suspected
+of infection (i.e. had a blood culture in the first 24 hours of ICU admission),
+those who fulfilled criteria as proposed by Angus et al.\[REF\], and those who fulfilled
+criteria as proposed by Martin et al. \[REF\].
+
+
+![](figures/sepsis-venn.png)
+
+*Venn diagram of three groups of patients who may have sepsis: those suspected of infection, those who were later billed for organ failure and infection (codes as proposed by Angus et al.), and those who fulfilled Martin criteria.*
+
+Table \[?\] shows the percent of patients who were
 suspected of infection, and the number of patients who had sepsis based
 on the methodology described by Angus and colleagues.
 
