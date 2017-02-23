@@ -348,22 +348,31 @@ infection, but a recent re-examination of the problem has suggested
 replacing inflammation with an increase in SOFA score. (ref) The precise
 onset of sepsis is not typically documented in the EHR, and is, in fact,
 a difficult item to capture clinically. For this concept, the time of
-suspected infection as defined by the sepsis-3 guidelines \[?\] is
-detailed in the MIMIC Code Repository: It is approximately the time a
-blood culture is obtained that is subsequently associated with the
-administration of antibiotics. This combination of diagnostic procedure
+suspected infection is defined as the acquisition of a blood culture
+followed by or shortly after ICU admission, a similar definition to that
+in the the sepsis-3 guidelines \[?\]. This combination of diagnostic procedure
 and therapeutic intervention is admittedly a proxy for the actual onset
-of sepsis, but in the absence of more precise markers, serves as a
+of sepsis, but in the absence of more precise markers, it serves as a
 reasonable approximation of onset time. A script for this concept is
-provided and a notebook describing the derivation is also available. In
-addition, the repository includes the query for retrospective
+provided and a notebook describing the derivation is also available.
+<!-- TODO: add the suspected sepsis script/notebook -->
+In addition, the repository includes the query for retrospective
 identification of patients with sepsis using ICD-9 codes as validated by
-Angus et al. \[?\].Table \[?\] shows the percent of patients who were
+Angus et al. \[?\]. Table \[?\] shows the percent of patients who were
 suspected of infection, and the number of patients who had sepsis based
 on the methodology described by Angus and colleagues.
 
 <!-- TODO: Figure - Venn diagram of sepsis definitions -->
 <!--  TODO: table -->
+<!--
+38606 first ICU stay for adults.
+22092 with suspected sepsis (blood culture within 24 hours of admission)
+ 2705 with a positive blood culture
+10575 with Angus
+ 7399 with Angus and suspected sepsis
+ 5249 with Martin
+ 3907 with Martin and suspected sepsis
+ -->
 <!--  who were suspected of sepsis -->
 <!--  with a positive blood culture -->
 <!--  who had Angus -->
@@ -381,7 +390,12 @@ them accordingly as changes are made to diagnosis and treatment coding
 \[?\]. Finally, diagnosis related groups (DRG) are used to filter out
 those conditions that are not present prior to hospitalization. These
 representations of comorbidities are provided in the repository, both
-with and without DRG filtering.
+with and without DRG filtering. A comparison of these three methods is
+provided in Figure \[?\].
+
+![](figures/comorbidity.png)
+
+*Comparison of three methods for calculating presence of a comorbidity for a patient using billing data: an updated coding from the AHRQ which uses DRG codes to mask non-comorbid conditions, the same coding without the DRG masking, and finally an alternative coding which does not use DRG masking proposed by Quan et al. \[?\].*
 
 Conclusion
 ==========
