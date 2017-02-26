@@ -370,26 +370,6 @@ criteria as proposed by Martin et al. \[REF\].
 
 *Venn diagram of three groups of patients who may have sepsis: those suspected of infection, those who were later billed for organ failure and infection (codes as proposed by Angus et al.), and those who fulfilled Martin criteria.*
 
-Table \[?\] shows the percent of patients who were
-suspected of infection, and the number of patients who had sepsis based
-on the methodology described by Angus and colleagues.
-
-<!-- TODO: Figure - Venn diagram of sepsis definitions -->
-<!--  TODO: table -->
-<!--
-38606 first ICU stay for adults.
-22092 with suspected sepsis (blood culture within 24 hours of admission)
- 2705 with a positive blood culture
-10575 with Angus
- 7399 with Angus and suspected sepsis
- 5249 with Martin
- 3907 with Martin and suspected sepsis
- -->
-<!--  who were suspected of sepsis -->
-<!--  with a positive blood culture -->
-<!--  who had Angus -->
-<!--  overlap -->
-
 ### Comorbidities
 
 Many ICU patients have chronic conditions prior to their acute
