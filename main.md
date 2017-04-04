@@ -169,16 +169,14 @@ Notebooks are an amalgamation of text and code, sometimes classified
 as a form of literate programming. Notebooks are essentially executable
 documents; they allow for seemless description of the logic and principles
 behind the code while simultaneously being capable of executing code blocks.
-Figure \[?\] shows an example of a Jupyter Notebook where
+Figure \ref{fig:tutorial} shows an example of a Jupyter Notebook where
 demographics have been extracted and are displayed for the user to view.
 Jupyter Notebooks in particular are capable of running code written in
 many languages including Python, R, MATLAB, SAS, and others \[?\]. Other
 notebook software exist; for example R Notebooks have recently been
 made available \[?\].
 
-![](figures/tutorial_screenshot.png)
-
-*Example of a notebook providing a tutorial with MIMIC-III data.*
+![Example of a notebook providing a tutorial with MIMIC-III data. \label{fig:tutorial}](figures/tutorial_screenshot.png){ width=100% }
 
 Notebooks are extremely valuable for research in cross-disciplinary
 fields such as healthcare as they facilitate collaboration between data
@@ -214,11 +212,9 @@ are broadly applicable to research questions in critical care. For
 example, severity of illness scores are frequently required to adjust
 for confounding factors in a study. These and other concepts are coded
 in a modular fashion to reduce redundancy in code and allow for extension.
-An example of the modular nature of the code is shown in Figure \[?\].
+An example of the modular nature of the code is shown in Figure \ref{fig:sevscoreblock}.
 
-![](figures/SeverityScoreBlockDiagram.png)
-
-*Block diagram demonstrating modular components of severity scores. These components can be used individually by researchers to quickly extract data of interest.*
+![Block diagram demonstrating modular components of severity scores. These components can be used individually by researchers to quickly extract data of interest. \label{fig:sevscoreblock}](figures/SeverityScoreBlockDiagram.png){ width=100% }
 
 In the figure, a set of severity of illness scores is shown with their components that
 themselves represent different concepts. Each component can easily be isolated
@@ -281,14 +277,12 @@ using data from the first 24 hours of the patient's stay. SIRS and qSOFA
 are screening tools with scores calculated on admission to the ICU which
 is concretely defined as up to 2 hours after the admission time. Details
 of score derivation are available in the supplemental material (Appendix
-A). The distribution of these scores along with calibration curves
-(if probabilities are available) for adult ICU patients in MIMIC is
-shown in Figure \[?\].
+A). The distribution of these scores is shown in in Figure \ref{fig:sevscore_dist},
+and calibration curves are shown in Figure \ref{fig:sevscore_calib}.
 
-![](figures/SeverityOfIllnessDistribution.png)
-![](figures/SeverityScoresCalibCurve.png)
+![Comparison of severity of illness score distributions. \label{fig:sevscore_dist}](figures/SeverityOfIllnessDistribution.png){ width=100% }
 
-*Comparison of severity of illness score distributions and calibration curves.*
+![Calibration curves for three severity of illness scores with published equations for calculating the probability of mortality. \label{fig:sevscore_calib}](figures/SeverityScoresCalibCurve.png){ width=100% }
 
 ### Organ dysfunction scores
 
@@ -307,14 +301,12 @@ diagnostic, and therapeutic data are needed to calculate these scores.
 To highlight the discrepancies that can arise from the way a concept is
 defined, we contrast two versions of the SOFA score: one derived by
 prior researchers, and one available in the MIMIC code repository.
-Figure \[?\] shows the area under the receiver
+Figure \ref{fig:sofa_auroc} shows the area under the receiver
 operator characteristic curve (AUROC) for hospital mortality for
 patients admitted in the MIMIC database between 2001-2008 using two
 versions of SOFA, grouped by the year of admission.
 
-![](figures/sofa-old-vs-new.png)
-
-*Comparison of AUROCs for SOFA scores calculated from mimic-code and a prior research report.*
+![Comparison of AUROCs for SOFA scores calculated from mimic-code and a prior research report. \label{fig:sofa_auroc}](figures/sofa-old-vs-new.png){ width=100% }
 
 The discrepancy between the two modalities is multifactorial, but one
 large discrepency is the capture of an important variable: the Glasgow Coma
@@ -348,22 +340,19 @@ must be derived.
 This derivation may involve identification of surrogate data
 documented by clinical staff contemporaneous to the treatment
 and done with a high level of compliance.
-Figure \[?\] shows a schema for the derivation of the start and stop
+Figure \ref{fig:ventdur} shows a schema for the derivation of the start and stop
 times of mechanical ventilation. Similar rules are used to define the
 timing of vasopressor administration and CRRT available in the repository.
 Clinical expertise is invaluable in developing these rules and interpreting
 the fine points of the medical chart that determine them.
 
-![](figures/VentDurationLogic.png)
 
-*Logic behind the query for converting aperiodically recorded ventilator settings into durations of mechanical ventilation.*
+![Logic behind the query for converting aperiodically recorded ventilator settings into durations of mechanical ventilation. \label{fig:ventdur}](figures/VentDurationLogic.png){ width=100% }
 
 An example of a patient undergoing mechanical ventilation and receiving
-vasopressor agents is provided in Figure \[?\].
+vasopressor agents is provided in Figure \ref{fig:expt}.
 
-![](figures/example-patient.png)
-
-*Example of a patient who was both mechanically ventilated and administered vasopressors for cardiovascular support.*
+![Example of a patient who was both mechanically ventilated and administered vasopressors for cardiovascular support. \label{fig:expt}](figures/example-patient.png){ width=100% }
 
 ### Sepsis
 
@@ -397,14 +386,12 @@ sepsis using a set of diagnostic and procedural ICD-9 codes. The criteria
 as proposed by Angus et al. \[Angus\] were validated in a later study by
 Iwashyna et al. \[?\]. Both criteria, those as proposed by Angus et al. \[Angus\]
 and those proposed by Martin et al. \[Martin\], are available in the repository.
-Figure \[?\] shows a Venn diagram for three groups of patients: those suspected
+Figure \ref{fig:sepsis_venn} shows a Venn diagram for three groups of patients: those suspected
 of infection (i.e. had a blood culture in the first 24 hours of ICU admission),
 those who fulfilled criteria as proposed by Angus et al.\[REF\], and those who fulfilled
 criteria as proposed by Martin et al. \[REF\].
 
-![](figures/sepsis-venn.png)
-
-*Venn diagram of three groups of patients who may have sepsis: those suspected of infection, those who were later billed for organ failure and infection (codes as proposed by Angus et al.), and those who fulfilled Martin criteria.*
+![Venn diagram of three groups of patients who may have sepsis using: the Sepsis-3 clinical criteria, criteria proposed by Angus et al., and criteria proposed by Martin et al. \label{fig:sepsis_venn}](figures/sepsis-venn.png){ width=100% }
 
 ### Comorbidities
 
@@ -424,11 +411,9 @@ those conditions that are not present prior to hospitalization.
 These representations of comorbidities are provided in the repository, both
 with and without DRG filtering.
 -->
-A comparison of these three methods is provided in Figure \[?\].
+A comparison of these three methods is provided in Figure \ref{fig:comorbidity}.
 
-![](figures/comorbidity.png)
-
-*Comparison of three methods for calculating presence of a comorbidity for a patient using billing data: an updated coding from the AHRQ which uses DRG codes to mask non-comorbid conditions, the same coding without the DRG masking, and finally an alternative coding which does not use DRG masking proposed by Quan et al. \[?\].*
+![Comparison of three methods for calculating presence of a comorbidity for a patient using billing data: an updated coding from the AHRQ which uses DRG codes to mask non-comorbid conditions, the same coding without the DRG masking, and finally an alternative coding which does not use DRG masking proposed by Quan et al. \[?\]. \label{fig:comorbidity}](figures/comorbidity.png){ width=100% }
 
 Conclusion
 ==========
