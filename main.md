@@ -2,8 +2,6 @@
 
 <!-- The title should ideally be fewer than 120 characters, with a clear indication of the biological system under investigation (if appropriate), and should avoid abbreviations and unfamiliar acronyms if possible. Please note that two-part titles – e.g. “What goes up must come down: Oscillations in transcriptional networks” – are not permitted for research papers. -->
 
-==========================================================================================
-
 **Authors:** Alistair E. W. Johnson^1^\*, David J. Stone^2^, Leo Anthony
 Celi^1,3^, Tom J. Pollard^1^
 
@@ -50,8 +48,7 @@ Table 2: Sepsis frequencies
 
 -->
 
-Introduction
-============
+# 1. Introduction
 
 Recently a number of concerns have been raised around the
 reproducibility of results in science, including work in the biomedical
@@ -121,8 +118,7 @@ analysis of health data by accelerating the understanding of datasets by
 researchers, and improving the consistency and validity of future
 studies.
 
-The MIMIC Code Repository
-=========================
+# 2. The MIMIC Code Repository
 
 The MIMIC code repository is available online \[?\] and is open source.
 Code is available as ISO standard structured query language (SQL) scripts tested
@@ -162,8 +158,7 @@ navigation of the data for research purposes. These components are:
 3.  Community – public discussions to facilitate contributions from members
     of the MIMIC research community
 
-Notebooks and tutorials
------------------------
+## 2.1 Notebooks and tutorials
 
 Notebooks are an amalgamation of text and code, sometimes classified
 as a form of literate programming. Notebooks are essentially executable
@@ -204,8 +199,7 @@ records. Other tutorials in the MIMIC Code repository include an introduction
 to Structured Query Language, how to select a cohort for a study, and
 a description of how common recorded parameters in the database are captured.
 
-Concepts
---------
+## 2.2 Concepts
 
 The concepts currently available in the repository focus on those that
 are broadly applicable to research questions in critical care. For
@@ -225,7 +219,7 @@ first day (by using `ventfirstday`).
 The following sections describe various concepts currently available in
 the repository.
 
-### Severity of illness scores
+### *Severity of illness scores*
 
 Severity of illness scores have been developed over recent decades to
 provide an assessment of the patient's acuity, particularly but not
@@ -284,7 +278,7 @@ and calibration curves are shown in Figure \ref{fig:sevscore_calib}.
 
 ![Calibration curves for three severity of illness scores with published equations for calculating the probability of mortality. \label{fig:sevscore_calib}](figures/SeverityScoresCalibCurve.png){ width=100% }
 
-### Organ dysfunction scores
+### *Organ dysfunction scores*
 
 Organ failure is a hallmark of acute illness and is quantified in
 numerous scores. Some scores assess multiple organ systems: the
@@ -323,7 +317,7 @@ are captured or derived. In the MIMIC Code Repository, special
 extraction steps are used to detect a GCS value of 3 due to sedation,
 and these values are corrected to 15 in the calculation of scores.
 
-### Timing of treatment
+### *Timing of treatment*
 
 The timing and duration of treatment is a useful concept as it reflects
 the intensity of the administered intervention, often serves as an
@@ -354,7 +348,7 @@ vasopressor agents is provided in Figure \ref{fig:expt}.
 
 ![Example of a patient who was both mechanically ventilated and administered vasopressors for cardiovascular support. \label{fig:expt}](figures/example-patient.png){ width=100% }
 
-### Sepsis
+### *Sepsis*
 
 Sepsis is a common diagnosis in the ICU with a high mortality rate,
 between ?? - 30% \[?, ?\]. Sepsis has traditionally been
@@ -393,7 +387,7 @@ criteria as proposed by Martin et al. \[REF\].
 
 ![Venn diagram of three groups of patients who may have sepsis using: the Sepsis-3 clinical criteria, criteria proposed by Angus et al., and criteria proposed by Martin et al. \label{fig:sepsis_venn}](figures/sepsis-venn.png){ width=100% }
 
-### Comorbidities
+### *Comorbidities*
 
 Many ICU patients have chronic conditions prior to their acute
 presentation that affect their probability of surviving critical
@@ -415,8 +409,7 @@ A comparison of these three methods is provided in Figure \ref{fig:comorbidity}.
 
 ![Comparison of three methods for calculating presence of a comorbidity for a patient using billing data: an updated coding from the AHRQ which uses DRG codes to mask non-comorbid conditions, the same coding without the DRG masking, and finally an alternative coding which does not use DRG masking proposed by Quan et al. \[?\]. \label{fig:comorbidity}](figures/comorbidity.png){ width=100% }
 
-Conclusion
-==========
+# 3. Conclusion
 
 This paper has presented a code repository for the MIMIC database that
 derives a variety of useful clinical concepts for critical care
@@ -464,9 +457,6 @@ collaborated to build the MIMIC code repository and write the paper.
 **Competing interests:** None.
 
 
-References and Notes
-====================
+# References and Notes
 
-
-Supplementary Materials
-=======================
+# Supplementary Materials
