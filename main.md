@@ -41,10 +41,6 @@ in a transparent fashion.
 
 <!-- TODO: FIGURE LIST
 
-Figure 1: Jupyter Notebook of demographics tutorial
-Figure 2: Block diagram of severity of illness scores and dependencies
-Figure 3: Severity of illness score distributions
-Figure 4: SOFA old vs. SOFA new
 Figure 5: Ventilation duration logic
 Figure 6: Duration of mechanical ventilation and vasopressors for one patient
 Figure 7: Venn diagram of sepsis
@@ -75,7 +71,7 @@ reproducibility crisis: the digital revolution. The Health Information
 Technology for Economic and Clinical Health Act has catalyzed the
 transition of hospitals and care institutions from paper based systems
 to electronic ones \[?\]. Vast quantities of digital data are now
-routinely collected by modern hospital monitoring systems, especially so
+routinely collected by modern hospital monitoring systems, even more so
 in intensive care units (ICUs) where patients require close observation.
 There is optimism that increasing availability of large scale clinical
 databases will offer opportunities to overcome many of the challenges
@@ -97,15 +93,18 @@ provided a unique perspective on how an open dataset can be shared by a
 research community. Perhaps the most important insight since the
 database was made open-access is how challenging research using EHR can
 be, requiring close collaboration between domain experts and data
-scientists. For example, while exact time stamps for initiation and
+scientists.
+<!--
+For example, while exact time stamps for initiation and
 discontinuation of mechanical ventilation are rarely documented in the
 ICU clinical information system, these times can be inferred by the
-presence or absence of mechanical ventilator settings. Derivation of
-these concepts on an EHR database is a resource-intensive task, and is a
-significant barrier to those unfamiliar with the clinical environment.
-Moreover, if concepts are not defined collaboratively with those who are
-familiar with the workflows, including how the data is captured, the
-validity of findings becomes suspect.
+presence or absence of mechanical ventilator settings.
+-->
+Derivation of key clinical concepts on an EHR database is a
+resource-intensive task, and is a significant barrier to those unfamiliar
+with the clinical environment. Moreover, if concepts are not defined
+collaboratively with those who are familiar with the workflows, including
+how the data is captured, the validity of any findings becomes suspect.
 
 We describe the MIMIC code repository, a large body of work which
 derives concepts that are relevant to critical care research. Detailed
@@ -125,34 +124,56 @@ studies.
 The MIMIC Code Repository
 =========================
 
-There are three components to the repository that are required to
-navigate the data for research purposes. These components are:
+The MIMIC code repository is available online \[?\] and is open source.
+Code is available as ISO standard structured query language (SQL) scripts tested
+with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
+Scripts are modified to allow an individual who has been granted access
+to the MIMIC database to generate a number of "views" of the data, with
+each view being an extraction from the raw data. Each script is
+associated with an automatically generated unique commit hash that acts as an
+identifier for the code. Publications that use the code repository can
+further cite the commit hash, allowing other researchers to download a copy of
+the code used regardless of any modifications since. All
+code follows the principles of good scientific programming as outlined
+by Wilson et al \[Ref: G Wilson paper\], including incremental
+development with a distributed version control system, unit tests, and a
+public issue tracker. The repository was tested on MIMIC-III v1.4 at the
+time of this publication.
 
-1.  Notebooks - documents of the design of and methodologies employed in
-    previously published studies using MIMIC
+A prerequisite for using much of the code in the MIMIC code repository
+is access to the MIMIC-III data in a relational database. The MIMIC code
+repository further provides scripts for building said database using a
+variety of database management systems including PostgreSQL, MySQL, Oracle,
+and MonetDB.
 
-2.  Concepts – definitions of concepts, including references, as well as
-    queries to extract them from MIMIC are stored in a modular format.
+There are three components to the repository that facilitate
+navigation of the data for research purposes. These components are:
+
+1.  Notebooks - documents of the design and methodology employed in
+    analyses using MIMIC, including published studies
+
+2.  Concepts – definitions of concepts as well as queries to extract them
+    from MIMIC, stored in a modular format.
     For example, the module on acute kidney injury (AKI) uses the
     criteria as specified by the Kidney Disease Improving Global
     Outcomes (KDIGO) and provides the code to identify patients with AKI
     in MIMIC. More examples are given below.
 
-3.  Community – forums, including but not limited to discussions, to
-    facilitate contributions from members of the MIMIC research
-    community
+3.  Community – public discussions to facilitate contributions from members
+    of the MIMIC research community
 
 Notebooks and tutorials
 -----------------------
 
-Notebooks are an amalgamation of text and code, and allow for executable
-documents which describe the logic and principles behind the code while
-simultaneously allowing the user to run the code within the same
-document. Figure \[?\] shows an example of a Jupyter Notebook where
+Notebooks are an amalgamation of text and code, sometimes classified
+as a form of literate programming. Notebooks are essentially executable
+documents; they allow for seemless description of the logic and principles
+behind the code while simultaneously being capable of executing code blocks.
+Figure \[?\] shows an example of a Jupyter Notebook where
 demographics have been extracted and are displayed for the user to view.
 Jupyter Notebooks in particular are capable of running code written in
 many languages including Python, R, MATLAB, SAS, and others \[?\]. Other
-notebook software exists- for example, R Notebooks have recently been
+notebook software exist; for example R Notebooks have recently been
 made available \[?\].
 
 ![](figures/tutorial_screenshot.png)
@@ -172,20 +193,18 @@ Notebooks are also an excellent platform for tutorials. The alternation
 between description and code allows for thorough explanations of the
 subject matter, while the interactive nature of the document allows for
 experimentation and facilitates learning.
-
 A number of tutorials have been made available which elucidate key
 concepts in working with MIMIC. The transformation of recorded clinical
 parameters, such as hemofiltration settings, into desired clinical
 concepts, such as length of continuous renal replacement therapy (CRRT),
 is non-trivial and requires both domain and database expertise. The
 *CRRT* tutorial overviews the process of exploring MIMIC, assessing the
-data stored within, producing a measure of the clinical concept of
-interest which in this case is the duration of CRRT. The tutorial is an
-excellent starting point for all researchers who work on the secondary
-analysis of electronic health records. Other tutorials in the MIMIC Code
-repository include an introduction to Structured Query Language (SQL),
-how to select a cohort for a study, and description of how common
-recorded parameters in the database are captured.
+data stored within and producing a measure of the clinical concept of
+interest (duration of CRRT). The tutorial is an excellent starting point
+for all researchers who work on the secondary analysis of electronic health
+records. Other tutorials in the MIMIC Code repository include an introduction
+to Structured Query Language, how to select a cohort for a study, and
+a description of how common recorded parameters in the database are captured.
 
 Concepts
 --------
@@ -193,20 +212,19 @@ Concepts
 The concepts currently available in the repository focus on those that
 are broadly applicable to research questions in critical care. For
 example, severity of illness scores are frequently required to adjust
-for confounding. Concepts are coded in a modular fashion to reduce
-redundancy in code and allow for extension. An example of the modular
-nature of the code is shown in Figure \[?\].
-
+for confounding factors in a study. These and other concepts are coded
+in a modular fashion to reduce redundancy in code and allow for extension.
+An example of the modular nature of the code is shown in Figure \[?\].
 
 ![](figures/SeverityScoreBlockDiagram.png)
 
 *Block diagram demonstrating modular components of severity scores. These components can be used individually by researchers to quickly extract data of interest.*
 
 In the figure, a set of severity of illness scores is shown with their components that
-themselves represent different concepts. Each score is documented within
-a module, and can easily be isolated and employed on its own, which
-could occur if, for example, the researcher is only interested in
-patients who are mechanically ventilated on the first day (`ventfirstday`).
+themselves represent different concepts. Each component can easily be isolated
+and employed on its own, which could occur if, for example, the researcher is
+interested in determining which patients are mechanically ventilated on the
+first day (by using `ventfirstday`).
 
 The following sections describe various concepts currently available in
 the repository.
@@ -215,7 +233,7 @@ the repository.
 
 Severity of illness scores have been developed over recent decades to
 provide an assessment of the patient's acuity, particularly but not
-exclusively, at the time of admission to the ICU \[reference\]. The
+exclusively, at the time of admission to the ICU \[Knaus, 2001\]. The
 principal aim of these scores is for risk-adjusting patient populations
 for benchmarking and research purposes such as comparison of cohorts in
 clinical trials and observational studies. In the context of performing
@@ -247,7 +265,7 @@ however, this definition is not strictly adhered to as there is no
 defined protocol, and as a result, sedated patients may be assigned a
 score of 15 by some care providers, and a score of 3 by others.
 
-Working with BIDMC nurses and doctors has helped us to address these
+Working with local nurses and doctors has helped us to address these
 kinds of issues that potentially impact the code, helping to ensure the
 derived scores accurately reflect the true severity of patient illness.
 There are five severity of illness scores currently implemented in the
@@ -263,10 +281,14 @@ using data from the first 24 hours of the patient's stay. SIRS and qSOFA
 are screening tools with scores calculated on admission to the ICU which
 is concretely defined as up to 2 hours after the admission time. Details
 of score derivation are available in the supplemental material (Appendix
-A). The distribution of these scores for adult ICU patients in MIMIC is
+A). The distribution of these scores along with calibration curves
+(if probabilities are available) for adult ICU patients in MIMIC is
 shown in Figure \[?\].
 
-<!--  TODO: figure B: severity of illness score distributions -- -->
+![](figures/SeverityOfIllnessDistribution.png)
+![](figures/SeverityScoresCalibCurve.png)
+
+*Comparison of severity of illness score distributions and calibration curves.*
 
 ### Organ dysfunction scores
 
@@ -311,21 +333,26 @@ and these values are corrected to 15 in the calculation of scores.
 
 ### Timing of treatment
 
-The duration of treatment is a useful concept as it reflects the total
-intensity of the administered intervention, and often serves as an
-indirect metric of severity, as well. Typical ICU interventions where
+The timing and duration of treatment is a useful concept as it reflects
+the intensity of the administered intervention, often serves as an
+indirect metric of severity, and has been used in the development of
+decision support tools \[?\].
+<!--
+Typical ICU interventions where
 duration is relevant include use of vasopressor agents, mechanical
-ventilation and CRRT (continuous renal replacement therapy, usually
-dialysis). Due to the method of data capture, the administration
-durations of many medications and treatments are not specifically
-stored, and as such, the required durations must be derived. Such
-derivation may involve identification of surrogate variables that are
-documented in the data by clinical staff with acceptable accuracy.
+ventilation and CRRT.
+-->
+Due to the method of data capture, the timing and durations of many
+medications and treatments are not explicitly available and as such
+must be derived.
+This derivation may involve identification of surrogate data
+documented by clinical staff contemporaneous to the treatment
+and done with a high level of compliance.
 Figure \[?\] shows a schema for the derivation of the start and stop
 times of mechanical ventilation. Similar rules are used to define the
-timing of vasopressor administration and CRRT. Clinical expertise is
-invaluable in developing these rules and interpreting the fine points of
-the medical chart that determine them.
+timing of vasopressor administration and CRRT available in the repository.
+Clinical expertise is invaluable in developing these rules and interpreting
+the fine points of the medical chart that determine them.
 
 ![](figures/VentDurationLogic.png)
 
@@ -334,37 +361,46 @@ the medical chart that determine them.
 An example of a patient undergoing mechanical ventilation and receiving
 vasopressor agents is provided in Figure \[?\].
 
-
 ![](figures/example-patient.png)
 
 *Example of a patient who was both mechanically ventilated and administered vasopressors for cardiovascular support.*
 
 ### Sepsis
 
-Sepsis is a common diagnosis in the ICU with a high mortality, with a
-case-fatality rate as high as 30% \[?\]. Sepsis has traditionally been
+Sepsis is a common diagnosis in the ICU with a high mortality rate,
+between ?? - 30% \[?, ?\]. Sepsis has traditionally been
 defined as the concurrent presence of systemic inflammation and
 infection, but a recent re-examination of the problem has suggested
-replacing inflammation with an increase in SOFA score. (ref) The precise
+redefining the disease as a life-threatening organ dysfunction
+caused by a dysregulated host response to infection \[Sepsis-3\]. The precise
 onset of sepsis is not typically documented in the EHR, and is, in fact,
-a difficult item to capture clinically. For this concept, the time of
-suspected infection is defined as the acquisition of a blood culture
-followed by or shortly after ICU admission, a similar definition to that
-in the the sepsis-3 guidelines \[?\]. This combination of diagnostic procedure
-and therapeutic intervention is admittedly a proxy for the actual onset
-of sepsis, but in the absence of more precise markers, it serves as a
-reasonable approximation of onset time. A script for this concept is
-provided and a notebook describing the derivation is also available.
-<!-- TODO: add the suspected sepsis script/notebook -->
-In addition, the repository includes the query for retrospective
-identification of patients with sepsis using ICD-9 codes as validated by
-Angus et al. \[?\].
+a difficult item to capture clinically. In their quantitative evaluation of
+septic patients, Seymour et al. \[Seymour sepsis3\] first identified patients
+suspected of infection by cross-referencing antibiotic use with requesting
+a microbiology assessment. We have implemented a similar approach,
+defining suspected infection as the acquisition of a microbiology culture
+followed by or shortly after ICU admission. Using this definition, and following
+the Sepsis-3 guidelines, we define sepsis as suspicion of infection associated
+with organ failure as quantified by an increase in SOFA >= 2.
+This definition is admittedly a proxy for the actual onset of sepsis,
+but in the absence of more precise markers, it serves as a reasonable
+approximation of onset time and could be used for development of
+decision support tools.
+Scripts for these concepts are available and a notebook describing
+the derivation is also available.
 
+<!-- TODO: add the suspected sepsis script/notebook -->
+Identification of sepsis has also been done retrospectively using administrative data,
+and in particular billing codes acquired on hospital discharge.
+Angus et al. \[Angus\] and Martin et al. \[Martin\] describe algorithms for defining
+sepsis using a set of diagnostic and procedural ICD-9 codes. The criteria
+as proposed by Angus et al. \[Angus\] were validated in a later study by
+Iwashyna et al. \[?\]. Both criteria, those as proposed by Angus et al. \[Angus\]
+and those proposed by Martin et al. \[Martin\], are available in the repository.
 Figure \[?\] shows a Venn diagram for three groups of patients: those suspected
 of infection (i.e. had a blood culture in the first 24 hours of ICU admission),
 those who fulfilled criteria as proposed by Angus et al.\[REF\], and those who fulfilled
 criteria as proposed by Martin et al. \[REF\].
-
 
 ![](figures/sepsis-venn.png)
 
@@ -375,15 +411,20 @@ criteria as proposed by Martin et al. \[REF\].
 Many ICU patients have chronic conditions prior to their acute
 presentation that affect their probability of surviving critical
 illness. Elixhauser et al. \[?\] codified these comorbidities into 29
-categories, and Van Walraven et al. validated the Elixhauser score for
+categories, and later provided an algorithm for identifying these
+comorbidities using administrative data \[?\].
+Van Walraven et al. later validated the Elixhauser score for
 mortality prediction \[?\]. The American Health and Research Quality
 group (AHRQ) continues to maintain these administrative codes, adapting
 them accordingly as changes are made to diagnosis and treatment coding
-\[?\]. Finally, diagnosis related groups (DRG) are used to filter out
-those conditions that are not present prior to hospitalization. These
-representations of comorbidities are provided in the repository, both
-with and without DRG filtering. A comparison of these three methods is
-provided in Figure \[?\].
+\[?\].
+<!--
+Diagnosis related groups (DRG) are used to filter out
+those conditions that are not present prior to hospitalization.
+These representations of comorbidities are provided in the repository, both
+with and without DRG filtering.
+-->
+A comparison of these three methods is provided in Figure \[?\].
 
 ![](figures/comorbidity.png)
 
@@ -403,7 +444,7 @@ The use of Jupyter Notebooks allows the diligent researcher to document
 both the thought process and interim analyses that are performed. The
 inclusion of this type of documentation provides other researchers with
 more confidence in the analysis process and somewhat addresses the
-"garden of forking paths" issue recently raised \[?\].
+"garden of forking paths" issue \[?\].
 
 Contributions to the MIMIC code repository by other researchers who have
 benefitted from the freely available nature of MIMIC are welcome, as the
@@ -418,31 +459,6 @@ for the creation of fully executable studies with diligent audit trails.
 Finally, we assert that publishing the code associated with research
 promotes reproducibility and will contribute greatly to addressing the
 issue of research reliability.
-
-Material and Methods
-====================
-
-The MIMIC code repository is available online \[?\] and is open source.
-Code is available as ISO standard structured query language (SQL) scripts tested
-with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts.
-Scripts are modified to allow an individual who has been granted access
-to the MIMIC database to generate a number of "views" of the data, with
-each view being an extraction from the raw data. Each script is
-associated with an automatically generated unique commit hash that acts as an
-identifier for the code. Publications that use the code repository can
-further cite the commit hash, allowing other researchers to download a copy of
-the code used regardless of any modifications since. All
-code follows the principles of good scientific programming as outlined
-by Wilson et al \[Ref: G Wilson paper\], including incremental
-development with a distributed version control system, unit tests, and a
-public issue tracker. The repository was tested on MIMIC-III v1.4 at the
-time of this publication.
-
-A prerequisite for using much of the code in the MIMIC code repository
-is access to the MIMIC-III data in a relational database. The MIMIC code
-repository further provides scripts for building said database using a
-variety of database management systems including PostgreSQL, MySQL, Oracle,
-and MonetDB.
 
 <!--
 Within the Materials and Methods and/or figure legends, we encourage authors to provide complete information about their experiments, analyses, or data collection to ensure that readers can easily understand what was measured and analysed, and can accurately perform the relevant protocols.
