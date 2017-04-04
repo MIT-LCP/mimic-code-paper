@@ -22,7 +22,7 @@ database to accelerate research.
 The abstract should be fewer than 150 words and should not contain subheadings. It should provide a clear, measured, and concise summary of the work. If the biological system (species names or broader taxonomic groups if appropriate) is not mentioned in the title, it must be included in the abstract.
 -->
 
-# Abstract:
+# Abstract{.unnumbered}
 Lack of reproducibility in medical studies complicates generation of the knowledge base to support clinical decision-making. We provide a framework for generating reproducible studies on an openly available critical care dataset, which facilitates testing of hypotheses in a transparent fashion.
 
 <!-- Keywords: critical care; open data; data mining; secondary use of electronic health records. -->
@@ -184,17 +184,17 @@ The unique combination of open code with publicly accessible data allows for the
 Within the Materials and Methods and/or figure legends, we encourage authors to provide complete information about their experiments, analyses, or data collection to ensure that readers can easily understand what was measured and analysed, and can accurately perform the relevant protocols.
 -->
 
-# Acknowledgments 
+# Acknowledgments{.unnumbered}
 The authors would like to thank Professor Roger G. Mark, the MIT Laboratory for Computational Physiology, Philips Healthcare and the Beth Israel Deaconess Medical Center for the creation of the MIMIC-III database.
 
-# Funding
+# Funding{.unnumbered}
 This work has been supported by grants NIH-R01-EB017205, NIH-R01-EB001659, and NIH-R01-GW104987 from the National Institutes of Health.
 
-# Author contributions
+# Author contributions{.unnumbered}
 AEWJ and TJP collaborated to build the MIMIC code repository and write the paper.
 
-# Competing interests
+# Competing interests{.unnumbered}
 The authors have no competing interests to declare.
 
-# References
+# References{.unnumbered}
 
