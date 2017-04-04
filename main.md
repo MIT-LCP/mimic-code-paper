@@ -1,22 +1,16 @@
-# The MIMIC Code Repository: Towards Reproducibility in Secondary Analysis of Health Records
+---
+title: The MIMIC Code Repository - Towards Reproducibility in Secondary Analysis of Health Records
+author:
+        - Alistair E. W. Johnson^1^\*
+        - David J. Stone^2^
+        - Leo Anthony Celi^1,3^
+        - Tom J. Pollard^1^
+date: April 01, 2017
+company: ^1^ Massachusetts Institute of Technology, Cambridge; ^2^ University of Virginia School of Medicine, Charlottesville; ^3^ Beth Israel Deaconess Medical Center, Boston. \* aewj \[at\] mit \[dot\] edu
+keywords: critical care, ICU, MIMIC-III, reproducibility
+---
 
 <!-- The title should ideally be fewer than 120 characters, with a clear indication of the biological system under investigation (if appropriate), and should avoid abbreviations and unfamiliar acronyms if possible. Please note that two-part titles – e.g. “What goes up must come down: Oscillations in transcriptional networks” – are not permitted for research papers. -->
-
-**Authors:** Alistair E. W. Johnson^1^\*, David J. Stone^2^, Leo Anthony
-Celi^1,3^, Tom J. Pollard^1^
-
-**Affiliations:**
-
-^1^ Massachusetts Institute of Technology, Cambridge
-
-^2^ University of Virginia School of Medicine, Charlottesville
-
-^3^ Beth Israel Deaconess Medical Center, Boston
-
-\* aewj \[at\] mit \[dot\] edu
-
-Institute of Medical Engineering & Science 77 Massachusetts Avenue
-Cambridge, MA 02139
 
 <!--
 **One Sentence Summary:** We have released an open source library of
@@ -28,12 +22,8 @@ database to accelerate research.
 The abstract should be fewer than 150 words and should not contain subheadings. It should provide a clear, measured, and concise summary of the work. If the biological system (species names or broader taxonomic groups if appropriate) is not mentioned in the title, it must be included in the abstract.
 -->
 
-**Abstract:** Lack of reproducibility in medical studies complicates
-generation of the knowledge base to support clinical decision-making. We
-provide a framework for generating reproducible studies on an openly
-available critical care dataset, which facilitates testing of hypotheses
-in a transparent fashion.
-
+# Abstract:
+Lack of reproducibility in medical studies complicates generation of the knowledge base to support clinical decision-making. We provide a framework for generating reproducible studies on an openly available critical care dataset, which facilitates testing of hypotheses in a transparent fashion.
 
 <!-- Keywords: critical care; open data; data mining; secondary use of electronic health records. -->
 
@@ -48,9 +38,9 @@ Table 2: Sepsis frequencies
 
 -->
 
-# 1. Introduction
+# Introduction
 
-Recently a number of concerns have been raised around the reproducibility of results in science, including work in the biomedical field \[John Ioannidis “Why Most Published Studies are False”\]. The reasons for this perceived crisis are multifactorial, and include the pressure to publish positive results, the cost of replicating studies such as double blind randomized controlled clinical trials, and the lack of emphasis on reproducibility as a requirement for sound science \[Leo Anthony Celi “Beyond Open Data”\]. In medicine, the heterogeneity of treatment effect across subpopulations presents an additional challenge in the evaluation of interventions \[reference\]. For all these reasons, the risk-benefit profile of many widely-practiced treatments and tests remains unknown \[reference\].
+Recently a number of concerns have been raised around the reproducibility of results in science, including work in the biomedical field \[John Ioannidis “Why Most Published Studies are False”\]. The reasons for this perceived crisis are multifactorial, and include the pressure to publish positive results, the cost of replicating studies such as double blind randomized controlled clinical trials, and the lack of emphasis on reproducibility as a requirement for sound science \[Leo Anthony Celi “Beyond Open Data”\]. In medicine, the heterogeneity of treatment effect across subpopulations presents an additional challenge in the evaluation of interventions \[reference\]. For all these reasons, the risk-benefit profile of many widely-practiced treatments and tests remains unknown \[reference\]. TP TEST REF [@Cousteau1963].
 
 An entirely separate phenomenon has been occurring in parallel to the reproducibility crisis: the digital revolution. The Health Information Technology for Economic and Clinical Health Act has catalyzed the transition of hospitals and care institutions from paper based systems to electronic ones \[?\]. Vast quantities of digital data are now routinely collected by modern hospital monitoring systems, even more so in intensive care units (ICUs) where patients require close observation. There is optimism that increasing availability of large scale clinical databases will offer opportunities to overcome many of the challenges associated with lack of evidence in medical practice \[REF: BIG DATA etc\].
 
@@ -70,7 +60,7 @@ Derivation of key clinical concepts on an EHR database is a resource-intensive t
 In this paper, we describe the MIMIC code repository, a large body of work which derives concepts that are relevant to critical care research. Detailed descriptions on how the concepts are defined and extracted from the database are provided, including the assumptions that are made and the conditions for which a code or query is valid. The code is open source, follows good documentation practices, and is contributed to by members of the research community using MIMIC. The repository provides a framework for collaboration around research. While the case for open data has been already been strongly made \[references\], we believe *open code* is equally important. We would make the argument that the use of an openly available code repository will improve secondary analysis of health data by accelerating the understanding of datasets by researchers, and improving the consistency and validity of future
 studies.
 
-# 2. The MIMIC Code Repository
+# The MIMIC Code Repository
 
 The MIMIC code repository is available online \[?\] and is open source. Code is available as ISO standard structured query language (SQL) scripts tested with PostgreSQL 9.5.1, Python v2.7.12 scripts, or R v3.2.3 scripts. Scripts are modified to allow an individual who has been granted access to the MIMIC database to generate a number of "views" of the data, with each view being an extraction from the raw data. Each script is associated with an automatically generated unique commit hash that acts as an identifier for the code. Publications that use the code repository can further cite the commit hash, allowing other researchers to download a copy of the code used regardless of any modifications since. All code follows the principles of good scientific programming as outlined by Wilson et al \[Ref: G Wilson paper\], including incremental development with a distributed version control system, unit tests, and a public issue tracker. The repository was tested on MIMIC-III v1.4 at the time of this publication.
 
@@ -82,7 +72,7 @@ There are three components to the repository that facilitate navigation of the d
 2. Concepts: definitions of concepts as well as queries to extract them from MIMIC, stored in a modular format. For example, the module on acute kidney injury (AKI) uses the criteria as specified by the Kidney Disease Improving Global Outcomes (KDIGO) and provides the code to identify patients with AKI in MIMIC. More examples are given below.
 3. Community: public discussions to facilitate contributions from members of the MIMIC research community
 
-## 2.1 Notebooks and tutorials
+## Notebooks and tutorials
 
 Notebooks are an amalgamation of text and code, sometimes classified
 as a form of literate programming. Notebooks are essentially executable
@@ -101,7 +91,7 @@ Notebooks are extremely valuable for research in cross-disciplinary fields such 
 
 Notebooks are also an excellent platform for tutorials. The alternation between description and code allows for thorough explanations of the subject matter, while the interactive nature of the document allows for experimentation and facilitates learning. A number of tutorials have been made available which elucidate key concepts in working with MIMIC. The transformation of recorded clinical parameters, such as hemofiltration settings, into desired clinical concepts, such as length of continuous renal replacement therapy (CRRT), is non-trivial and requires both domain and database expertise. The *CRRT* tutorial overviews the process of exploring MIMIC, assessing the data stored within and producing a measure of the clinical concept of interest (duration of CRRT). The tutorial is an excellent starting point for all researchers who work on the secondary analysis of electronic health records. Other tutorials in the MIMIC Code repository include an introduction to Structured Query Language, how to select a cohort for a study, and a description of how common recorded parameters in the database are captured.
 
-## 2.2 Concepts
+## Concepts
 
 The concepts currently available in the repository focus on those that are broadly applicable to research questions in critical care. For example, severity of illness scores are frequently required to adjust for confounding factors in a study. These and other concepts are coded in a modular fashion to reduce redundancy in code and allow for extension. An example of the modular nature of the code is shown in Figure \ref{fig:sevscoreblock}.
 
@@ -180,7 +170,7 @@ A comparison of these three methods is provided in Figure \ref{fig:comorbidity}.
 
 ![Comparison of three methods for calculating presence of a comorbidity for a patient using billing data: an updated coding from the AHRQ which uses DRG codes to mask non-comorbid conditions, the same coding without the DRG masking, and finally an alternative coding which does not use DRG masking proposed by Quan et al. \[?\]. \label{fig:comorbidity}](figures/comorbidity.png){ width=100% }
 
-# 3. Conclusion
+# Conclusion
 
 This paper has presented a code repository for the MIMIC database that derives a variety of useful clinical concepts for critical care research.
 
@@ -208,4 +198,3 @@ The authors have no competing interests to declare.
 
 # References
 
-# Supplementary Materials
