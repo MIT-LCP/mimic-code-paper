@@ -23,7 +23,7 @@ The abstract should be fewer than 150 words and should not contain subheadings. 
 -->
 
 # Abstract{.unnumbered}
-Lack of reproducibility in medical studies complicates generation of the knowledge base to support clinical decision-making. We provide a framework for generating reproducible studies on an openly available critical care dataset, which facilitates testing of hypotheses in a transparent fashion.
+Lack of reproducibility in medical studies complicates generation of the knowledge base to support clinical decision-making. In this paper we outline the MIMIC Code Repository, a framework for generating reproducible studies on an openly available critical care dataset. By providing open source code alongside the freely accessible MIMIC-III database, we create a framework for conducting end-to-end reproducible analysis of electronic health records, facilitating hypotheses testing in a transparent fashion.
 
 <!-- Keywords: critical care; open data; data mining; secondary use of electronic health records. -->
 
@@ -143,7 +143,7 @@ Due to the method of data capture, the timing and durations of many medications 
 
 An example of a patient undergoing mechanical ventilation and receiving vasopressor agents is provided in Figure \ref{fig:expt}.
 
-![Example of a patient who was both mechanically ventilated and administered vasopressors for cardiovascular support. \label{fig:expt}](figures/example-patient.png){ width=100% }
+![Example of a patient who was both mechanically ventilated and receiving vasopressors for cardiovascular support. \label{fig:expt}](figures/example-patient.png){ width=100% }
 
 ### Sepsis
 
@@ -151,6 +151,7 @@ Sepsis is a common diagnosis in the ICU with a high mortality rate, between ?? -
 Scripts for these concepts are available and a notebook describing the derivation is also available.
 
 <!-- TODO: add the suspected sepsis script/notebook -->
+
 Identification of sepsis has also been done retrospectively using administrative data, and in particular billing codes acquired on hospital discharge. Angus et al. \[Angus\] and Martin et al. \[Martin\] describe algorithms for defining sepsis using a set of diagnostic and procedural ICD-9 codes. The criteria as proposed by Angus et al. \[Angus\] were validated in a later study by Iwashyna et al. \[?\]. Both criteria, those as proposed by Angus et al. \[Angus\] and those proposed by Martin et al. \[Martin\], are available in the repository. Figure \ref{fig:sepsis_venn} shows a Venn diagram for three groups of patients: those suspected of infection (i.e. had a blood culture in the first 24 hours of ICU admission), those who fulfilled criteria as proposed by Angus et al.\[REF\], and those who fulfilled criteria as proposed by Martin et al. \[REF\].
 
 ![Venn diagram of three groups of patients who may have sepsis using: the Sepsis-3 clinical criteria, criteria proposed by Angus et al., and criteria proposed by Martin et al. \label{fig:sepsis_venn}](figures/sepsis-venn.png){ width=100% }
@@ -172,7 +173,7 @@ A comparison of these three methods is provided in Figure \ref{fig:comorbidity}.
 
 # Conclusion
 
-This paper has presented a code repository for the MIMIC database that derives a variety of useful clinical concepts for critical care research.
+In establishing the MIMIC Code Repository alongside the freely accessible MIMIC-III database, we have created a framework for conducting end-to-end reproducible analysis of electronic health records. This presents an opportunity to carry out research in a manner that was not previously possible, to our knowledge.
 
 The MIMIC database is exceptional due in no small part to its publicly accessible nature: all researchers who undergo human subjects research training and who sign a data use agreement can freely access the data. The use of Jupyter Notebooks allows the diligent researcher to document both the thought process and interim analyses that are performed. The inclusion of this type of documentation provides other researchers with more confidence in the analysis process and somewhat addresses the "garden of forking paths" issue \[?\].
 
