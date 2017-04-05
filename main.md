@@ -179,6 +179,12 @@ These representations of comorbidities are provided in the repository, both with
 
 # Conclusion
 
+* Presented detailed repository that facilitates research
+* The case for open data has been quite well described [@ross2013ushering, @bierer2017data]
+* Concerns raised about those who use the data not understanding how data was collected [@longo2016data]
+* The use of open code addresses this both by providing extensive detail about data extraction and by linking the data authors with the community to facilitate the dialogue around the data.
+* Provides examples of fully reproducible studies - addresses garden of forking paths, facilitates further study [@gelman2014statistical]
+
 In establishing the MIMIC Code Repository alongside the freely accessible MIMIC-III database, we have created a framework for conducting end-to-end reproducible analysis of electronic health records. This presents an opportunity to carry out research in a manner that was not previously possible, to our knowledge.
 
 The MIMIC database is exceptional due in no small part to its publicly accessible nature: all researchers who undergo human subjects research training and who sign a data use agreement can freely access the data. The use of Jupyter Notebooks allows the diligent researcher to document both the thought process and interim analyses that are performed. The inclusion of this type of documentation provides a means to document all analyses performed thus providing other researchers with more confidence in the analysis process and could be used to address the issue regarding study authors testing more hypotheses than they publicize [@gelman2014statistical].
