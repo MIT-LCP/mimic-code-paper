@@ -44,7 +44,8 @@ Recently a number of concerns have been raised around the reproducibility of res
 
 An entirely separate phenomenon has been occurring in parallel to the reproducibility crisis: the digital revolution. The Health Information Technology for Economic and Clinical Health Act has catalyzed the transition of hospitals and care institutions from paper based systems to electronic ones \[?\]. Vast quantities of digital data are now routinely collected by modern hospital monitoring systems, even more so in intensive care units (ICUs) where patients require close observation. There is optimism that increasing availability of large scale clinical databases will offer opportunities to overcome many of the challenges associated with lack of evidence in medical practice \[REF: BIG DATA etc\].
 
-The Medical Information Mart for Intensive Care (MIMIC) database is an example of such a data repository \[?\]. The MIMIC database contains detailed clinical information regarding over 60,000 stays in intensive care units (ICU) at the Beth Israel Deaconess Medical Center in Boston, MA, USA. MIMIC is publicly accessible, and has been used for a number of clinical studies \[?\]. All of the data available in MIMIC is collected as part of routine clinical care in the ICU: the greater penetration of electronic health record (EHR) systems in hospitals worldwide presents the opportunity to spawn many more of such databases.
+The Medical Information Mart for Intensive Care (MIMIC) database is an example of such a data repository [@johnson2016mimic]. The MIMIC database contains detailed clinical information regarding over 60,000 stays in intensive care units (ICU) at the Beth Israel Deaconess Medical Center in Boston, MA, USA.
+MIMIC is publicly accessible, and has been used for a number of clinical studies \[?\]. All of the data available in MIMIC is collected as part of routine clinical care in the ICU: the greater penetration of electronic health record (EHR) systems in hospitals worldwide presents the opportunity to spawn many more of such databases.
 
 The use of MIMIC by thousands of researchers around the world has provided a unique perspective on how an open dataset can be shared by a research community. Perhaps the most important insight since the database was made open-access is how challenging research using EHR can be, requiring close collaboration between domain experts and data scientists.
 
@@ -81,7 +82,7 @@ behind the code while simultaneously being capable of executing code blocks.
 Figure \ref{fig:tutorial} shows an example of a Jupyter Notebook where
 demographics have been extracted and are displayed for the user to view.
 Jupyter Notebooks in particular are capable of running code written in
-many languages including Python, R, MATLAB, SAS, and others \[?\]. Other
+many languages including Python, R, MATLAB, SAS, and others [@PER-GRA:2007, @kluyver2016jupyter]. Other
 notebook software exist; for example R Notebooks have recently been
 made available \[?\].
 
@@ -104,13 +105,14 @@ the repository.
 
 ### Severity of illness scores
 
-Severity of illness scores have been developed over recent decades to provide an assessment of the patient's acuity, particularly but not exclusively, at the time of admission to the ICU \[Knaus, 2001\]. The principal aim of these scores is for risk-adjusting patient populations for benchmarking and research purposes such as comparison of cohorts in clinical trials and observational studies. In the context of performing research using MIMIC, the use of severity of illness scores for risk-adjustment is almost always required to address confounding.
+Severity of illness scores have been developed over recent decades to provide an assessment of the patient's acuity, particularly but not exclusively, at the time of admission to the ICU [@Knaus2002apache].
+The principal aim of these scores is for risk-adjusting patient populations for benchmarking and research purposes such as comparison of cohorts in clinical trials and observational studies. In the context of performing research using MIMIC, the use of severity of illness scores for risk-adjustment is almost always required to address confounding.
 
 While severity of illness scores are integral to risk adjustment, their calculation, if done retrospectively, presents challenges. Most severity scores were developed with well-curated datasets, put together through prospective data collection or manual data abstraction by dedicated trained personnel. As a result, the data tends to be cleaner and often has, perhaps more importantly, a distribution that is markedly different from routinely collected data such as that present in an electronic health record.
 
 Secondly, routinely collected data often lacks data elements required to compute the score. For example, the comorbidity ''biopsy proven cirrhosis'' is required for the Acute Physiology Score and Chronic Health Evaluation (APACHE) system, but this concept is not documented in a structured manner during routine care. Finally, the data definitions for the same concept can vary between the original dataset used to define the severity score and the electronic health records being analyzed. To illustrate this potential disparity, the Glasgow Coma Scale (GCS), a common marker of neurological dysfunction which ranges from 3 (worst) to 15 (best), is usually assumed to be 15 for patients who are unable to be assessed due to sedation or ventilation, but otherwise appear to be neurologically intact. In an electronic health record however, this definition is not strictly adhered to as there is no defined protocol, and as a result, sedated patients may be assigned a score of 15 by some care providers, and a score of 3 by others.
 
-Working with local nurses and doctors has helped us to address these kinds of issues that potentially impact the code, helping to ensure the derived scores accurately reflect the true severity of patient illness. There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III \[REF aps\], SAPS \[REF saps\], SAPS-II \[REF sapsii\], and OASIS \[REF oasis\]. A more detailed comparison of the severity scores is provided in the supplementary material, along with discussion of the assumptions made in calculating the scores. Organ dysfunction scores are also available and detailed later.
+Working with local nurses and doctors has helped us to address these kinds of issues that potentially impact the code, helping to ensure the derived scores accurately reflect the true severity of patient illness. There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III [@Knaus1991], SAPS [@LeGall1993], SAPS-II [@LeGall1996], and OASIS [@Johnson2013oasis]. A more detailed comparison of the severity scores is provided in the supplementary material, along with discussion of the assumptions made in calculating the scores. Organ dysfunction scores are also available and detailed later.
 
 Each score is comprised of at least ten independent components. The APS III, SAPS II, SOFA, LODS, and OASIS scores are generally calculated using data from the first 24 hours of the patient's stay. SIRS and qSOFA are screening tools with scores calculated on admission to the ICU which is concretely defined as up to 2 hours after the admission time. Details of score derivation are available in the supplemental material (Appendix A). The distribution of these scores is shown in in Figure \ref{fig:sevscore_dist}, and calibration curves are shown in Figure \ref{fig:sevscore_calib}.
 
@@ -120,18 +122,18 @@ Each score is comprised of at least ten independent components. The APS III, SAP
 
 ### Organ dysfunction scores
 
-Organ failure is a hallmark of acute illness and is quantified in numerous scores. Some scores assess multiple organ systems: the Sequential Organ Failure Assessment (SOFA) score \[REF\] and Logistic Organ Dysfunction System (LODS) \[REF\] both assess six organ systems for failure. Others are organ specific. Examples include the Model for End-stage Liver Disease (MELD) \[REF\], the Risk/Injury/Failure/Loss/End stage renal disease (RIFLE) criteria \[REF\], the Acute Kidney Injury Network (AKIN) classification \[REF\], and the Kidney Disease Improving Global Outcomes (KDIGO) criteria \[REF\]. The latter three scores assess the degree of acute kidney injury in a patient. A variety of lab, diagnostic, and therapeutic data are needed to calculate these scores.
+Organ failure is a hallmark of acute illness and is quantified in numerous scores. Some scores assess multiple organ systems: the Sequential Organ Failure Assessment (SOFA) score [@Vincent1996] and Logistic Organ Dysfunction System (LODS) [@LeGall1996lods] both assess six organ systems for failure. Others are organ specific. Examples include the Model for End-stage Liver Disease (MELD) [@wiesner2003model], the Risk/Injury/Failure/Loss/End stage renal disease (RIFLE) criteria [@bellomo2004acute, @kellum2002first], the Acute Kidney Injury Network (AKIN) classification [@mehta2007acute], and the Kidney Disease Improving Global Outcomes (KDIGO) criteria [@kidney2009kdigo]. The latter three scores assess the degree of acute kidney injury in a patient. A variety of lab, diagnostic, and therapeutic data are needed to calculate these scores.
 
 To highlight the discrepancies that can arise from the way a concept is defined, we contrast two versions of the SOFA score: one derived by prior researchers, and one available in the MIMIC code repository. Figure \ref{fig:sofa_auroc} shows the area under the receiver operator characteristic curve (AUROC) for hospital mortality for patients admitted in the MIMIC database between 2001-2008 using two versions of SOFA, grouped by the year of admission.
 
 ![Comparison of AUROCs for SOFA scores calculated from mimic-code and a prior research report. \label{fig:sofa_auroc}](figures/sofa-old-vs-new.png){ width=100% }
 
-The discrepancy between the two modalities is multifactorial, but one large discrepency is the capture of an important variable: the Glasgow Coma Scale (GCS). In the original paper describing the SOFA score, clinicians were instructed to set GCS to its maximum value (15) if they were unable to assess the patient fully (for example, as a result of sedation to facilitate mechanical ventilation). In contrast, the documentation of GCS for these patients in the MIMIC-III database is usually a value of 3, the minimum value, with a note that they are unable to assess the patient. Naive use of the GCS values results in a dramatic difference in the capability of the score to discriminate severely ill patients and highlights the need to understand variables and how they are captured or derived. In the MIMIC Code Repository, special extraction steps are used to detect a GCS value of 3 due to sedation,
-and these values are corrected to 15 in the calculation of scores.
+The discrepancy between the two modalities is multifactorial, but one large discrepency is the capture of an important variable: the Glasgow Coma Scale (GCS). In the original paper describing the SOFA score, clinicians were instructed to set GCS to its maximum value (15) if they were unable to assess the patient fully (for example, as a result of sedation to facilitate mechanical ventilation). In contrast, the documentation of GCS for these patients in the MIMIC-III database is usually a value of 3, the minimum value, with a note that they are unable to assess the patient.
+Naive use of the GCS values results in a dramatic difference in the capability of the score to discriminate severely ill patients and highlights the need to understand variables and how they are captured or derived. In the MIMIC Code Repository, special extraction steps are used to detect a GCS value of 3 due to sedation, and these values are corrected to 15 in the calculation of scores.
 
 ### Timing of treatment
 
-The timing and duration of treatment is a useful concept as it reflects the intensity of the administered intervention, often serves as an indirect metric of severity, and has been used in the development of decision support tools \[?\].
+The timing and duration of treatment is a useful concept as it reflects the intensity of the administered intervention, often serves as an indirect metric of severity, and has been used in the development of decision support tools [@ghassemi2017predicting].
 
 <!--
 Typical ICU interventions where duration is relevant include use of vasopressor agents, mechanical ventilation and CRRT.
@@ -147,35 +149,39 @@ An example of a patient undergoing mechanical ventilation and receiving vasopres
 
 ### Sepsis
 
-Sepsis is a common diagnosis in the ICU with a high mortality rate, between ?? - 30% \[?, ?\]. Sepsis has traditionally been defined as the concurrent presence of systemic inflammation andinfection, but a recent re-examination of the problem has suggested  redefining the disease as a life-threatening organ dysfunction caused by a dysregulated host response to infection \[Sepsis-3\]. The precise onset of sepsis is not typically documented in the EHR, and is, in fact, a difficult item to capture clinically. In their quantitative evaluation of septic patients, Seymour et al. \[Seymour sepsis3\] first identified patients suspected of infection by cross-referencing antibiotic use with requesting a microbiology assessment. We have implemented a similar approach, defining suspected infection as the acquisition of a microbiology culture followed by or shortly after ICU admission. Using this definition, and following the Sepsis-3 guidelines, we define sepsis as suspicion of infection associated with organ failure as quantified by an increase in SOFA >= 2. This definition is admittedly a proxy for the actual onset of sepsis, but in the absence of more precise markers, it serves as a reasonable approximation of onset time and could be used for development of decision support tools.
+Sepsis is a major and costly disease in the ICU, costing over $20 billion in the US in 2011 (5.2% of all US hospital costs) [@Torio2013costs], and growing to over $23 billion in 2013 (6.2% of all US hospital costs) [@Torio2016costs].
+Sepsis has traditionally been defined as the concurrent presence of systemic inflammation andinfection, but a recent re-examination of the problem has suggested  redefining the disease as a life-threatening organ dysfunction caused by a dysregulated host response to infection [@singer2016third].
+The precise onset of sepsis is not typically documented in the EHR, and is, in fact, a difficult item to capture clinically.
+In their quantitative evaluation of septic patients, Seymour et al.
+[@seymour2016assessment] first identified patients suspected of infection by cross-referencing antibiotic use with requesting a microbiology assessment.
+We have implemented a similar approach, defining suspected infection as the acquisition of a microbiology culture followed by or shortly after ICU admission. Using this definition, and following the Sepsis-3 guidelines, we define sepsis as suspicion of infection associated with organ failure as quantified by an increase in SOFA >= 2. This definition is admittedly a proxy for the actual onset of sepsis, but in the absence of more precise markers, it serves as a reasonable approximation of onset time and could be used for development of decision support tools.
 Scripts for these concepts are available and a notebook describing the derivation is also available.
 
 <!-- TODO: add the suspected sepsis script/notebook -->
 
-Identification of sepsis has also been done retrospectively using administrative data, and in particular billing codes acquired on hospital discharge. Angus et al. \[Angus\] and Martin et al. \[Martin\] describe algorithms for defining sepsis using a set of diagnostic and procedural ICD-9 codes. The criteria as proposed by Angus et al. \[Angus\] were validated in a later study by Iwashyna et al. \[?\]. Both criteria, those as proposed by Angus et al. \[Angus\] and those proposed by Martin et al. \[Martin\], are available in the repository. Figure \ref{fig:sepsis_venn} shows a Venn diagram for three groups of patients: those suspected of infection (i.e. had a blood culture in the first 24 hours of ICU admission), those who fulfilled criteria as proposed by Angus et al.\[REF\], and those who fulfilled criteria as proposed by Martin et al. \[REF\].
+Identification of sepsis has also been done retrospectively using administrative data, and in particular billing codes acquired on hospital discharge. Angus et al. [@angus2001epidemiology] and Martin et al. [@martin2003epidemiology] describe algorithms for defining sepsis using a set of diagnostic and procedural ICD-9 codes. The criteria as proposed by Angus et al. [@angus2001epidemiology] were validated in a later study by Iwashyna et al. [@iwashyna2014identifying].
+Both criteria, those as proposed by Angus et al. [@angus2001epidemiology] and those proposed by Martin et al. [@martin2003epidemiology], are available in the repository. Figure \ref{fig:sepsis_venn} shows a Venn diagram for three groups of patients identified as septic.
 
 ![Venn diagram of three groups of patients who may have sepsis using: the Sepsis-3 clinical criteria, criteria proposed by Angus et al., and criteria proposed by Martin et al. \label{fig:sepsis_venn}](figures/sepsis-venn.png){ width=100% }
 
 ### Comorbidities
 
-Many ICU patients have chronic conditions prior to their acute presentation that affect their probability of surviving critical illness. Elixhauser et al. \[?\] codified these comorbidities into 29 categories, and later provided an algorithm for identifying these comorbidities using administrative data \[?\]. Van Walraven et al. later validated the Elixhauser score for mortality prediction \[?\]. The American Health and Research Quality group (AHRQ) continues to maintain these administrative codes, adapting them accordingly as changes are made to diagnosis and treatment coding \[?\].
-
-<!--
-Diagnosis related groups (DRG) are used to filter out
+Many ICU patients have chronic conditions prior to their acute presentation that affect their probability of surviving critical illness. Elixhauser et al. [@elixhauser1998comorbidity] codified these comorbidities into 29 categories using administrative data, specifically ICD-9 codes. The American Health and Research Quality group (AHRQ) continues to maintain these administrative codes via the Healthcare Cost and Utilization Project (HCUP), adapting them accordingly as changes are made to diagnosis and treatment coding [@steiner2001healthcare]. Finally, Quan et al. [@quan2005coding] proposed an enhanced ICD-9 coding methodology based upon examining inconsistencies among previous definitions.
+Diagnosis related groups (DRG), which are used to bill for the principle diagnosis for a patient hospitalization, are used to filter out
 those conditions that are not present prior to hospitalization.
-These representations of comorbidities are provided in the repository, both
-with and without DRG filtering.
--->
-
 A comparison of these three methods is provided in Figure \ref{fig:comorbidity}.
+These representations of comorbidities are provided in the repository, both with and without DRG filtering.
 
 ![Comparison of three methods for calculating presence of a comorbidity for a patient using billing data: an updated coding from the AHRQ which uses DRG codes to mask non-comorbid conditions, the same coding without the DRG masking, and finally an alternative coding which does not use DRG masking proposed by Quan et al. \[?\]. \label{fig:comorbidity}](figures/comorbidity.png){ width=100% }
+
+ Van Walraven et al. [@van2009modification] later aggregated comorbidities codified by Elixhauser et al. [@elixhauser1998comorbidity] into a single point score for in-hospital mortality prediction which is also available in the repository.
+
 
 # Conclusion
 
 In establishing the MIMIC Code Repository alongside the freely accessible MIMIC-III database, we have created a framework for conducting end-to-end reproducible analysis of electronic health records. This presents an opportunity to carry out research in a manner that was not previously possible, to our knowledge.
 
-The MIMIC database is exceptional due in no small part to its publicly accessible nature: all researchers who undergo human subjects research training and who sign a data use agreement can freely access the data. The use of Jupyter Notebooks allows the diligent researcher to document both the thought process and interim analyses that are performed. The inclusion of this type of documentation provides other researchers with more confidence in the analysis process and somewhat addresses the "garden of forking paths" issue \[?\].
+The MIMIC database is exceptional due in no small part to its publicly accessible nature: all researchers who undergo human subjects research training and who sign a data use agreement can freely access the data. The use of Jupyter Notebooks allows the diligent researcher to document both the thought process and interim analyses that are performed. The inclusion of this type of documentation provides a means to document all analyses performed thus providing other researchers with more confidence in the analysis process and could be used to address the issue regarding study authors testing more hypotheses than they publicize [@gelman2014statistical].
 
 Contributions to the MIMIC code repository by other researchers who have benefitted from the freely available nature of MIMIC are welcome, as the goal of the repository is to build a community of researchers around the database in order to accelerate research in critical care. The use of source code control allows for transparency both in the authorship of the code and in the enhancement or modifications made by subsequent users.
 
@@ -198,4 +204,3 @@ AEWJ and TJP collaborated to build the MIMIC code repository and write the paper
 The authors have no competing interests to declare.
 
 # References{.unnumbered}
-
