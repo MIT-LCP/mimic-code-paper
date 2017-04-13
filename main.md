@@ -116,7 +116,7 @@ The disagreement between the two modalities is multifactorial, but a major contr
 
 ### Timing of treatment
 
-The timing and duration of treatment is an important concept for researchers seeking to understanding issues that relate to the intensity of an administered intervention. Duration may serve as an indirect metric of severity and has been used in the development of decision support tools [@ghassemi2017predicting].
+The timing and duration of treatment is an important concept for researchers seeking to understand issues that relate to the intensity of an administered intervention. Duration may serve as an indirect metric of severity and has been used in the development of decision support tools [@ghassemi2017predicting].
 
 <!--
 Typical ICU interventions where duration is relevant include use of vasopressor agents, mechanical ventilation and CRRT.
