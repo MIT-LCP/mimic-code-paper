@@ -9,7 +9,7 @@ Have you made clear in the letter what the work has and has not achieved?
 
 Dear Editors,
 
-We would like to submit our paper, entitled “The MIMIC Code Repository”, for publication in eLife. The paper describes a collection of software that we believe is both an important research contribution to accelerate progress in the field of secondary analysis of electronic health records, as well as a strategy to improve research reproducibility.
+We would like to submit our paper, entitled "The MIMIC Code Repository: enabling reproducibility in critical care", for publication in eLife. The paper describes a collection of software that we believe is both an important research contribution to accelerate progress in the field of secondary analysis of electronic health records, as well as a strategy to improve research reproducibility.
 
 The MIT Laboratory for Computational Physiology has gained expertise in integrating and analyzing high-resolution electronic health records from critical care patients admitted to the Beth Israel Deaconess Medical Center in Boston, USA over the past decade. A de-identified version is shared with thousands of researchers around the world as a database known as the Medical Information Mart for Intensive Care or MIMIC database. Using MIMIC, researchers have discovered novel relationships between patient factors, treatments including medications and outcomes, and built decision support tools and treatment optimization algorithms for the intensive care unit.
 
