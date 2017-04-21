@@ -1,5 +1,5 @@
 ---
-title: "The MIMIC Code Repository: accelerating research in critical care"
+title: "The MIMIC Code Repository: enabling reproducibility in critical care"
 author:
         - Alistair E. W. Johnson^1^\*
         - David J. Stone^2^
