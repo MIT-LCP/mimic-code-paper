@@ -1,5 +1,5 @@
 ---
-title: The MIMIC Code Repository - Towards Reproducibility in Secondary Analysis of Health Records
+title: "The MIMIC Code Repository: accelerating research in critical care"
 author:
         - Alistair E. W. Johnson^1^\*
         - David J. Stone^2^
@@ -55,7 +55,7 @@ ICU clinical information system, these times can be inferred by the
 presence or absence of mechanical ventilator settings.
 -->
 
-In this paper, we describe the MIMIC code repository, a large body of work which derives concepts that are relevant to critical care research. Detailed descriptions on how the concepts are defined and extracted from the database are provided, including the assumptions that are made and the conditions for which a code or query is valid. The code is open source, follows good documentation practices, and is contributed to by members of the research community using MIMIC-III. 
+In this paper, we describe the MIMIC code repository, a large body of work which derives concepts that are relevant to critical care research. Detailed descriptions on how the concepts are defined and extracted from the database are provided, including the assumptions that are made and the conditions for which a code or query is valid. The code is open source, follows good documentation practices, and is contributed to by members of the research community using MIMIC-III.
 
 The repository provides a framework for collaboration around research. While the case for open data has been already been strongly made elsewhere, we believe *open code* is equally important. We would make the argument that the use of an openly available code repository will improve secondary analysis of health data by accelerating the understanding of datasets by researchers, and improving the consistency and validity of future studies.
 
