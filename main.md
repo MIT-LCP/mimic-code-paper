@@ -200,7 +200,7 @@ The authors would like to thank Professor Roger G. Mark, the MIT Laboratory for 
 This work has been supported by grants NIH-R01-EB017205, NIH-R01-EB001659, and NIH-R01-GW104987 from the National Institutes of Health.
 
 # Author contributions{.unnumbered}
-AEWJ and TJP collaborated to build the MIMIC code repository and write the paper.
+AEWJ and TJP collaborated to build the MIMIC code repository. All authors contributed to the paper.
 
 # Competing interests{.unnumbered}
 The authors have no competing interests to declare.
