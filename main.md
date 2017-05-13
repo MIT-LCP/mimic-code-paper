@@ -70,6 +70,8 @@ The repository provides a framework for collaboration around research. While the
 
 The MIMIC code repository is available online [@mimiccoderepo] and is open source. Code is available as standardized scripts in languages including SQL, Python, and R. Scripts are modified to allow an individual who has been granted access to the MIMIC-III database to generate a number of "views" of the data, with each view being an extraction from the raw data. Each script is associated with an automatically generated unique commit hash that acts as an identifier for the code. Publications that use the code repository can further cite the commit hash, allowing other researchers to download a copy of the code used regardless of any modifications since. All code follows the principles of good scientific programming as outlined by Wilson et al. [@Wilson2014], including incremental development with a distributed version control system, unit tests, and a public issue tracker. The repository was tested on MIMIC-III v1.4 at the time of this publication.
 
+<!-- TODO: figure showing how there is a middle step of EHR -> data -> machine learning -->
+
 There are three components to the repository that facilitate navigation of the data for research purposes. These components are:
 
 1. Concepts: code to extract important concepts from the health records. For example, a module on acute kidney injury (AKI) uses the criteria as specified by the Kidney Disease Improving Global Outcomes (KDIGO) and provides the code to identify patients with AKI in MIMIC.
