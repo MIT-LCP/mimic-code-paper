@@ -37,16 +37,6 @@ Executable documents are used for tutorials and also reproduce published studies
 
 <!-- Keywords: critical care; open data; data mining; secondary use of electronic health records. -->
 
-<!-- TODO: FIGURE LIST
-
-Figure 5: Ventilation duration logic
-Figure 6: Duration of mechanical ventilation and vasopressors for one patient
-Figure 7: Venn diagram of sepsis
-
-Table 1: Comorbidity frequency
-Table 2: Sepsis frequencies
-
--->
 
 # Introduction
 
@@ -155,7 +145,8 @@ Identification of sepsis has also been done retrospectively using administrative
 
 ### Comorbidities
 
-Many ICU patients have chronic conditions prior to their acute presentation that affect their probability of surviving critical illness. Elixhauser et al. [@elixhauser1998comorbidity] codified these comorbidities into 29 categories using administrative data, specifically ICD-9 codes. The American Health and Research Quality group (AHRQ) continues to maintain these administrative codes via the Healthcare Cost and Utilization Project (HCUP), adapting them accordingly as changes are made to diagnosis and treatment coding [@steiner2001healthcare]. Finally, Quan et al. [@quan2005coding] proposed an enhanced ICD-9 coding methodology based upon examining inconsistencies among previous definitions.
+Many ICU patients have chronic conditions prior to their acute presentation that affect their probability of surviving critical illness. Elixhauser et al. [@elixhauser1998comorbidity] codified these comorbidities into 29 categories using administrative data, specifically ICD-9 codes.
+The American Health and Research Quality group (AHRQ) continues to maintain these administrative codes via the Healthcare Cost and Utilization Project (HCUP), adapting them accordingly as changes are made to diagnosis and treatment coding [@steiner2001healthcare]. Finally, Quan et al. [@quan2005coding] proposed an enhanced ICD-9 coding methodology based upon examining inconsistencies among previous definitions.
 Diagnosis related groups (DRG), which are used to bill for the principle diagnosis for a patient hospitalization, are used to filter out those conditions that are not present prior to hospitalization.
 A comparison of these three methods is provided in Figure \ref{fig:comorbidity}. These representations of comorbidities are provided in the repository, both with and without DRG filtering.
 
@@ -172,7 +163,9 @@ When both data and code is freely available to researchers - as is now the case 
 We have found executable documents particularly valuable for research in cross-disciplinary fields such as healthcare, because they facilitate collaboration between data analysts and domain experts. Notebooks primarily serve three purposes: (i) they allow documentation of the logic behind the code in an organized and easy to read manner; (ii) they aid rapid writing of the code particularly during group discussions; and (iii) they provide a means of sharing details of a published study that captures the learning that takes place during the evolution of a research project.
 
 Executable documents are also an platform well-suited to tutorials. Harmonization of text and code allows for explanations of the subject matter, while the interactive nature of the document allows for experimentation and facilitates learning. A number of tutorials have been made available to explain key concepts important for working with MIMIC. For example, the transformation of recorded clinical parameters, such as hemofiltration settings, into desired clinical concepts, such as length of continuous renal replacement therapy (CRRT), is non-trivial and requires both domain and database expertise.
-A *CRRT* tutorial overviews the process of exploring MIMIC-III, assessing the data stored within and producing a measure of the clinical concept of interest (duration of CRRT). The tutorial provides a starting point for all researchers who work on the secondary analysis of electronic health records. Additional tutorials include, for example, an introduction to Structured Query Language; a step by step guide to select a study cohort, and an outline of the data capture process for commonly recorded parameters in the database.
+An executable document is provided which overviews the process of exploring MIMIC-III, assessing the data stored within and creating the definition of CRRT provided in the database.
+In addition to explaining the logic behind the definition of CRRT, the tutorial also acts as a template for defining other concepts in the MIMIC database and potentially other similar ICU EHRs.
+Other tutorials include an introduction to Structured Query Language; a step by step guide to selecting a study cohort, and an outline of the data capture process for commonly recorded parameters in the database.
 
 <!--
 We have also created an executable document which replicates a published study [@hsu2015indwelling]. The document overviews the data extraction, preprocessing of the data, construction of a propensity score, and interpretation of the results.
@@ -186,7 +179,8 @@ We have also created an executable document which replicates a published study [
 
 Transparent research processes can help to improve the quality of evidence that underpins health care. To achieve transparency, researchers must be able to provide both the data used for analysis *and* the code used to process it. By supplementing the MIMIC-III Database with the MIMIC Code Repository,  we provide a framework to allow completely reproducible research in critical care. While cultural barriers that discourage some researchers from sharing code may pervade the research community, it is now clear that the barriers in the case of MIMIC-III are not technical. Readers and reviewers of MIMIC-III studies should be aware that a route for allowing reproducibility is available, whether or not the authors have chosen to take it.
 
-Additionally, our efforts demonstrate how the concerns of open data raised by Longo et al. in the well publicised editorial on Data Sharing might be addressed [@longo2016data]. Longo argues that researchers not involved in the collection of data may lack understanding of its underlying detail, which we believe is a valid concern. Our framework connects researchers who reuse the MIMIC-III dataset with the laboratory and clinical staff who collect and produce the data, helping to provide context for downstream data analysis. Contributions to the MIMIC code repository by researchers are encouraged, progressively improving the codebase and helping to accelerate research in critical care. Source code control allows for transparency both in the authorship of the code and in the nature of changes [@Perez-Riverol2016].
+Additionally, our efforts demonstrate how the concerns of open data raised by Longo et al. in the well publicized editorial on Data Sharing might be addressed [@longo2016data]. Longo argues that researchers not involved in the collection of data may lack understanding of its underlying detail, which we believe is a valid concern. Our framework connects researchers who reuse the MIMIC-III dataset with the laboratory and clinical staff who collect and produce the data, helping to provide context for downstream data analysis.
+Contributions to the MIMIC code repository by researchers are encouraged, progressively improving the codebase and helping to accelerate research in critical care. Source code control allows for transparency both in the authorship of the code and in the nature of changes [@Perez-Riverol2016].
 
 <!--
 * Presented detailed repository that facilitates research
