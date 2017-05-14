@@ -23,7 +23,17 @@ The abstract should be fewer than 150 words and should not contain subheadings. 
 -->
 
 # Abstract{.unnumbered}
-Lack of reproducibility in medical studies is a barrier to the generation of a robust knowledge base to support clinical decision-making. In this paper we outline the MIMIC Code Repository, a framework for generating reproducible studies on an openly available critical care dataset. By providing open source code alongside the freely accessible MIMIC-III database, we enable end-to-end reproducible analysis of electronic health records.
+
+*Objective*: Lack of reproducibility in medical studies is a barrier to the generation of a robust knowledge base to support clinical decision-making. In this paper we outline the MIMIC Code Repository, a centralized code base for generating reproducible studies on an openly available critical care dataset.
+
+*Materials and Methods*: Code is provided to load the data into a relational structure, define useful extractions of the data, and reproduce entire analysis plans including research studies.
+
+*Results*: Concepts extracted include severity of illness scores, comorbid status, administrative definitions of sepsis, physiologic criteria for sepsis, organ failure scores, treatment administration, and more.
+Executable documents are used for tutorials and also reproduce published studies end-to-end, providing a template for future researchers to replicate. The repository's issue tracker enables community discussion about the data and concepts, allowing for users to collaboratively improve the resource.
+
+*Discussion*: The centralized repository provides a platform for users of the data to interact directly with the data generators and facilitating greater understanding of the data. It also provides a location for the community to collaborate on necessary concepts for research progress and share them with a larger audience. Consistent application of the same code for underlying concepts is a key step in ensuring research studies on the MIMIC database are comparable and reproducible.
+
+*Conclusion*: By providing open source code alongside the freely accessible MIMIC-III database, we enable end-to-end reproducible analysis of electronic health records.
 
 <!-- Keywords: critical care; open data; data mining; secondary use of electronic health records. -->
 
@@ -64,7 +74,8 @@ In this paper, we describe the MIMIC code repository, a centralized location for
 Additional tools are provided to educate researchers on best practices for conducting a fully reproducible study using the database.
 The code is open source, follows good documentation practices, and is contributed to by members of the research community using MIMIC-III.
 
-The repository provides a framework for collaboration around research. While the case for open data has been already been strongly made elsewhere, we believe *open code* is equally important. We would make the argument that the use of an openly available code repository will improve secondary analysis of health data by accelerating the understanding of datasets by researchers, and improving the consistency and validity of future studies.
+The repository provides a framework for collaboration around research. While the case for open data has been already been strongly made elsewhere, we believe *open code* is equally important.
+We would make the argument that the use of an openly available code repository will improve secondary analysis of health data by accelerating the understanding of datasets by researchers, and improving the consistency and validity of future studies.
 
 # The MIMIC Code Repository
 
