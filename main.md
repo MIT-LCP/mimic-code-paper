@@ -170,16 +170,26 @@ An executable document is provided which overviews the process of exploring MIMI
 In addition to explaining the logic behind the definition of CRRT, the tutorial also acts as a template for defining other concepts in the MIMIC database and potentially other similar ICU EHRs.
 Other tutorials include an introduction to Structured Query Language; a step by step guide to selecting a study cohort, and an outline of the data capture process for commonly recorded parameters in the database.
 
-<!--
 ## Community
--->
+
+The MIMIC code repository provides many previously mentioned benefits regarding distribution of the source code and enhancing reproducibility.
+An additional advantage is the communication channel opened between the maintainers and distributors of the MIMIC database and the users.
+Longo et al. [@longo2016data] argue, in a well publicized editorial on data sharing, that researchers not involved in the collection of data may lack understanding of its underlying detail.
+Our framework connects researchers who reuse the MIMIC-III dataset with the laboratory and clinical staff who collect and produce the data, helping to provide context for downstream data analysis.
+Researchers can post issues inquiring about aspects of the data collection and best practices for analyzing the data and experienced users, some of whom involved in the collection of the data, can provide insight and advice.
+This correspondence facilitates appropriate and meaningful use of the data, and as all discussions are publicly available, the result in an organically growing set of documentation which spans both narrow and broad topics.
+Contributions to the MIMIC code repository by researchers are encouraged, progressively improving the codebase and helping to accelerate research in critical care.
+Source code control allows for transparency both in the authorship of the code and in the nature of any changes [@Perez-Riverol2016]
 
 # Conclusion
 
-Transparent research processes can help to improve the quality of evidence that underpins health care. To achieve transparency, researchers must be able to provide both the data used for analysis *and* the code used to process it. By supplementing the MIMIC-III Database with the MIMIC Code Repository,  we provide a framework to allow completely reproducible research in critical care. While cultural barriers that discourage some researchers from sharing code may pervade the research community, it is now clear that the barriers in the case of MIMIC-III are not technical. Readers and reviewers of MIMIC-III studies should be aware that a route for allowing reproducibility is available, whether or not the authors have chosen to take it.
-
-Additionally, our efforts demonstrate how the concerns of open data raised by Longo et al. in the well publicized editorial on Data Sharing might be addressed [@longo2016data]. Longo argues that researchers not involved in the collection of data may lack understanding of its underlying detail, which we believe is a valid concern. Our framework connects researchers who reuse the MIMIC-III dataset with the laboratory and clinical staff who collect and produce the data, helping to provide context for downstream data analysis.
-Contributions to the MIMIC code repository by researchers are encouraged, progressively improving the codebase and helping to accelerate research in critical care. Source code control allows for transparency both in the authorship of the code and in the nature of changes [@Perez-Riverol2016].
+Transparent research processes can help to improve the quality of evidence that underpins health care, and the case for open data has been quite well described [@ross2013ushering, @bierer2017data].
+To achieve full transparency, researchers must be able to provide both the data used for analysis *and* the code used to process it.
+The MIMIC-III database is exceptional due in no small part to its publicly accessible nature: all researchers who undergo human subjects research training and who sign a data use agreement can freely access the data.
+By supplementing the MIMIC-III Database with the MIMIC Code Repository, we provide a framework to allow completely reproducible research in critical care.
+Examples of reproducible code and even reproducible studies are available and provide a framework for future work with the database.
+While cultural barriers exist which may discourage some researchers from sharing code, it is clear that the barriers in the case of MIMIC-III are not technical.
+The unique combination of open code with publicly accessible data allows for the creation of fully executable studies with diligent audit trails, and it would behoove researchers to adopt these approaches.
 
 <!--
 * Presented detailed repository that facilitates research
@@ -188,7 +198,7 @@ Contributions to the MIMIC code repository by researchers are encouraged, progre
 * The use of open code addresses this both by providing extensive detail about data extraction and by linking the data authors with the community to facilitate the dialogue around the data.
 * Provides examples of fully reproducible studies - addresses garden of forking paths, facilitates further study [@gelman2014statistical]
 
-In establishing the MIMIC Code Repository alongside the freely accessible MIMIC-III database, we have created a framework for conducting end-to-end reproducible analysis of electronic health records. This presents an opportunity to carry out research in a manner that was not previously possible, to our knowledge.
+In establishing the MIMIC Code Repository alongside the freely accessible MIMIC-III database, we have created a framework for conducting end-to-end reproducible analysis of electronic health records.
 
 The MIMIC-III database is exceptional due in no small part to its publicly accessible nature: all researchers who undergo human subjects research training and who sign a data use agreement can freely access the data. The use of Jupyter Notebooks allows the diligent researcher to document both the thought process and interim analyses that are performed. The inclusion of this type of documentation provides a means to document all analyses performed thus providing other researchers with more confidence in the analysis process and could be used to address the issue regarding study authors testing more hypotheses than they publicize [@gelman2014statistical].
 
