@@ -1,16 +1,35 @@
 ---
-title: "The MIMIC Code Repository: enabling reproducibility in critical care"
+title: "The MIMIC Code Repository: Enabling reproducibility in critical care"
 author:
         - Alistair E. W. Johnson^1^\*
         - David J. Stone^2^
         - Leo Anthony Celi^1,3^
         - Tom J. Pollard^1^
-date: April 01, 2017
 company: ^1^ Massachusetts Institute of Technology, Cambridge; ^2^ University of Virginia School of Medicine, Charlottesville; ^3^ Beth Israel Deaconess Medical Center, Boston. \* aewj \[at\] mit \[dot\] edu
 keywords: critical care, ICU, MIMIC-III, reproducibility
+geometry: margin=1in
+fontsize: 10pt
+bibliography: references.bib
+csl: vancouver.csl
+papersize: a4paper
+urlcolor: blue
+header-includes:
+    - \pagenumbering{gobble}
 ---
 
 <!-- The title should ideally be fewer than 120 characters, with a clear indication of the biological system under investigation (if appropriate), and should avoid abbreviations and unfamiliar acronyms if possible. Please note that two-part titles – e.g. “What goes up must come down: Oscillations in transcriptional networks” – are not permitted for research papers. -->
+
+<!--
+\begin{center}
+\textbf{\Large{The MIMIC Code Repository: enabling reproducibility in critical care}}
+
+\textbf{\large{Alistair E. W. Johnson, DPhil$^1$, David J. Stone, MD$^2$, Leo A. Celi$^{1,3}$,\newline Tom J. Pollard$^1$}}
+-->
+^1^ Massachusetts Institute of Technology, Cambridge, USA \newline
+^2^ University of Virginia School of Medicine, Charlottesville, USA \newline
+^3^ Beth Israel Deaconess Medical Center, Boston, USA \newline
+
+\* Corresponding author: *aewj* \[at\] *mit* \[dot\] *edu*
 
 <!--
 **One Sentence Summary:** We have released an open source library of
@@ -83,12 +102,17 @@ There are three components to the repository that facilitate navigation of the d
 
 ## Concepts
 
-Code to extract concepts that that are broadly applicable to research questions in critical care are provided in the repository. For example, severity of illness scores are frequently required to adjust for confounding factors in a study, but are complex to derive, and so scripts are provided for reuse. These and other concepts are coded in a modular fashion to reduce redundancy in code and allow for extension. An example of the modular nature of the code is shown in Figure \ref{fig:sevscoreblock}.
+Code to extract concepts that that are broadly applicable to research questions in critical care are provided in the repository. For example, severity of illness scores are frequently required to adjust for confounding factors in a study, but are complex to derive, and so scripts are provided for reuse. These and other concepts are coded in a modular fashion to reduce redundancy in code and allow for extension.
+The following sections describe various concepts currently available in
+the repository.
+
+<!--
+An example of the modular nature of the code is shown in Figure \ref{fig:sevscoreblock}.
 
 ![Block diagram demonstrating modular components of severity scores. These components can be used individually by researchers to quickly extract data of interest. \label{fig:sevscoreblock}](figures/SeverityScoreBlockDiagram.png){ width=50% }
 
-In the figure, a set of severity of illness scores is shown alongside a set of concepts that consitute separate components of the scores. Each component can easily be isolated and employed on its own, which could occur if, for example, the researcher is interested in determining which patients are mechanically ventilated on the first day (by using `ventfirstday`). The following sections describe various concepts currently available in
-the repository.
+In the figure, a set of severity of illness scores is shown alongside a set of concepts that consitute separate components of the scores.Each component can easily be isolated and employed on its own, which could occur if, for example, the researcher is interested in determining which patients are mechanically ventilated on the first day (by using `ventfirstday`).
+-->
 
 ### Severity of illness scores
 
@@ -100,11 +124,15 @@ Secondly, routinely collected data often lacks data elements required to compute
 
 Working with local nurses and doctors has helped us to address these kinds of issues that potentially impact the code, helping to ensure the derived scores accurately reflect the true severity of patient illness. There are five severity of illness scores currently implemented in the MIMIC Code Repository: APS-III [@Knaus1991], SAPS [@LeGall1993], SAPS-II [@LeGall1996], and OASIS [@Johnson2013oasis]. A more detailed comparison of the severity scores is provided in the supplementary material, along with discussion of the assumptions made in calculating the scores. Organ dysfunction scores are also available and detailed later.
 
-Each score is comprised of at least ten independent components. The APS III, SAPS II, SOFA, LODS, and OASIS scores are generally calculated using data from the first 24 hours of the patient's stay. SIRS and qSOFA are screening tools with scores calculated on admission to the ICU which is concretely defined as up to 2 hours after the admission time. Details of score derivation are available in the supplemental material (Appendix A). The distribution of these scores is shown in in Figure \ref{fig:sevscore_dist}, and calibration curves are shown in Figure \ref{fig:sevscore_calib}.
+Each score is comprised of at least ten independent components. The APS III, SAPS II, SOFA, LODS, and OASIS scores are generally calculated using data from the first 24 hours of the patient's stay. SIRS and qSOFA are screening tools with scores calculated on admission to the ICU which is concretely defined as up to 2 hours after the admission time. The distribution of these scores is shown in in Figure \ref{fig:sevscore_dist}.
 
 ![Comparison of severity of illness score distributions. \label{fig:sevscore_dist}](figures/SeverityOfIllnessDistribution.png){ width=70% }
 
+<!--
+and calibration curves are shown in Figure \ref{fig:sevscore_calib}.
 ![Calibration curves for three severity of illness scores with published equations for calculating the probability of mortality. \label{fig:sevscore_calib}](figures/SeverityScoresCalibCurve.png){ width=70% }
+
+-->
 
 ### Organ dysfunction scores
 
@@ -142,9 +170,12 @@ Scripts for these concepts are available and a notebook describing the derivatio
 Identification of sepsis has also been done retrospectively using administrative data, and in particular billing codes acquired on hospital discharge.
 Two billing codes explicitly denote sepsis (ICD-9 codes 785.52 and 995.92).
 Angus et al. [@angus2001epidemiology] and Martin et al. [@martin2003epidemiology] describe algorithms for defining sepsis using a set of diagnostic and procedural ICD-9 codes. The criteria as proposed by Angus et al. [@angus2001epidemiology] were validated in a later study by Iwashyna et al. [@iwashyna2014identifying]. These three criteria; explicit coding, those as proposed by Angus et al. [@angus2001epidemiology], and those proposed by Martin et al. [@martin2003epidemiology], are available in the repository.
+
+<!--
 Figure \ref{fig:sepsis_venn} shows a Venn diagram for three groups of patients identified as septic retrospectively using billing codes.
 
 ![Venn diagram of three groups of patients who may have sepsis using: explicit coding of sepsis (two ICD-9 codes), a coding algorithm proposed by Angus et al., and a coding algorithm proposed by Martin et al. \label{fig:sepsis_venn}](figures/sepsis-venn.png){ width=70% }
+-->
 
 ### Comorbidities
 
