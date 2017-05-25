@@ -162,15 +162,13 @@ When both data and code is freely available to researchers - as is now the case 
 ![Example of a notebook providing a tutorial with MIMIC-III data. \label{fig:tutorial}](figures/tutorial_screenshot.png){ width=100% }
 
 We have found executable documents particularly valuable for research in cross-disciplinary fields such as healthcare, because they facilitate collaboration between data analysts and domain experts. Notebooks primarily serve three purposes: (i) they allow documentation of the logic behind the code in an organized and easy to read manner; (ii) they aid rapid writing of the code particularly during group discussions; and (iii) they provide a means of sharing details of a published study that captures the learning that takes place during the evolution of a research project.
+To encourage sharing of research code, we have reproduced a previously published study on indwelling arterial catheters and their association with in-hospital mortality for haemodynamically stable patients with respiratory failure [@hsu2015association]. This study was initially performed in MIMIC-II, which has since been supersetted by MIMIC-III. As the the structure of the databases differ, the study was reimplemented based on the manuscript. The executable documents perform the data extraction, preprocessing of the data, construction of a propensity score, and provide interpretation of the results.
+Specifically a Jupyter Notebook, `aline.ipynb`, extracts the study population and necessary data, outputting data to a plain-text file. An R Markdown file, `aline.Rmd`, subsequently loads data from the plain text file and tests the study hypothesis after matching cohorts with a propensity score. The executable documents provide a template for creating completely reproducible studies using the MIMIC-III database.
 
 Executable documents are also an platform well-suited to tutorials. Harmonization of text and code allows for explanations of the subject matter, while the interactive nature of the document allows for experimentation and facilitates learning. A number of tutorials have been made available to explain key concepts important for working with MIMIC. For example, the transformation of recorded clinical parameters, such as hemofiltration settings, into desired clinical concepts, such as length of continuous renal replacement therapy (CRRT), is non-trivial and requires both domain and database expertise.
 An executable document is provided which overviews the process of exploring MIMIC-III, assessing the data stored within and creating the definition of CRRT provided in the database.
 In addition to explaining the logic behind the definition of CRRT, the tutorial also acts as a template for defining other concepts in the MIMIC database and potentially other similar ICU EHRs.
 Other tutorials include an introduction to Structured Query Language; a step by step guide to selecting a study cohort, and an outline of the data capture process for commonly recorded parameters in the database.
-
-<!--
-We have also created an executable document which replicates a published study [@hsu2015indwelling]. The document overviews the data extraction, preprocessing of the data, construction of a propensity score, and interpretation of the results.
--->
 
 <!--
 ## Community
