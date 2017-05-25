@@ -77,15 +77,15 @@ The MIMIC code repository is available online [@mimiccoderepo] and is open sourc
 
 There are three components to the repository that facilitate navigation of the data for research purposes. These components are:
 
-1. Concepts: code to extract important concepts from the health records. For example, a module on acute kidney injury (AKI) uses the criteria as specified by the Kidney Disease Improving Global Outcomes (KDIGO) and provides the code to identify patients with AKI in MIMIC.
-2. Executable documents: notebooks that allow text and analytical code to be seamlessly combined into a single executable document, allowing studies and tutorials to be reproduced.
-3. Community: public discussions to facilitate contributions from members of the MIMIC research community
+* *Concepts*: code to extract important concepts from the health records. For example, a module on acute kidney injury (AKI) uses the criteria as specified by the Kidney Disease Improving Global Outcomes (KDIGO) and provides the code to identify patients with AKI in MIMIC.
+* *Executable documents*: notebooks that allow text and analytical code to be seamlessly combined into a single executable document, allowing studies and tutorials to be reproduced.
+* *Community*: public discussions to facilitate contributions from members of the MIMIC research community
 
 ## Concepts
 
 Code to extract concepts that that are broadly applicable to research questions in critical care are provided in the repository. For example, severity of illness scores are frequently required to adjust for confounding factors in a study, but are complex to derive, and so scripts are provided for reuse. These and other concepts are coded in a modular fashion to reduce redundancy in code and allow for extension. An example of the modular nature of the code is shown in Figure \ref{fig:sevscoreblock}.
 
-![Block diagram demonstrating modular components of severity scores. These components can be used individually by researchers to quickly extract data of interest. \label{fig:sevscoreblock}](figures/SeverityScoreBlockDiagram.png){ width=100% }
+![Block diagram demonstrating modular components of severity scores. These components can be used individually by researchers to quickly extract data of interest. \label{fig:sevscoreblock}](figures/SeverityScoreBlockDiagram.png){ width=50% }
 
 In the figure, a set of severity of illness scores is shown alongside a set of concepts that consitute separate components of the scores. Each component can easily be isolated and employed on its own, which could occur if, for example, the researcher is interested in determining which patients are mechanically ventilated on the first day (by using `ventfirstday`). The following sections describe various concepts currently available in
 the repository.
@@ -102,9 +102,9 @@ Working with local nurses and doctors has helped us to address these kinds of is
 
 Each score is comprised of at least ten independent components. The APS III, SAPS II, SOFA, LODS, and OASIS scores are generally calculated using data from the first 24 hours of the patient's stay. SIRS and qSOFA are screening tools with scores calculated on admission to the ICU which is concretely defined as up to 2 hours after the admission time. Details of score derivation are available in the supplemental material (Appendix A). The distribution of these scores is shown in in Figure \ref{fig:sevscore_dist}, and calibration curves are shown in Figure \ref{fig:sevscore_calib}.
 
-![Comparison of severity of illness score distributions. \label{fig:sevscore_dist}](figures/SeverityOfIllnessDistribution.png){ width=100% }
+![Comparison of severity of illness score distributions. \label{fig:sevscore_dist}](figures/SeverityOfIllnessDistribution.png){ width=70% }
 
-![Calibration curves for three severity of illness scores with published equations for calculating the probability of mortality. \label{fig:sevscore_calib}](figures/SeverityScoresCalibCurve.png){ width=100% }
+![Calibration curves for three severity of illness scores with published equations for calculating the probability of mortality. \label{fig:sevscore_calib}](figures/SeverityScoresCalibCurve.png){ width=70% }
 
 ### Organ dysfunction scores
 
@@ -112,7 +112,7 @@ Organ failure is a hallmark of acute illness and is quantified in numerous score
 
 To highlight the discrepancies that can arise from the way a concept is defined, we contrast two versions of the SOFA score: one derived by prior researchers, and one available in the MIMIC code repository. Figure \ref{fig:sofa_auroc} shows the area under the receiver operator characteristic curve (AUROC) for hospital mortality for patients admitted in the MIMIC-III database between 2001-2008 using two versions of SOFA, grouped by the year of admission.
 
-![Comparison of AUROCs for SOFA scores calculated from mimic-code and a prior research report. \label{fig:sofa_auroc}](figures/sofa-old-vs-new.png){ width=100% }
+![Comparison of AUROCs for SOFA scores calculated from mimic-code and a prior research report. \label{fig:sofa_auroc}](figures/sofa-old-vs-new.png){ width=50% }
 
 The disagreement between the two modalities is multifactorial, but a major contributing factor relates to an important variable: the Glasgow Coma Scale (GCS). In the original paper describing the SOFA score, clinicians were instructed to set GCS to its maximum value (15) if they were unable to assess the patient fully (for example, as a result of sedation to facilitate mechanical ventilation). In contrast, the documentation of GCS for these patients in the MIMIC-III database is usually a value of 3, the minimum value, with a note that they are unable to assess the patient. Naive use of GCS values results in a dramatic differences in the capability of the score to discriminate severely ill patients and highlights the need to understand variables and how they are captured or derived. In the MIMIC Code Repository, special extraction steps are used to detect a GCS value of 3 due to sedation, and these values are corrected to 15 in the calculation of scores.
 
@@ -144,7 +144,7 @@ Two billing codes explicitly denote sepsis (ICD-9 codes 785.52 and 995.92).
 Angus et al. [@angus2001epidemiology] and Martin et al. [@martin2003epidemiology] describe algorithms for defining sepsis using a set of diagnostic and procedural ICD-9 codes. The criteria as proposed by Angus et al. [@angus2001epidemiology] were validated in a later study by Iwashyna et al. [@iwashyna2014identifying]. These three criteria; explicit coding, those as proposed by Angus et al. [@angus2001epidemiology], and those proposed by Martin et al. [@martin2003epidemiology], are available in the repository.
 Figure \ref{fig:sepsis_venn} shows a Venn diagram for three groups of patients identified as septic retrospectively using billing codes.
 
-![Venn diagram of three groups of patients who may have sepsis using: explicit coding of sepsis (two ICD-9 codes), a coding algorithm proposed by Angus et al., and a coding algorithm proposed by Martin et al. \label{fig:sepsis_venn}](figures/sepsis-venn.png){ width=100% }
+![Venn diagram of three groups of patients who may have sepsis using: explicit coding of sepsis (two ICD-9 codes), a coding algorithm proposed by Angus et al., and a coding algorithm proposed by Martin et al. \label{fig:sepsis_venn}](figures/sepsis-venn.png){ width=70% }
 
 ### Comorbidities
 
@@ -161,7 +161,7 @@ Van Walraven et al. [@van2009modification] later aggregated comorbidities codifi
 
 When both data and code is freely available to researchers - as is now the case for MIMIC-III - this provides a framework that allows a study to be entirely reproduced. This is especially powerful when toolkits such as R Markdown and Jupyter Notebook are employed, allowing documentation and code to be seamlessly combined to create executable documents. Figure \ref{fig:tutorial} shows an example of a Jupyter Notebook that extracts patient demographics and displays the results for the user to view. Jupyter Notebooks are language agnostic, supporting code written in Python, R, MATLAB, SAS, and others [@PER-GRA:2007, @kluyver2016jupyter].
 
-![Example of a notebook providing a tutorial with MIMIC-III data. \label{fig:tutorial}](figures/tutorial_screenshot.png){ width=100% }
+![Example of a notebook providing a tutorial with MIMIC-III data. \label{fig:tutorial}](figures/example-tutorial.png){ width=80% }
 
 We have found executable documents particularly valuable for research in cross-disciplinary fields such as healthcare, because they facilitate collaboration between data analysts and domain experts. Notebooks primarily serve three purposes: (i) they allow documentation of the logic behind the code in an organized and easy to read manner; (ii) they aid rapid writing of the code particularly during group discussions; and (iii) they provide a means of sharing details of a published study that captures the learning that takes place during the evolution of a research project.
 To encourage sharing of research code, we have reproduced a previously published study on indwelling arterial catheters and their association with in-hospital mortality for haemodynamically stable patients with respiratory failure [@hsu2015association]. This study was initially performed in MIMIC-II, which has since been supersetted by MIMIC-III. As the the structure of the databases differ, the study was reimplemented based on the manuscript. The executable documents perform the data extraction, preprocessing of the data, construction of a propensity score, and provide interpretation of the results.
@@ -212,7 +212,7 @@ Within the Materials and Methods and/or figure legends, we encourage authors to 
 -->
 
 # Acknowledgments{.unnumbered}
-The authors would like to thank Professor Roger G. Mark, the MIT Laboratory for Computational Physiology, Philips Healthcare and the Beth Israel Deaconess Medical Center for the creation of the MIMIC-III database.
+The authors would like to thank Professor Roger G. Mark, the MIT Laboratory for Computational Physiology, Philips Healthcare, and the Beth Israel Deaconess Medical Center for the creation of the MIMIC-III database.
 
 # Funding{.unnumbered}
 This work has been supported by grants NIH-R01-EB017205, NIH-R01-EB001659, and NIH-R01-GW104987 from the National Institutes of Health.
